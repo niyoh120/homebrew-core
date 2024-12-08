@@ -516,7 +516,6 @@ code-cli
 code-minimap
 code-server
 codec2
-codecov-cli
 codelimit
 coder
 codespell
@@ -2124,6 +2123,7 @@ oasdiff
 oath-toolkit
 oauth2_proxy
 oauth2c
+oauth2l
 objfw
 ocaml-findlib
 ocaml-zarith
@@ -2150,6 +2150,7 @@ okta-awscli
 okteto
 ol
 ollama
+omake
 omega
 omniorb
 onednn
@@ -2337,6 +2338,7 @@ pivit
 pixi
 pixie
 pixman
+pjproject
 pkg-config-wrapper
 pkgconf
 pkl
@@ -2369,6 +2371,7 @@ ponyc
 popeye
 portablegl
 porter
+poselib
 postgis
 postgresql@13
 postgresql@14
@@ -2513,7 +2516,6 @@ rav1e
 raven
 raxml-ng
 raylib
-rbtools
 rbw
 rclone
 rcs
@@ -2653,6 +2655,7 @@ scotch
 scrapy
 scrcpy
 screen
+screenfetch
 scriptisto
 scs
 scummvm
@@ -2720,6 +2723,7 @@ sip
 sipp
 siril
 sispmctl
+six
 sjk
 sk
 skaffold
@@ -3162,6 +3166,7 @@ wakatime-cli
 walk
 wallpaper
 wartremover
+wasm-component-ld
 wasm-micro-runtime
 wasm-pack
 wasm-tools
@@ -3176,6 +3181,7 @@ wazero
 wcslib
 wcurl
 weasyprint
+weaviate-cli
 web-ext
 webdis
 webhook
@@ -3295,6 +3301,7 @@ zellij
 zenith
 zenity
 zeromq
+zet
 zf
 zfind
 zig
