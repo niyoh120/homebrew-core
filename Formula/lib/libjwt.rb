@@ -1,8 +1,8 @@
 class Libjwt < Formula
   desc "JSON Web Token C library"
   homepage "https://github.com/benmcollins/libjwt"
-  url "https://github.com/benmcollins/libjwt/releases/download/v1.18.2/libjwt-1.18.2.tar.bz2"
-  sha256 "6b10af67157c65b201ba881d040408d2450c0a152b4e7547cc3ec1952cd75b63"
+  url "https://github.com/benmcollins/libjwt/releases/download/v2.1.0/libjwt-2.1.0.tar.bz2"
+  sha256 "4c48761179153d144b7904e9b5e6e705387bbe0954237e9b0bee59cbf781ac68"
   license "MPL-2.0"
   head "https://github.com/benmcollins/libjwt.git", branch: "master"
 
@@ -12,18 +12,19 @@ class Libjwt < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8be26cae4c691069802bb2239781bff751eda588a2dea7d2237fd8a66824ac0a"
-    sha256 cellar: :any,                 arm64_sonoma:  "f2e0b6657d2340ca76bc6993192db6a73bc954f3b6f8c3ba73324181aebb51b2"
-    sha256 cellar: :any,                 arm64_ventura: "2f272168a2207d81184718b1ded6587f543fd37aa7d3dae94a3969f66d010a53"
-    sha256 cellar: :any,                 sonoma:        "ab0981e7e73c09a5c33fe14bcec0814b150561a62e8c471c6fa93256ef81e96d"
-    sha256 cellar: :any,                 ventura:       "e8d5b3735e1ba301e9246d31cb723eec9204a7911a96200bea216a980954ebf9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a9bdc84f671f069561c6c5d7f918b60d0968ae812e50ce1dcdfa1df59f1caa43"
+    sha256 cellar: :any,                 arm64_sequoia: "bb169c491462466ddb3dec158788c251fd498ca6f648cabd1df44555ffc68ac8"
+    sha256 cellar: :any,                 arm64_sonoma:  "ed465a326a3345dff926dda0a2d98a2f3124e19a8af36b34d3c8e7902152214b"
+    sha256 cellar: :any,                 arm64_ventura: "7c67c24c7d3f6022c1cdcc207a0843c009bba4584d7f6689270c0adb31511198"
+    sha256 cellar: :any,                 sonoma:        "ab6c029ef43730d2cf81885df962a14b8d1ebe27ea082bd5ddebdd121e30505c"
+    sha256 cellar: :any,                 ventura:       "d3de2a610d6c5a32835b73196a295f24de757b215e6aa29df6538eff3f161e56"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5121b0f68c25e5432ab8caa01e0cb5fba6630bfcd3a10eca0897c89273d90d89"
   end
 
   depends_on "autoconf" => :build
   depends_on "automake" => :build
   depends_on "libtool" => :build
   depends_on "pkgconf" => :build
+  depends_on "gnutls"
   depends_on "jansson"
   depends_on "openssl@3"
 
