@@ -1,22 +1,22 @@
 class Pnpm < Formula
   desc "Fast, disk space efficient package manager"
   homepage "https://pnpm.io/"
-  url "https://registry.npmjs.org/pnpm/-/pnpm-9.15.3.tgz"
-  sha256 "c1da43727ccbc1ed42aff4fd6bdb4b1e91e65a818e6efff5b240fbf070ba4eaf"
+  url "https://registry.npmjs.org/pnpm/-/pnpm-10.0.0.tgz"
+  sha256 "43abf6e720fb7bc53c591b0862605c7d323d0a9d2dd33bcac07b062e13cf4948"
   license "MIT"
 
   livecheck do
-    url "https://registry.npmjs.org/pnpm/latest"
+    url "https://registry.npmjs.org/pnpm/latest-10"
     regex(/["']version["']:\s*?["']([^"']+)["']/i)
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "e51e36734f36217f5e88edf34d05b76187e95b2a9a04110455e6a39f1c094515"
-    sha256 cellar: :any,                 arm64_sonoma:  "e51e36734f36217f5e88edf34d05b76187e95b2a9a04110455e6a39f1c094515"
-    sha256 cellar: :any,                 arm64_ventura: "e51e36734f36217f5e88edf34d05b76187e95b2a9a04110455e6a39f1c094515"
-    sha256 cellar: :any,                 sonoma:        "3466d76ac687a7d374e8606621bcd0848b9248a43a2c98f57699a0a8d2c3db12"
-    sha256 cellar: :any,                 ventura:       "3466d76ac687a7d374e8606621bcd0848b9248a43a2c98f57699a0a8d2c3db12"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d422afed7a35b78c0fb5f538e2ec4bd09166dfd81d4d2a541b51abafee833757"
+    sha256 cellar: :any,                 arm64_sequoia: "b16354b850572926c9cf2d19c3601bfbeba8a23851305114874ce375d48d7d41"
+    sha256 cellar: :any,                 arm64_sonoma:  "b16354b850572926c9cf2d19c3601bfbeba8a23851305114874ce375d48d7d41"
+    sha256 cellar: :any,                 arm64_ventura: "b16354b850572926c9cf2d19c3601bfbeba8a23851305114874ce375d48d7d41"
+    sha256 cellar: :any_skip_relocation, sonoma:        "67515a09c56ee77e93e8062c6bd7136f5a35fdc74006aad54676826c1e3e067a"
+    sha256 cellar: :any_skip_relocation, ventura:       "67515a09c56ee77e93e8062c6bd7136f5a35fdc74006aad54676826c1e3e067a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "eb62e45c5dcd4591621d7fdbdbe8a57dc15c7bcfbac40a7ce702e8cbae2dde99"
   end
 
   depends_on "node" => [:build, :test]

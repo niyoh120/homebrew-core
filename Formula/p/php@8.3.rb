@@ -2,9 +2,9 @@ class PhpAT83 < Formula
   desc "General-purpose scripting language"
   homepage "https://www.php.net/"
   # Should only be updated if the new version is announced on the homepage, https://www.php.net/
-  url "https://www.php.net/distributions/php-8.3.15.tar.xz"
-  mirror "https://fossies.org/linux/www/php-8.3.15.tar.xz"
-  sha256 "3df5d45637283f759eef8fc3ce03de829ded3e200c3da278936a684955d2f94f"
+  url "https://www.php.net/distributions/php-8.3.16.tar.xz"
+  mirror "https://fossies.org/linux/www/php-8.3.16.tar.xz"
+  sha256 "40d3b4e6cac33d3bcefe096d75a28d4fb4e3a9615eb20a4de55ba139fbfacdd5"
   license "PHP-3.01"
 
   livecheck do
@@ -13,12 +13,12 @@ class PhpAT83 < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "508bc7f3a10b4408713cacb79395036322510125783a874332106aef0f6f4d45"
-    sha256 arm64_sonoma:  "778d2ad8da5f2e9ec0554c9ffd6f9eb632beaaf172756927ca642d16d7ccdee2"
-    sha256 arm64_ventura: "8395f9fb05cded18c4098e05cda79534b241e4406ce45abd38c4970c65264a3b"
-    sha256 sonoma:        "aa7c3ea39f845972f2291f4196f0745dc3959442ef868b4c4c48ddd85b54d5f3"
-    sha256 ventura:       "3e314556bdf37c1fde5817c02bb7d8793c0058ac47f673daf58ecb415b4d7ff9"
-    sha256 x86_64_linux:  "466a6380a2d52ee8cef68a4821edf69ae23110842766fe4c15b83e73b26cd3b1"
+    sha256 arm64_sequoia: "cbb2b7531ab4e5fa606830b90d3fd2ca0d5bdf5a71cca94e70c898d971f563af"
+    sha256 arm64_sonoma:  "ca986d19b6082e3c8b8b7bbaf9542e5a29d85cfc61c723325fe4be1c7e9f2b80"
+    sha256 arm64_ventura: "c5525a161bb5a67bd927cae80362e83aaa60becd05ccd7231e0c0f575538f42d"
+    sha256 sonoma:        "9b3f4a30312a3d31698dc15b8b78d28055128b9771df2d58183221f5b4ccc5ec"
+    sha256 ventura:       "ffc20dbfc8f90087531c1b9af25eb3884a429a1c634e0d8fbf9d83560ba0c029"
+    sha256 x86_64_linux:  "5606767445329e75254182651661a979a5cc3446ca413ba7e4bd394a0b267525"
   end
 
   keg_only :versioned_formula
@@ -102,6 +102,9 @@ class PhpAT83 < Formula
 
     # Prevent homebrew from hardcoding path to sed shim in phpize script
     ENV["lt_cv_path_SED"] = "sed"
+
+    # Identify build provider in phpinfo()
+    ENV["PHP_BUILD_PROVIDER"] = tap.user
 
     # system pkg-config missing
     ENV["KERBEROS_CFLAGS"] = " "

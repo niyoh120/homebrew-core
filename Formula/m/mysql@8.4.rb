@@ -4,7 +4,7 @@ class MysqlAT84 < Formula
   url "https://cdn.mysql.com/Downloads/MySQL-8.4/mysql-8.4.3.tar.gz"
   sha256 "7ac9564c478022f73005ff89bbb40f67b381fc06d5518416bdffec75e625b818"
   license "GPL-2.0-only" => { with: "Universal-FOSS-exception-1.0" }
-  revision 5
+  revision 6
 
   livecheck do
     url "https://dev.mysql.com/downloads/mysql/8.4.html?tpl=files&os=src&version=8.4"
@@ -12,12 +12,12 @@ class MysqlAT84 < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "0667e8992d4d55170e6156e882a691bfd0d8db5cbad7ee5e20fff68fceb6f4c6"
-    sha256 arm64_sonoma:  "6a71bbb0c4527f084082cda34a11969b5da60a239bc1be50738842fc001c6665"
-    sha256 arm64_ventura: "ac03cc49748b1d01907962e5eae11df8d87f9e36d5649a866ea07059cb48525e"
-    sha256 sonoma:        "4c36d5dc18c466a90ab68937a64ea12385f6035617e39a0d6f48f798f7d54080"
-    sha256 ventura:       "db82161d829e4cf78f1db0b8923000b6432462eb9d0699549ab7c8487327b991"
-    sha256 x86_64_linux:  "3872334d29cec2454c359acc875362175d003a00d2178710ff1f6be891f91097"
+    sha256 arm64_sequoia: "dcc6bca22b9524ca8b3dd69e1a460864dab488f09dda596e29bd8f02f132c746"
+    sha256 arm64_sonoma:  "53483baed2c3ca811e7e22bcb364f22345e274ca3f43fb915344a4346fbf4c17"
+    sha256 arm64_ventura: "6599e61b43e020b049e590b409bf90fb524dbb3c202a6c3016fd0d4a0559c776"
+    sha256 sonoma:        "34b554319e5ab0124fddc2370d22f8f5e0218cf0f624d131098d134f9d0a3766"
+    sha256 ventura:       "91aaec4dd74177b9c38935804890d16a6d2e0b2b768299346594a02a9ce6a459"
+    sha256 x86_64_linux:  "c9cce3c3bfbea3ed57e75dd5f23ff9c2c63daf4cda37f40116f82d0a2cc56c3f"
   end
 
   keg_only :versioned_formula
@@ -103,16 +103,13 @@ class MysqlAT84 < Formula
       -DOPENSSL_ROOT_DIR=#{Formula["openssl@3"].opt_prefix}
       -DWITH_ICU=#{icu4c.opt_prefix}
       -DWITH_SYSTEM_LIBS=ON
-      -DWITH_BOOST=boost
       -DWITH_EDITLINE=system
-      -DWITH_LIBEVENT=system
       -DWITH_LZ4=system
       -DWITH_PROTOBUF=system
       -DWITH_SSL=system
       -DWITH_ZLIB=system
       -DWITH_ZSTD=system
       -DWITH_UNIT_TESTS=OFF
-      -DWITH_INNODB_MEMCACHED=ON
     ]
 
     system "cmake", "-S", ".", "-B", "build", *args, *std_cmake_args
@@ -133,13 +130,13 @@ class MysqlAT84 < Formula
     bin.install_symlink prefix/"support-files/mysql.server"
 
     # Install my.cnf that binds to 127.0.0.1 by default
-    (buildpath/"my.cnf").write <<~EOS
+    (buildpath/"my.cnf").write <<~INI
       # Default Homebrew MySQL server config
       [mysqld]
       # Only allow connections from localhost
       bind-address = 127.0.0.1
       mysqlx-bind-address = 127.0.0.1
-    EOS
+    INI
     etc.install "my.cnf"
   end
 
@@ -187,17 +184,33 @@ class MysqlAT84 < Formula
     (testpath/"mysql").mkpath
     (testpath/"tmp").mkpath
 
-    args = %W[--no-defaults --user=#{ENV["USER"]} --datadir=#{testpath}/mysql --tmpdir=#{testpath}/tmp]
-    system bin/"mysqld", *args, "--initialize-insecure", "--basedir=#{prefix}"
     port = free_port
-    pid = spawn(bin/"mysqld", *args, "--port=#{port}")
+    socket = testpath/"mysql.sock"
+    mysqld_args = %W[
+      --no-defaults
+      --mysqlx=OFF
+      --user=#{ENV["USER"]}
+      --port=#{port}
+      --socket=#{socket}
+      --basedir=#{prefix}
+      --datadir=#{testpath}/mysql
+      --tmpdir=#{testpath}/tmp
+    ]
+    client_args = %W[
+      --port=#{port}
+      --socket=#{socket}
+      --user=root
+      --password=
+    ]
+
+    system bin/"mysqld", *mysqld_args, "--initialize-insecure"
+    pid = spawn(bin/"mysqld", *mysqld_args)
     begin
       sleep 5
-
-      output = shell_output("#{bin}/mysql --port=#{port} --user=root --password= --execute='show databases;'")
+      output = shell_output("#{bin}/mysql #{client_args.join(" ")} --execute='show databases;'")
       assert_match "information_schema", output
-      system bin/"mysqladmin", "--port=#{port}", "--user=root", "--password=", "shutdown"
     ensure
+      system bin/"mysqladmin", *client_args, "shutdown"
       Process.kill "TERM", pid
     end
   end
