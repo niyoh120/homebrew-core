@@ -30,14 +30,6 @@
   "ansible-lint": {
     "exclude_packages": ["cryptography"]
   },
-  "ansible@7": {
-    "extra_packages": [
-      "docker", "python-neutronclient", "shade", "pywinrm", "kerberos", "boto3", "apache-libcloud", "passlib",
-      "zabbix-api", "junos-eznc", "jxmlease", "dnspython", "pysphere3", "python-consul", "requests-credssp",
-      "openshift", "pexpect", "ntc-templates", "proxmoxer"
-    ],
-    "exclude_packages": ["certifi", "cffi", "pycparser", "pyyaml", "six"]
-  },
   "ansible@8": {
     "extra_packages": [
       "apache-libcloud", "boto3", "dnspython", "docker",
@@ -460,8 +452,7 @@
     "extra_packages": ["requests"]
   },
   "jenkins-job-builder": {
-    "exclude_packages": ["certifi"],
-    "extra_packages": ["setuptools"]
+    "exclude_packages": ["certifi"]
   },
   "jinja2-cli": "jinja2-cli[yaml,toml,xml]",
   "jrnl": {
@@ -495,6 +486,9 @@
   },
   "linode-cli": {
     "exclude_packages": ["certifi"]
+  },
+  "litecli": {
+    "exclude_packages": ["setuptools"]
   },
   "literate-git": {
     "exclude_packages": ["pygit2"]
@@ -834,9 +828,9 @@
   },
   "streamlink": {
     "exclude_packages": ["certifi"]
-  },  
+  },
   "streamrip": {
-    "exclude_packages": ["certifi", "pillow"]    
+    "exclude_packages": ["certifi", "pillow"]
   },
   "subliminal": {
     "exclude_packages": ["certifi"]
@@ -954,6 +948,7 @@
     "exclude_packages": ["certifi"]
   },
   "zabbix-cli": {
+    "package_name": "zabbix_cli_uio",
     "exclude_packages": ["certifi"]
   },
   "zim": {

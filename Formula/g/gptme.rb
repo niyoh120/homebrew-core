@@ -3,19 +3,19 @@ class Gptme < Formula
 
   desc "AI assistant in your terminal"
   homepage "https://gptme.org/docs/"
-  url "https://files.pythonhosted.org/packages/9f/ab/92596eae211d14089be9df61cdbe7d16d32db9e5cd6b9c719ecb16b32e17/gptme-0.25.0.tar.gz"
-  sha256 "ada1eb0721205ecb5f886aa66242527bda63561534cfda4e09439310c70ea43a"
+  url "https://files.pythonhosted.org/packages/10/13/847b89867a12749883bebe2e355cb3167feeca8aa0e464543fbff1e7ffb5/gptme-0.26.0.tar.gz"
+  sha256 "d98032f06d8f2324c4b44f00aeb675dfc293423e88add79ff86ee965040a447e"
   license "MIT"
   head "https://github.com/ErikBjare/gptme.git", branch: "master"
 
   bottle do
     rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "165a2925c6d1183649ad4c21d7df05bb454db9a134d85ca34ce3a2d68708a38f"
-    sha256 cellar: :any,                 arm64_sonoma:  "82e5b81778629824d5c039da861a7c963a664af041fd1a121cfe17266fab2699"
-    sha256 cellar: :any,                 arm64_ventura: "3083c6502e3232b2b6d78fcd35a18912c66d9e30ff00c9d1a93428c350f70d1b"
-    sha256 cellar: :any,                 sonoma:        "c6c9071967c72182cc822cb9aa6d1ad6cdb99c9cc4bfdc2539a9608f5f921e34"
-    sha256 cellar: :any,                 ventura:       "f142a104f6c8f38af1e6123b78b0604394b73faa2ae814e67ceef64c952f4c43"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "abf97069180180d2840a081d18c09be4d5186f74832a907e59863695c42aaf92"
+    sha256 cellar: :any,                 arm64_sequoia: "a9f4526f5d615920626c65e2db56b91f90cfa3d30c2b05da23fee60dbe83e179"
+    sha256 cellar: :any,                 arm64_sonoma:  "2ef976f6e500dab63b7159ac27a565debebf512a13a60d6f00cfb6702811875f"
+    sha256 cellar: :any,                 arm64_ventura: "d4111e610d3d75b6afb64aa89f6c9516614046efa8df876480a6388e559410b1"
+    sha256 cellar: :any,                 sonoma:        "b6d3842c4a5e6d8ef8661d64fe254520b3aee4754a8c2e0fa1daf028412caf62"
+    sha256 cellar: :any,                 ventura:       "7e1eb6a938a6a7e765dab8bfe9dedb21d66cbc156c90e6c94c7527d692e04329"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1c7b788dacac36000adaf04362a378542aacbd7e7bfbe841f336f26c06b4e526"
   end
 
   depends_on "rust" => :build
@@ -37,8 +37,8 @@ class Gptme < Formula
   end
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/f6/40/318e58f669b1a9e00f5c4453910682e2d9dd594334539c7b7817dabb765f/anyio-4.7.0.tar.gz"
-    sha256 "2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48"
+    url "https://files.pythonhosted.org/packages/a3/73/199a98fc2dae33535d6b8e8e6ec01f8c1d76c9adb096c6b7d64823038cde/anyio-4.8.0.tar.gz"
+    sha256 "1d9fe889df5212298c0c0723fa20479d1b94883a2df44bd3897aa91083316f7a"
   end
 
   resource "asttokens" do
@@ -52,13 +52,13 @@ class Gptme < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/f2/4f/e1808dc01273379acc506d18f1504eb2d299bd4131743b9fc54d7be4df1e/charset_normalizer-3.4.0.tar.gz"
-    sha256 "223217c3d4f82c3ac5e29032b3f1c2eb0fb591b72161f86d93f5719079dae93e"
+    url "https://files.pythonhosted.org/packages/16/b0/572805e227f01586461c80e0fd25d65a2115599cc9dad142fee4b747c357/charset_normalizer-3.4.1.tar.gz"
+    sha256 "44251f18cd68a75b56585dd00dae26183e102cd5e0f9f1466e6df5da2ed64ea3"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/96/d3/f04c7bfcf5c1862a2a5b845c6b2b360488cf47af55dfa79c98f6a6bf98b5/click-8.1.7.tar.gz"
-    sha256 "ca9853ad459e787e2192211578cc907e7594e294c7ccc834310722b41b9ca6de"
+    url "https://files.pythonhosted.org/packages/b9/2e/0090cbf739cee7d23781ad4b89a9894a41538e4fcf4c31dcdd705b78eb8b/click-8.1.8.tar.gz"
+    sha256 "ed53c9d8990d83c2a27deae68e4ee337473f6330c040a31d4225c9574d16096a"
   end
 
   resource "decorator" do
@@ -142,8 +142,8 @@ class Gptme < Formula
   end
 
   resource "openai" do
-    url "https://files.pythonhosted.org/packages/27/3c/b1ecce430ed56fa3ac1b0676966d3250aab9c70a408232b71e419ea62148/openai-1.58.1.tar.gz"
-    sha256 "f5a035fd01e141fc743f4b0e02c41ca49be8fab0866d3b67f5f29b4f4d3c0973"
+    url "https://files.pythonhosted.org/packages/f9/d5/25cf04789c7929b476c4d9ef711f8979091db63d30bfc093828fe4bf5c72/openai-1.59.7.tar.gz"
+    sha256 "043603def78c00befb857df9f0a16ee76a3af5984ba40cb7ee5e2f40db4646bf"
   end
 
   resource "parso" do
@@ -182,8 +182,8 @@ class Gptme < Formula
   end
 
   resource "pydantic" do
-    url "https://files.pythonhosted.org/packages/70/7e/fb60e6fee04d0ef8f15e4e01ff187a196fa976eb0f0ab524af4599e5754c/pydantic-2.10.4.tar.gz"
-    sha256 "82f12e9723da6de4fe2ba888b5971157b3be7ad914267dea8f05f82b28254f06"
+    url "https://files.pythonhosted.org/packages/6a/c7/ca334c2ef6f2e046b1144fe4bb2a5da8a4c574e7f2ebf7e16b34a6a2fa92/pydantic-2.10.5.tar.gz"
+    sha256 "278b38dbbaec562011d659ee05f63346951b3a248a6f3642e1bc68894ea2b4ff"
   end
 
   resource "pydantic-core" do
@@ -192,8 +192,8 @@ class Gptme < Formula
   end
 
   resource "pygments" do
-    url "https://files.pythonhosted.org/packages/8e/62/8336eff65bcbc8e4cb5d05b55faf041285951b6e80f33e2bff2024788f31/pygments-2.18.0.tar.gz"
-    sha256 "786ff802f32e91311bff3889f6e9a86e81505fe99f2735bb6d60ae0c5004f199"
+    url "https://files.pythonhosted.org/packages/7c/2d/c3338d48ea6cc0feb8446d8e6937e1408088a72a39937982cc6111d17f84/pygments-2.19.1.tar.gz"
+    sha256 "61c16d2a8576dc0649d9f39e089b5f02bcd27fba10d8fb4dcc28173f7a45151f"
   end
 
   resource "python-dotenv" do
@@ -267,8 +267,8 @@ class Gptme < Formula
   end
 
   resource "urllib3" do
-    url "https://files.pythonhosted.org/packages/ed/63/22ba4ebfe7430b76388e7cd448d5478814d3032121827c12a2cc287e2260/urllib3-2.2.3.tar.gz"
-    sha256 "e7d814a81dad81e6caf2ec9fdedb284ecc9c73076b62654547cc64ccdcae26e9"
+    url "https://files.pythonhosted.org/packages/aa/63/e53da845320b757bf29ef6a9062f5c669fe997973f966045cb019c3f4b66/urllib3-2.3.0.tar.gz"
+    sha256 "f8c5449b3cf0861679ce7e0503c7b44b5ec981bec0d1d3795a07f1ba96f0204d"
   end
 
   resource "wcwidth" do
@@ -277,6 +277,9 @@ class Gptme < Formula
   end
 
   def install
+    # The source doesn't have a valid SOURCE_DATE_EPOCH, so here we set default.
+    ENV["SOURCE_DATE_EPOCH"] = "1451574000"
+
     virtualenv_install_with_resources
 
     generate_completions_from_executable(bin/"gptme", shells: [:fish, :zsh], shell_parameter_format: :click)

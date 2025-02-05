@@ -1,8 +1,8 @@
 class Mise < Formula
   desc "Polyglot runtime manager (asdf rust clone)"
   homepage "https://mise.jdx.dev/"
-  url "https://github.com/jdx/mise/archive/refs/tags/v2025.1.1.tar.gz"
-  sha256 "cf9277fa07ce77fec5df24f2c7bf892bb70387cf7a3333812123a849dda3462b"
+  url "https://github.com/jdx/mise/archive/refs/tags/v2025.2.1.tar.gz"
+  sha256 "9fe245786b34eca166f2001358f8ddac9632c38739fdc559f378d2536fff559e"
   license "MIT"
   head "https://github.com/jdx/mise.git", branch: "main"
 
@@ -12,30 +12,26 @@ class Mise < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "328a988a1046cab720fb674a42a8f93b7deb8faf995a2ad8b9208f10835c93ba"
-    sha256 cellar: :any,                 arm64_sonoma:  "05e9cb54853192a4e9d58a316487048907c0eed06099d50d84fdd9f4acbe7f43"
-    sha256 cellar: :any,                 arm64_ventura: "4f9df1a275f231693181dc49e69785e5e0d96e8a04421c9f4cbd0c90fe658b49"
-    sha256 cellar: :any,                 sonoma:        "8ec5b59b944145219c525f89be80e87b3d394ccd03cff373dcfac2dca6b96936"
-    sha256 cellar: :any,                 ventura:       "eb6b1c5121ad28a183e5524b0b8cbee0bfcdd9aa6e6e8386a4c3b947a17817a7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2faad7991499747e4de4501a08cb9120f166d50ab6135f0c0ebd3abd7046f2fd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "16a41b80bb6cfc46e648e9cad7c53dce6b1425c6ec02ad776cf6261206f2bce0"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b495122dede2f8b7055ade567c13c037ba78b7d8ecf8f1da288cae92e525e49e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "efbf57c7a97902f8d7000737e2eb062f3572356b982f483bdee2377ee1013e60"
+    sha256 cellar: :any_skip_relocation, sonoma:        "a4b5dd7b31acea58911cdd2fabe324665458359b0e89420140f4c794de811abb"
+    sha256 cellar: :any_skip_relocation, ventura:       "1b2d77ce08fb045283d5c19c87f73d9ccb0d931784c06c0a91734a4e8ec509d8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a177494ecc44b83803705f9af31f618be2345aec2d2e0482062782a177af89d2"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
 
-  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
-  depends_on "openssl@3"
   depends_on "usage"
 
   uses_from_macos "bzip2"
 
   on_linux do
-    depends_on "xz" # for liblzma
+    depends_on "openssl@3"
   end
 
   def install
-    ENV["LIBGIT2_NO_VENDOR"] = "1"
-
     # Ensure that the `openssl` crate picks up the intended library.
     ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
     ENV["OPENSSL_NO_VENDOR"] = "1"
@@ -58,26 +54,9 @@ class Mise < Formula
     EOS
   end
 
-  def check_binary_linkage(binary, library)
-    binary.dynamically_linked_libraries.any? do |dll|
-      next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
-
-      File.realpath(dll) == File.realpath(library)
-    end
-  end
-
   test do
     system bin/"mise", "settings", "set", "experimental", "true"
     system bin/"mise", "use", "go@1.23"
     assert_match "1.23", shell_output("#{bin}/mise exec -- go version")
-
-    [
-      Formula["libgit2@1.8"].opt_lib/shared_library("libgit2"),
-      Formula["openssl@3"].opt_lib/shared_library("libssl"),
-      Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
-    ].each do |library|
-      assert check_binary_linkage(bin/"mise", library),
-             "No linkage with #{library.basename}! Cargo is likely using a vendored version."
-    end
   end
 end

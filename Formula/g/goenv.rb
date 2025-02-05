@@ -1,8 +1,8 @@
 class Goenv < Formula
   desc "Go version management"
   homepage "https://github.com/go-nv/goenv"
-  url "https://github.com/go-nv/goenv/archive/refs/tags/2.2.17.tar.gz"
-  sha256 "a171628223971fc7758a4f68e0c779c05ea19df3aa43dc0b5d70f23e6037e634"
+  url "https://github.com/go-nv/goenv/archive/refs/tags/2.2.19.tar.gz"
+  sha256 "ae443164836a3ded8dfd772b081c55864bbd31016d3dd8303fea5cf0fce8010c"
   license "MIT"
   version_scheme 1
   head "https://github.com/go-nv/goenv.git", branch: "master"
@@ -13,12 +13,12 @@ class Goenv < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ea97b916c280691524e36c8e00f899af38644514cf0c1cd4f756755378a3c10d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ea97b916c280691524e36c8e00f899af38644514cf0c1cd4f756755378a3c10d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "ea97b916c280691524e36c8e00f899af38644514cf0c1cd4f756755378a3c10d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "71113ddfe6e19afe102383f4c545e8e7107730e7633ba22d8d104c0c21cbb41b"
-    sha256 cellar: :any_skip_relocation, ventura:       "71113ddfe6e19afe102383f4c545e8e7107730e7633ba22d8d104c0c21cbb41b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ea97b916c280691524e36c8e00f899af38644514cf0c1cd4f756755378a3c10d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6219800cc21d70c329760bc029032547df374f8a588a427cffd379282ae60e15"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6219800cc21d70c329760bc029032547df374f8a588a427cffd379282ae60e15"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "6219800cc21d70c329760bc029032547df374f8a588a427cffd379282ae60e15"
+    sha256 cellar: :any_skip_relocation, sonoma:        "87aea6c22a1c6fa21618f74d38e20a4b8d3f3ed66d6d4b591fee5a421effd445"
+    sha256 cellar: :any_skip_relocation, ventura:       "87aea6c22a1c6fa21618f74d38e20a4b8d3f3ed66d6d4b591fee5a421effd445"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6219800cc21d70c329760bc029032547df374f8a588a427cffd379282ae60e15"
   end
 
   def install

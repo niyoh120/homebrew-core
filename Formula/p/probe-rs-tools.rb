@@ -1,8 +1,8 @@
 class ProbeRsTools < Formula
   desc "Collection of on chip debugging tools to communicate with microchips"
   homepage "https://probe.rs"
-  url "https://github.com/probe-rs/probe-rs/archive/refs/tags/v0.25.0.tar.gz"
-  sha256 "693d76eb1ee697d420781e28cfbb4e527c6176eca327a4c92e26daf7e52c153f"
+  url "https://github.com/probe-rs/probe-rs/archive/refs/tags/v0.26.0.tar.gz"
+  sha256 "289f9d882ea43f90a044429b555e8f416af7075927831d0f444a087cc44846d3"
   license "Apache-2.0"
   head "https://github.com/probe-rs/probe-rs.git", branch: "master"
 
@@ -12,12 +12,12 @@ class ProbeRsTools < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "bd7cf5c0a3d4f6c648fc35359cd8fe44e078cf166bfec00273ad4bbe4af76fde"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8b8935645d2d27d33430a0278ec8623f98b459abae7a2c5e4b9cf71859aa1480"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "d48195dc2d4080c0b439bd356be8a037702597f835aed448d955e8090aaf2a67"
-    sha256 cellar: :any_skip_relocation, sonoma:        "8ff873dd619df88e20aea02d2782a4a3ee893e9eaa2a0a99911d333867ecae3d"
-    sha256 cellar: :any_skip_relocation, ventura:       "f84ef1e8b6af4e5e24efe093af77d11d05f000c6e872ab0fb3fb9b70030a806b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7b153b5f7f3a16476fdcdacd073d8bf4a5491e96992bed94cb0c4fc9acf35ca9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "421b8aaffb2d8b87beede4d4bec92fab5dadf8604ad832b664428151758b9d14"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "44db77729bf8969c09b0c8080ef503cc862499703f43ecc0f7a7621d5e9c885c"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "63a8b780260b1182d9770ded138de754dd7d748333f375d107c0250dfddb5ba6"
+    sha256 cellar: :any_skip_relocation, sonoma:        "bb2a01d21ecb72f717b6ed61933846966794ab8f9e0da49c3ffd0ade9058af58"
+    sha256 cellar: :any_skip_relocation, ventura:       "c278a17df7eff41c08121fbc5548ebcaf78d3530ff1c4358fd026a6972d7dd30"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "522c0ea72a7cd96f86678ff8d25fcec12068b3ad8651612b59d59f40f4b27b35"
   end
 
   depends_on "cmake" => :build

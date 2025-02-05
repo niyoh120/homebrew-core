@@ -1,18 +1,18 @@
 class Simdjson < Formula
   desc "SIMD-accelerated C++ JSON parser"
   homepage "https://simdjson.org"
-  url "https://github.com/simdjson/simdjson/archive/refs/tags/v3.11.4.tar.gz"
-  sha256 "1029aff6bcca7811fb7b6d5421c5c9024b8e74e84cd268680265723f42e23cf2"
+  url "https://github.com/simdjson/simdjson/archive/refs/tags/v3.12.0.tar.gz"
+  sha256 "1e5e82f0a34c331c1b0d0c21609791bfe6d6849edfc24983fc241626b433e1c3"
   license "Apache-2.0"
   head "https://github.com/simdjson/simdjson.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "bc319239397e71cf6aa2188a53985f2aa339f63300c35b19434ad5650643d3a4"
-    sha256 cellar: :any,                 arm64_sonoma:  "ce94892fed204ac7b14a8ec5f39a11b8f4b7b2833b93cb858c6c9b7ad1a73bfc"
-    sha256 cellar: :any,                 arm64_ventura: "d94d1744121cd05b80be2d1833523198faa7dc10d665dcad2e9b8e49d09568a0"
-    sha256 cellar: :any,                 sonoma:        "6ecaaec172bd63797e638bdfff11f2168817860e5a9335ada6a21229028f1fc6"
-    sha256 cellar: :any,                 ventura:       "349d3f9accc2bf5242444cde0856ef825bb60dcf9ff1ba306d6d9e030d4fffef"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5f44c622ea399dd01706e667825545df2da40b87d5696cf7f4dadb065525aa26"
+    sha256 cellar: :any,                 arm64_sequoia: "d10fbcc3b40ac7226ca862c0f22ffeca1a301c4fc0859c56fa3c5cfb24a2e63d"
+    sha256 cellar: :any,                 arm64_sonoma:  "55dd00ea90201ebb5b4a525ebbfd3904c8cb34a8db896fa5793a277bfaa3c2f5"
+    sha256 cellar: :any,                 arm64_ventura: "897cae070494a629df5c9e645cac605d0626b7ab6d0df75ccf11072d1b1f47ac"
+    sha256 cellar: :any,                 sonoma:        "243ff4c80089feaa5301a0b05ec7b800d50f3016c57748f72561da1eb8a12258"
+    sha256 cellar: :any,                 ventura:       "0b765b4748323b82bc37314e6ef16a8daf6ccdec31fffaf99f9e16a106c0a024"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ee9ed786bc7a5742e1b03be37cce1fd5067533e19bfd95121c4d1e86cbc2121b"
   end
 
   depends_on "cmake" => :build

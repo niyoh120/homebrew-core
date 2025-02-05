@@ -1,8 +1,8 @@
 class Lazygit < Formula
   desc "Simple terminal UI for git commands"
   homepage "https://github.com/jesseduffield/lazygit/"
-  url "https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.44.1.tar.gz"
-  sha256 "02b67d38e07ae89b0ddd3b4917bd0cfcdfb5e158ed771566d3eb81f97f78cc26"
+  url "https://github.com/jesseduffield/lazygit/archive/refs/tags/v0.45.2.tar.gz"
+  sha256 "dd3d6645ee429f0c554338c1fdb940733793ad915ae72653132664aa7c26bbcb"
   license "MIT"
   head "https://github.com/jesseduffield/lazygit.git", branch: "master"
 
@@ -12,13 +12,12 @@ class Lazygit < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8faac025e1c21936ca7bdb7d5a104317386a49686550c3fdfc8cff9c79e1983f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8faac025e1c21936ca7bdb7d5a104317386a49686550c3fdfc8cff9c79e1983f"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "8faac025e1c21936ca7bdb7d5a104317386a49686550c3fdfc8cff9c79e1983f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "0070aff6b1915fe84cea7d5211ed63ae28e7dabc55eba1f6282f1eaba01c4401"
-    sha256 cellar: :any_skip_relocation, ventura:       "0070aff6b1915fe84cea7d5211ed63ae28e7dabc55eba1f6282f1eaba01c4401"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2ea460585abf0884e87f46c3d746c7904d24508b72b2c7317ce653d93d9b0c56"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3e9810c588501799830b9750d4c13f4de42fe484f44edb533fe5a135d62ffc1e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3e9810c588501799830b9750d4c13f4de42fe484f44edb533fe5a135d62ffc1e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "3e9810c588501799830b9750d4c13f4de42fe484f44edb533fe5a135d62ffc1e"
+    sha256 cellar: :any_skip_relocation, sonoma:        "2b49a974046e6d3723c0e981c2a54bd8e155e550c5450fb60919a45a7261b5d2"
+    sha256 cellar: :any_skip_relocation, ventura:       "2b49a974046e6d3723c0e981c2a54bd8e155e550c5450fb60919a45a7261b5d2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c1422255282e16c79296181d1b683927e7f428034954160df47b440eca1ab709"
   end
 
   depends_on "go" => :build

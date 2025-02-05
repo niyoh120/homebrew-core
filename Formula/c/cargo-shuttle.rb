@@ -1,23 +1,23 @@
 class CargoShuttle < Formula
   desc "Build & ship backends without writing any infrastructure files"
   homepage "https://shuttle.dev"
-  url "https://github.com/shuttle-hq/shuttle/archive/refs/tags/v0.50.0.tar.gz"
-  sha256 "25dd018a61debf6cb84de0085646367185912f1db8441a3b6a177a8365d8de42"
+  url "https://github.com/shuttle-hq/shuttle/archive/refs/tags/v0.52.0.tar.gz"
+  sha256 "d377bb0b1c5a6ef01ca0b9eefc9af9549a24d90432a49c9486b431074dcf22f9"
   license "Apache-2.0"
   head "https://github.com/shuttle-hq/shuttle.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "dee6030d95b95eb1a065ee2549fe8dad1ec3fbd4e108bd220410d1a5fd306efe"
-    sha256 cellar: :any,                 arm64_sonoma:  "3cbcc79fd0183e4cc3a78256a11ad10502de73422e1eca6d2e32073a56626fec"
-    sha256 cellar: :any,                 arm64_ventura: "0ab8c2ade8bb5502ada4552874fd9c753d68208f06c04485bff4e73f193c3f78"
-    sha256 cellar: :any,                 sonoma:        "0e62e0736cee8d62d1eef65fc2666723badb4bce7cfaf78601240e59985555e7"
-    sha256 cellar: :any,                 ventura:       "0170d9041172d544237378180b4d039decb1a807ab9e683a7c512acd727b215b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b849a5edaf31e0204d0c1e7da671143d1f684443a41e3622b6dd49760430852c"
+    sha256 cellar: :any,                 arm64_sequoia: "40d6c1311bb10e90fb63e62707ca05cffc47f5f8d988bd7d898311f36060aaa8"
+    sha256 cellar: :any,                 arm64_sonoma:  "2d89732b61e8c13241bc736157fb10be4c3353c20872aeec4cf3b4644d093132"
+    sha256 cellar: :any,                 arm64_ventura: "dc0882b4b49050261981124800e69fb09084776994d7d46ac59ac952a0a38b4f"
+    sha256 cellar: :any,                 sonoma:        "a2f5fe4496558e65b44dd3a3180bac9bd35a70e5f43f7cb311611d55571b235d"
+    sha256 cellar: :any,                 ventura:       "2482a66dc4b433ed7fb5759ec5514c5c9977568484de5adfa94a3e9a6b74ffb7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7f18c5fd476c42a8395f9b0a565273338dc90fa4191d1416984abec0df598ef7"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
+  depends_on "libgit2"
 
   uses_from_macos "bzip2"
 

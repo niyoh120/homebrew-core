@@ -1,8 +1,8 @@
 class VulkanProfiles < Formula
   desc "Tools for Vulkan profiles"
   homepage "https://github.com/KhronosGroup/Vulkan-Profiles"
-  url "https://github.com/KhronosGroup/Vulkan-Profiles/archive/refs/tags/v1.4.304.tar.gz"
-  sha256 "36505936722415ac3a75ddf3034aff8473512ecdb7a12a01f9b714fbf5219723"
+  url "https://github.com/KhronosGroup/Vulkan-Profiles/archive/refs/tags/v1.4.307.tar.gz"
+  sha256 "64374248a4cefeb6426bea9efb75ef83066108d29fd0e1edd52dd9e32ae60f69"
   license "Apache-2.0"
   head "https://github.com/KhronosGroup/Vulkan-Profiles.git", branch: "main"
 
@@ -12,12 +12,12 @@ class VulkanProfiles < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "27634f0895dcbed96fdd76733720547e2266af4c60638f25d99d5f92cc44ad2f"
-    sha256 cellar: :any,                 arm64_sonoma:  "867353f74a010e3c234f87e9d4aa0b7dbae4fda12fc17918701e63cecc550245"
-    sha256 cellar: :any,                 arm64_ventura: "33008915207178fff41c4e920f68fa520dd95d9ff3b1eaa89a0e2ed78b86bcd3"
-    sha256 cellar: :any,                 sonoma:        "0f43a5ab040a29c03b862873af17547b881d72a147d7e0663f9044962362d2f3"
-    sha256 cellar: :any,                 ventura:       "9fc7ec165d179ea54b93870ed40a9fefd4bec7182fc70738270588622406be0d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ce06837d87c7013971af35b7dbd1de5df29f5b39e259f4ba6226fe394a63c921"
+    sha256 cellar: :any,                 arm64_sequoia: "31dc2473ff543d67fbb60469b5016163b374f858abc54ddb673be68c1213a7d1"
+    sha256 cellar: :any,                 arm64_sonoma:  "e38fcd39e7692eab4bf888979c8bff12fa23d59e71ae078b067640e2730ed2fd"
+    sha256 cellar: :any,                 arm64_ventura: "d416f702c5cec4719237f11e1c66f3f02b642d4f938939aec54355ce2e247b8a"
+    sha256 cellar: :any,                 sonoma:        "60226bba7794563f04b3c5a126373d34b5c8c438059eeb399e0a064d13ca7fc1"
+    sha256 cellar: :any,                 ventura:       "a97c0f96a49e67d98d7da4daf29b66834befe247699456f1ab17c5fea3fc93f1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5e82aec57437714e6d96b61525f58e0373a817936654124dca621db82f29f3ff"
   end
 
   depends_on "cmake" => :build

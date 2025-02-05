@@ -3,18 +3,18 @@ class Parsedmarc < Formula
 
   desc "DMARC report analyzer and visualizer"
   homepage "https://domainaware.github.io/parsedmarc/"
-  url "https://files.pythonhosted.org/packages/bd/e9/35703d66a2e1074f873daaecfc5cee75c627e93be772b2e421933d66bd36/parsedmarc-8.16.1.tar.gz"
-  sha256 "14cf0f79470f3e37331ae0382d9eab5382175f447370cac1fee1ac15efe53a57"
+  url "https://files.pythonhosted.org/packages/23/a4/452a8bb8da632120ec3e6e98029dbfe171987e0f914bb35ef3567f2cbded/parsedmarc-8.18.0.tar.gz"
+  sha256 "e466607bb80b76d805c654c68e05013dd81b5e0b7f10a3c3ceba5ad89b820224"
   license "Apache-2.0"
   head "https://github.com/domainaware/parsedmarc.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "93445421fd23af28d3ad7f4c6051920f8baedc44e16e66e481650a80e7573272"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0b7a2e8a4d639fd0e167de4511a86556edefe8d097ee479fed2976620a840a9e"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "2f8b78b48a6746ea2393c75176640683fe00dad4cee322f0057a311e3d0ee775"
-    sha256 cellar: :any_skip_relocation, sonoma:        "0acf2bd0e3374f8928f58846f521b156891c04e4812724731e42776e87fdfd11"
-    sha256 cellar: :any_skip_relocation, ventura:       "b2d213bb4450fb7c7e307f48b16931b57b642eed6784d62e2be917b9b1bdc209"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e5e08eed2ddf86e7cb76f6e6562a07df0cb710428454a63825f737c73e67db8a"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cdacb3372c51146432bd7994cf90579cbc06746abc7b293abf06a01030b30f63"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e89ea9ebd2fe39181cb583f9efae52ddb578ca42442d3259f811b17a5340f024"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a9aa3f10194ed8bad7fec4bfec64b9dee291454d89a2eaa8fdd52e8b0572d07b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5bc6d53ad8c10466b48680a369ceb5bcc4e6692bf8e11636e1e5de27c1e66840"
+    sha256 cellar: :any_skip_relocation, ventura:       "c25bddf935488003c76fbda6b39f94048b4ec27061fcb602ad4bfbfc91d53307"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a2b0e9c3f51f1f97b5295e15e21170c95ec9a33e68bbd90325ed505067e6bafb"
   end
 
   depends_on "certifi"
@@ -40,8 +40,8 @@ class Parsedmarc < Formula
   end
 
   resource "attrs" do
-    url "https://files.pythonhosted.org/packages/48/c8/6260f8ccc11f0917360fc0da435c5c9c7504e3db174d5a12a1494887b045/attrs-24.3.0.tar.gz"
-    sha256 "8f5c07333d543103541ba7be0e2ce16eeee8130cb0b3f9238ab904ce1e85baff"
+    url "https://files.pythonhosted.org/packages/49/7c/fdf464bcc51d23881d110abd74b512a42b3d5d376a55a831b44c603ae17f/attrs-25.1.0.tar.gz"
+    sha256 "1c97078a80c814273a76b2a298a932eb681c87415c11dee0a6921de7f1b02c3e"
   end
 
   resource "azure-core" do
@@ -60,18 +60,18 @@ class Parsedmarc < Formula
   end
 
   resource "boto3" do
-    url "https://files.pythonhosted.org/packages/80/08/cf2a60bcb6d49764379d78e87f29310458257eb413bb7aa85ebe3d8cd0cc/boto3-1.35.87.tar.gz"
-    sha256 "341c58602889078a4a25dc4331b832b5b600a33acd73471d2532c6f01b16fbb4"
+    url "https://files.pythonhosted.org/packages/04/2b/7365aab02b6768a9694ff43e0e5f1f83f205fc7fe253a410cda990425048/boto3-1.36.12.tar.gz"
+    sha256 "287d84f49bba3255a17b374578127d42b6251e72f55914a62e0ad9ca78c0954b"
   end
 
   resource "botocore" do
-    url "https://files.pythonhosted.org/packages/98/8d/2e49e7a99944cbeef4c1182f59af282fcb164feef35dfa420500c4e0ccb3/botocore-1.35.87.tar.gz"
-    sha256 "3062d073ce4170a994099270f469864169dc1a1b8b3d4a21c14ce0ae995e0f89"
+    url "https://files.pythonhosted.org/packages/fe/54/cc9a665f92534aa105a49dd867f18d4eff4687835994a70a32a103fa11ae/botocore-1.36.12.tar.gz"
+    sha256 "86ed88beb4f244c96529435c868d3940073c2774116f0023fb7691f6e7053bd9"
   end
 
   resource "cachetools" do
-    url "https://files.pythonhosted.org/packages/c3/38/a0f315319737ecf45b4319a8cd1f3a908e29d9277b46942263292115eee7/cachetools-5.5.0.tar.gz"
-    sha256 "2cc24fb4cbe39633fb7badd9db9ca6295d766d9c2995f245725a46715d050f2a"
+    url "https://files.pythonhosted.org/packages/d9/74/57df1ab0ce6bc5f6fa868e08de20df8ac58f9c44330c7671ad922d2bbeae/cachetools-5.5.1.tar.gz"
+    sha256 "70f238fbba50383ef62e55c6aff6d9673175fe59f7c6782c7a0b9e38f4a9df95"
   end
 
   resource "charset-normalizer" do
@@ -115,23 +115,23 @@ class Parsedmarc < Formula
   end
 
   resource "geoip2" do
-    url "https://files.pythonhosted.org/packages/fe/e0/f1e6c9a7beee45ad11ce648f23c71228ac17c5c171dcd25167a5329d73d5/geoip2-4.8.1.tar.gz"
-    sha256 "9aea2eab4b3e6252f47456528ae9c35b104c45277639c13fce1be87c92f84257"
+    url "https://files.pythonhosted.org/packages/17/d7/21cfa1072b8ec5937c6af0cf8b624b4be9b44a7ca82f4335900df5482076/geoip2-5.0.1.tar.gz"
+    sha256 "90af8b6d3687f3bef251f2708ad017b30d627d1144c0040eabc4c9017a807d86"
   end
 
   resource "google-api-core" do
-    url "https://files.pythonhosted.org/packages/81/56/d70d66ed1b5ab5f6c27bf80ec889585ad8f865ff32acbafd3b2ef0bfb5d0/google_api_core-2.24.0.tar.gz"
-    sha256 "e255640547a597a4da010876d333208ddac417d60add22b6851a0c66a831fcaf"
+    url "https://files.pythonhosted.org/packages/b8/b7/481c83223d7b4f02c7651713fceca648fa3336e1571b9804713f66bca2d8/google_api_core-2.24.1.tar.gz"
+    sha256 "f8b36f5456ab0dd99a1b693a40a31d1e7757beea380ad1b38faaf8941eae9d8a"
   end
 
   resource "google-api-python-client" do
-    url "https://files.pythonhosted.org/packages/01/e6/91022ee180ea77ab56147602690bb9b03459b19bf478b64e89be5f5757d5/google_api_python_client-2.156.0.tar.gz"
-    sha256 "b809c111ded61716a9c1c7936e6899053f13bae3defcdfda904bd2ca68065b9c"
+    url "https://files.pythonhosted.org/packages/af/42/cbf81242376c99d6e5248e62aa4376bfde5bbefbe0a69b1b06fd4b73ab25/google_api_python_client-2.160.0.tar.gz"
+    sha256 "a8ccafaecfa42d15d5b5c3134ced8de08380019717fc9fb1ed510ca58eca3b7e"
   end
 
   resource "google-auth" do
-    url "https://files.pythonhosted.org/packages/46/af/b25763b9d35dfc2c6f9c3ec34d8d3f1ba760af3a7b7e8d5c5f0579522c45/google_auth-2.37.0.tar.gz"
-    sha256 "0054623abf1f9c83492c63d3f47e77f0a544caa3d40b2d98e099a611c2dd5d00"
+    url "https://files.pythonhosted.org/packages/c6/eb/d504ba1daf190af6b204a9d4714d457462b486043744901a6eeea711f913/google_auth-2.38.0.tar.gz"
+    sha256 "8285113607d3b80a3f1543b75962447ba8a09fe85783432a784fdeef6ac094c4"
   end
 
   resource "google-auth-httplib2" do
@@ -200,8 +200,8 @@ class Parsedmarc < Formula
   end
 
   resource "maxminddb" do
-    url "https://files.pythonhosted.org/packages/9f/9e/7806bf76d917182a4f4a08325f66eee6f32fe1123398789ba2547b5d3f3e/maxminddb-2.6.2.tar.gz"
-    sha256 "7d842d32e2620abc894b7d79a5a1007a69df2c6cf279a06b94c9c3913f66f264"
+    url "https://files.pythonhosted.org/packages/57/ae/422ec0f3b6a40f23de9477c42fce90126a3994dd51d06b50582973c0088e/maxminddb-2.6.3.tar.gz"
+    sha256 "d2c3806baa7aa047aa1bac7419e7e353db435f88f09d51106a84dbacf645d254"
   end
 
   resource "msal" do
@@ -245,13 +245,13 @@ class Parsedmarc < Formula
   end
 
   resource "proto-plus" do
-    url "https://files.pythonhosted.org/packages/7e/05/74417b2061e1bf1b82776037cad97094228fa1c1b6e82d08a78d3fb6ddb6/proto_plus-1.25.0.tar.gz"
-    sha256 "fbb17f57f7bd05a68b7707e745e26528b0b3c34e378db91eef93912c54982d91"
+    url "https://files.pythonhosted.org/packages/26/79/a5c6cbb42268cfd3ddc652dc526889044a8798c688a03ff58e5e92b743c8/proto_plus-1.26.0.tar.gz"
+    sha256 "6e93d5f5ca267b54300880fff156b6a3386b3fa3f43b1da62e680fc0c586ef22"
   end
 
   resource "protobuf" do
-    url "https://files.pythonhosted.org/packages/a5/73/4e6295c1420a9d20c9c351db3a36109b4c9aa601916cb7c6871e3196a1ca/protobuf-5.29.2.tar.gz"
-    sha256 "b2cc8e8bb7c9326996f0e160137b0861f1a82162502658df2951209d0cb0309e"
+    url "https://files.pythonhosted.org/packages/f7/d1/e0a911544ca9993e0f17ce6d3cc0932752356c1b0a834397f28e63479344/protobuf-5.29.3.tar.gz"
+    sha256 "5da0f41edaf117bde316404bad1a486cb4ededf8e4a54891296f648e8e076620"
   end
 
   resource "publicsuffix2" do
@@ -260,8 +260,8 @@ class Parsedmarc < Formula
   end
 
   resource "publicsuffixlist" do
-    url "https://files.pythonhosted.org/packages/fa/fc/c381f2f56d2283a83bda6dc73df593e1e424f780d468aa3aa8094c9d03d3/publicsuffixlist-1.0.2.20241225.tar.gz"
-    sha256 "cea5d299e3a3bd20627c39a61cdc11eee6227a0af2f4af1d7cee88b823fd92b8"
+    url "https://files.pythonhosted.org/packages/91/4b/849449e6e593c0cadd10ab13bb5d62bbb931d2463bd6393ad53010a66525/publicsuffixlist-1.0.2.20250202.tar.gz"
+    sha256 "cd83a563247fb49bd8f44a2e2c7c958da2bc10bc1105ff1ca3086c7ddea98a52"
   end
 
   resource "pyasn1" do
@@ -285,8 +285,8 @@ class Parsedmarc < Formula
   end
 
   resource "pyparsing" do
-    url "https://files.pythonhosted.org/packages/8c/d5/e5aeee5387091148a19e1145f63606619cb5f20b83fccb63efae6474e7b2/pyparsing-3.2.0.tar.gz"
-    sha256 "cbf74e27246d595d9a74b186b810f6fbb86726dbf3b9532efb343f6d7294fe9c"
+    url "https://files.pythonhosted.org/packages/8b/1a/3544f4f299a47911c2ab3710f534e52fea62a633c96806995da5d25be4b2/pyparsing-3.2.1.tar.gz"
+    sha256 "61980854fd66de3a90028d679a954d5f2623e83144b5afe5ee86f43d762e5f0a"
   end
 
   resource "python-dateutil" do
@@ -295,8 +295,8 @@ class Parsedmarc < Formula
   end
 
   resource "pytz" do
-    url "https://files.pythonhosted.org/packages/3a/31/3c70bf7603cc2dca0f19bdc53b4537a797747a58875b552c8c413d963a3f/pytz-2024.2.tar.gz"
-    sha256 "2aa355083c50a0f93fa581709deac0c9ad65cca8a9e9beac660adcbd493c798a"
+    url "https://files.pythonhosted.org/packages/5f/57/df1c9157c8d5a05117e455d66fd7cf6dbc46974f832b1058ed4856785d8a/pytz-2025.1.tar.gz"
+    sha256 "c2db42be2a2518b28e65f9207c4d05e6ff547d1efa4086469ef855e4ab70178e"
   end
 
   resource "regex" do
@@ -320,8 +320,8 @@ class Parsedmarc < Formula
   end
 
   resource "s3transfer" do
-    url "https://files.pythonhosted.org/packages/c0/0a/1cdbabf9edd0ea7747efdf6c9ab4e7061b085aa7f9bfc36bb1601563b069/s3transfer-0.10.4.tar.gz"
-    sha256 "29edc09801743c21eb5ecbc617a152df41d3c287f67b615f73e5f750583666a7"
+    url "https://files.pythonhosted.org/packages/62/45/2323b5928f86fd29f9afdcef4659f68fa73eaa5356912b774227f5cf46b5/s3transfer-0.11.2.tar.gz"
+    sha256 "3b39185cb72f5acc77db1a58b6e25b977f28d20496b6e58d6813d75f464d632f"
   end
 
   resource "simplejson" do

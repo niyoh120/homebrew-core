@@ -1,17 +1,17 @@
 class AwsAmplify < Formula
   desc "Build full-stack web and mobile apps in hours. Easy to start, easy to scale"
   homepage "https://aws.amazon.com/amplify/"
-  url "https://registry.npmjs.org/@aws-amplify/cli-internal/-/cli-internal-12.14.0.tgz"
-  sha256 "7e9a40e4327d78dce4780ad4cffa1fbe571ee35b6e7dfcb16874452fb1feaad6"
+  url "https://registry.npmjs.org/@aws-amplify/cli-internal/-/cli-internal-12.14.2.tgz"
+  sha256 "0d53b7c5bda9dc14de04bec0d70468c2228e318b90cc55e9cd067238e356f09e"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "6f247b7c3a967bea5201d82a917be2c935af8ca3720634690f7073141de77914"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6f247b7c3a967bea5201d82a917be2c935af8ca3720634690f7073141de77914"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "6f247b7c3a967bea5201d82a917be2c935af8ca3720634690f7073141de77914"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d3ea406301b4bc6aeb7a23745f9a046cf0c059ec8f2acd9272f0f72e2acd33ee"
-    sha256 cellar: :any_skip_relocation, ventura:       "d3ea406301b4bc6aeb7a23745f9a046cf0c059ec8f2acd9272f0f72e2acd33ee"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7ac61d6b75d47bc42f98e4e838d6882afaa3000a735ebf6731992753756e86f1"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e529a8e1751ab06009e0c6aedaaed06739d02c33b830d22368e5e7d7168c22fc"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "e529a8e1751ab06009e0c6aedaaed06739d02c33b830d22368e5e7d7168c22fc"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "e529a8e1751ab06009e0c6aedaaed06739d02c33b830d22368e5e7d7168c22fc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "899ed7b871d7f092aa4a35d29fa948a670530dcf7ebe5851c9bccafd606e5def"
+    sha256 cellar: :any_skip_relocation, ventura:       "899ed7b871d7f092aa4a35d29fa948a670530dcf7ebe5851c9bccafd606e5def"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fbca0bb629a18db874648b4977e21a5f0c7966846dcffbcc35059f3d344fdafc"
   end
 
   depends_on "node"

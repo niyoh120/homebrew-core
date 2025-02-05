@@ -2,18 +2,18 @@ class Swiftlint < Formula
   desc "Tool to enforce Swift style and conventions"
   homepage "https://github.com/realm/SwiftLint"
   url "https://github.com/realm/SwiftLint.git",
-      tag:      "0.57.1",
-      revision: "25f2776977e663305bee71309ea1e34d435065f1"
+      tag:      "0.58.2",
+      revision: "eba420f77846e93beb98d516b225abeb2fef4ca2"
   license "MIT"
   head "https://github.com/realm/SwiftLint.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "24fe83d074121c61eddc8e0ce97459f6cec7393a79162323f2c03125cd18044f"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f95fada89bf1eac5448fb2dcbdf6f06930bbd7e64e9995fafa8127fd45a2ef39"
-    sha256 cellar: :any,                 arm64_ventura: "74e0c40b96bb5f22796b36cba94defa8574b94498844996c9f59126c16d43fab"
-    sha256 cellar: :any_skip_relocation, sonoma:        "952ac6d4f9a1b8db04522c00db594b6db8d7c705ca34f36c96b12aa3eba01e12"
-    sha256 cellar: :any,                 ventura:       "7be636e0965b85f1fac348e4842e1039e4987fb2f1c09d0d25039f9310013e6d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a969d3560456460863fcd619204207adbee2a24c1d4b9c5e3ed8055007b9aa55"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "88296c32a4fe4de3cdadd1a1bc3df7c583d404b254684e1e67b2b98990bf2685"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "418915019f2a7f98101c2ab953d6250973f2e7dbfe369d0c752d49ecb7405dfb"
+    sha256 cellar: :any,                 arm64_ventura: "29c93dcadbb55523ed14bdee545cf2cb2e51de4f6e3e40c91685f5cab7cb6c14"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c02c9ac0b73657587745e1950a7ac2b734bb851f6027857d967424296b9c2895"
+    sha256 cellar: :any,                 ventura:       "b1d6870415a7ef30d994bf4856512ca82df3152ee716964f2fb09614845d6f12"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5bdcb3773b806fa9f400bd2a82e5639525ee5faadeb51adda9fd7d59892ea5b7"
   end
 
   depends_on macos: :ventura
@@ -38,7 +38,7 @@ class Swiftlint < Formula
     (testpath/"Test.swift").write "import Foundation"
     assert_match "Test.swift:1:1: warning: Trailing Newline Violation: " \
                  "Files should have a single trailing newline (trailing_newline)",
-      shell_output("SWIFTLINT_SWIFT_VERSION=3 SWIFTLINT_DISABLE_SOURCEKIT=1 #{bin}/swiftlint lint --no-cache").chomp
+      shell_output("SWIFTLINT_SWIFT_VERSION=5 SWIFTLINT_DISABLE_SOURCEKIT=1 #{bin}/swiftlint lint --no-cache").chomp
     assert_match version.to_s,
       shell_output("#{bin}/swiftlint version").chomp
   end

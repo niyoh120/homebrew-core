@@ -3,18 +3,17 @@ class Schemathesis < Formula
 
   desc "Testing tool for web applications with specs"
   homepage "https://schemathesis.readthedocs.io/"
-  url "https://files.pythonhosted.org/packages/79/d1/5da24872be9cec2843ac35933613f5b141c3d9f81a402d94631fa37c0d0e/schemathesis-3.39.5.tar.gz"
-  sha256 "60b94a9988029998ebdee3ec781b215f1529bce70a5326a1be1be8362bdec41c"
+  url "https://files.pythonhosted.org/packages/b8/c6/ac467733e8ac947f4044fa372b2f685707e29f30f7855d0b525b280e7acb/schemathesis-3.39.9.tar.gz"
+  sha256 "82c2cf05860d688a10b5656f35c93863b24819eff539c18df7a3f4d33d06ec5c"
   license "MIT"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "af1f8579824521e031ce202c7ab69e85409f047b4ef31bc21bae3d543dd9ed5f"
-    sha256 cellar: :any,                 arm64_sonoma:  "f307cf2f7e9dda8184166db410536bef2d170bbb994ba18f6471e72bc1b6e724"
-    sha256 cellar: :any,                 arm64_ventura: "80b888401b1dc1ed40a9d66695cec588b2f9ab7aa34936db051667410e3fdb5f"
-    sha256 cellar: :any,                 sonoma:        "4a48213cf5cca60e20a73eb4bfaf3ab9cb30d562636a7617e03b383d167d3b90"
-    sha256 cellar: :any,                 ventura:       "5476f06079125ce154f6975daad6544ba1a29b0134a60c1a93ae7da65e20b7e9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4a4ccd46b1510501e11d56e536a72c2f8c012d19432267bb114c9b2b235340a2"
+    sha256 cellar: :any,                 arm64_sequoia: "c6548b5a01270e000942090b94d6bdd49680c885c5ef7040c64ea9b3fb81e711"
+    sha256 cellar: :any,                 arm64_sonoma:  "fa90eda5acb87284c2e9409b7584f6c6cc4d6ff1c7f3329bd1a4b3ce9c112abb"
+    sha256 cellar: :any,                 arm64_ventura: "dc4a481804553522ddb3d26d91ce52f1256755ebc8e58167ad11aa55fb8c21b3"
+    sha256 cellar: :any,                 sonoma:        "9d6d6fe38fb43e655baa4a596a433ef1990f6df87569240dd029f9448f22dd19"
+    sha256 cellar: :any,                 ventura:       "dc3b2a40e74fcb915b86f843da9922ab31b5f706895c0f1d2ca39205f625fd25"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a804666a141edadbd7ba115ca7902ab4d8db1a7c0c13f8d2a9e09133a7d8b76f"
   end
 
   depends_on "rust" => :build # for rpds-py
@@ -25,8 +24,8 @@ class Schemathesis < Formula
   conflicts_with "st", because: "both install `st` binaries"
 
   resource "anyio" do
-    url "https://files.pythonhosted.org/packages/f6/40/318e58f669b1a9e00f5c4453910682e2d9dd594334539c7b7817dabb765f/anyio-4.7.0.tar.gz"
-    sha256 "2f834749c602966b7d456a7567cafcb309f96482b5081d14ac93ccd457f9dd48"
+    url "https://files.pythonhosted.org/packages/a3/73/199a98fc2dae33535d6b8e8e6ec01f8c1d76c9adb096c6b7d64823038cde/anyio-4.8.0.tar.gz"
+    sha256 "1d9fe889df5212298c0c0723fa20479d1b94883a2df44bd3897aa91083316f7a"
   end
 
   resource "arrow" do
@@ -35,8 +34,8 @@ class Schemathesis < Formula
   end
 
   resource "attrs" do
-    url "https://files.pythonhosted.org/packages/48/c8/6260f8ccc11f0917360fc0da435c5c9c7504e3db174d5a12a1494887b045/attrs-24.3.0.tar.gz"
-    sha256 "8f5c07333d543103541ba7be0e2ce16eeee8130cb0b3f9238ab904ce1e85baff"
+    url "https://files.pythonhosted.org/packages/49/7c/fdf464bcc51d23881d110abd74b512a42b3d5d376a55a831b44c603ae17f/attrs-25.1.0.tar.gz"
+    sha256 "1c97078a80c814273a76b2a298a932eb681c87415c11dee0a6921de7f1b02c3e"
   end
 
   resource "backoff" do
@@ -65,8 +64,8 @@ class Schemathesis < Formula
   end
 
   resource "graphql-core" do
-    url "https://files.pythonhosted.org/packages/2e/b5/ebc6fe3852e2d2fdaf682dddfc366934f3d2c9ef9b6d1b0e6ca348d936ba/graphql_core-3.2.5.tar.gz"
-    sha256 "e671b90ed653c808715645e3998b7ab67d382d55467b7e2978549111bbabf8d5"
+    url "https://files.pythonhosted.org/packages/c4/16/7574029da84834349b60ed71614d66ca3afe46e9bf9c7b9562102acb7d4f/graphql_core-3.2.6.tar.gz"
+    sha256 "c08eec22f9e40f0bd61d805907e3b3b1b9a320bc606e23dc145eebca07c8fbab"
   end
 
   resource "h11" do
@@ -90,8 +89,8 @@ class Schemathesis < Formula
   end
 
   resource "hypothesis" do
-    url "https://files.pythonhosted.org/packages/a1/10/92bed8bbec8d87e34ca665177efea0c061ce45abedbcc10a25d1f3f9067c/hypothesis-6.123.1.tar.gz"
-    sha256 "eb2bf646537ad818270feff6428c34f57813a4ef78781861ec1693b0840ab1d8"
+    url "https://files.pythonhosted.org/packages/05/0f/b27f51d9112c7235fc45a8640dab8971e80e0b8e43f5995e55ca3a8416c4/hypothesis-6.124.9.tar.gz"
+    sha256 "c6d210fc1b46a7cfc3139b2230ca1cc8f73dce4e8ee440d004ceb17142acf6f5"
   end
 
   resource "hypothesis-graphql" do
@@ -190,8 +189,8 @@ class Schemathesis < Formula
   end
 
   resource "referencing" do
-    url "https://files.pythonhosted.org/packages/99/5b/73ca1f8e72fff6fa52119dbd185f73a907b1989428917b24cff660129b6d/referencing-0.35.1.tar.gz"
-    sha256 "25b42124a6c8b632a425174f24087783efb348a6f1e0008e63cd4466fedf703c"
+    url "https://files.pythonhosted.org/packages/2f/db/98b5c277be99dd18bfd91dd04e1b759cad18d1a338188c936e92f921c7e2/referencing-0.36.2.tar.gz"
+    sha256 "df2e89862cd09deabbdba16944cc3f10feb6b3e6f18e902f7cc25609a34775aa"
   end
 
   resource "requests" do
@@ -230,8 +229,8 @@ class Schemathesis < Formula
   end
 
   resource "starlette" do
-    url "https://files.pythonhosted.org/packages/af/36/3a623a561dc8585a90973c8c0ed87511beebbe658c7e8f883fdab7ba55e1/starlette-0.43.0.tar.gz"
-    sha256 "d4887cfd776f8f925c1b140829da9f4c9b8d0973aa66a7cb2bcc48e9b3a69660"
+    url "https://files.pythonhosted.org/packages/ff/fb/2984a686808b89a6781526129a4b51266f678b2d2b97ab2d325e56116df8/starlette-0.45.3.tar.gz"
+    sha256 "2cbcba2a75806f8a41c722141486f37c28e30a0921c5f6fe4346cb0dcee1302f"
   end
 
   resource "starlette-testclient" do
@@ -245,8 +244,8 @@ class Schemathesis < Formula
   end
 
   resource "tomli-w" do
-    url "https://files.pythonhosted.org/packages/d4/19/b65f1a088ee23e37cdea415b357843eca8b1422a7b11a9eee6e35d4ec273/tomli_w-1.1.0.tar.gz"
-    sha256 "49e847a3a304d516a169a601184932ef0f6b61623fe680f836a2aa7128ed0d33"
+    url "https://files.pythonhosted.org/packages/19/75/241269d1da26b624c0d5e110e8149093c759b7a286138f4efd61a60e75fe/tomli_w-1.2.0.tar.gz"
+    sha256 "2dd14fac5a47c27be9cd4c976af5a12d87fb1f0b4512f81d69cce3b35ae25021"
   end
 
   resource "types-python-dateutil" do

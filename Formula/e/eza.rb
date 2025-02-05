@@ -1,24 +1,23 @@
 class Eza < Formula
   desc "Modern, maintained replacement for ls"
   homepage "https://github.com/eza-community/eza"
-  url "https://github.com/eza-community/eza/archive/refs/tags/v0.20.15.tar.gz"
-  sha256 "cbb50e61b35b06ccf487ee6cc88d3b624931093546194dd5a2bbd509ed1786d6"
+  url "https://github.com/eza-community/eza/archive/refs/tags/v0.20.19.tar.gz"
+  sha256 "b749e7b04c173f33cf15f0022d103bb59e79e7d2a88ec00721f2be0316cc9ef9"
   license "EUPL-1.2"
-  revision 1
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "505abe73711da7a64e6a16552872ca759ed535ed3e3a15be323a7a0ee54fbbc6"
-    sha256 cellar: :any,                 arm64_sonoma:  "dcfce238d5aef157cdd6bcc332257edab22799ba3a90b8e7c9167459a8812096"
-    sha256 cellar: :any,                 arm64_ventura: "c68517761a5dfe5892449c67c805fcbfee0db89b552c663debf101939306f223"
-    sha256 cellar: :any,                 sonoma:        "0a1fcfacc59f8cba09914be880ec833a7e32f1578f3b6d6b0d01771c4a35acef"
-    sha256 cellar: :any,                 ventura:       "fd814309742a4cea445b45e379d1cffacb78f243f9f5214a06fe071879c4b2b5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "402b89fb0989927b9c7019c34ebab4120ac25f4d272af92cf02a32fa681fad97"
+    sha256 cellar: :any,                 arm64_sequoia: "7587134f181fc5295e1e7ccf2965057fcdafe428d1808ac8ef9dea6e7c081565"
+    sha256 cellar: :any,                 arm64_sonoma:  "cb078bb72c0360b0094ece29ded3c58b703f5d8aa2fbde2c5beccac557cecb2d"
+    sha256 cellar: :any,                 arm64_ventura: "33d421a586bd836624ee224ec13e3e69fcdb7c24e7d9f27f3504d6072018c011"
+    sha256 cellar: :any,                 sonoma:        "b9a4efa0d673f30488c5e2a4e948fb4d070d1d872611183f16238fc849c0a2ce"
+    sha256 cellar: :any,                 ventura:       "782eb06142d19429965d66ac7721f498a3bdcf88fa0150cc2fad35e9a5af50a3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b1a04b030b4634accd271ce05b0be75dfc005cf86fb78a074c0b954d9295130a"
   end
 
   depends_on "pandoc" => :build
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
+  depends_on "libgit2"
 
   def install
     ENV["LIBGIT2_NO_VENDOR"] = "1"
@@ -60,7 +59,7 @@ class Eza < Formula
     linkage_with_libgit2 = (bin/"eza").dynamically_linked_libraries.any? do |dll|
       next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
 
-      File.realpath(dll) == (Formula["libgit2@1.8"].opt_lib/shared_library("libgit2")).realpath.to_s
+      File.realpath(dll) == (Formula["libgit2"].opt_lib/shared_library("libgit2")).realpath.to_s
     end
 
     assert linkage_with_libgit2, "No linkage with libgit2! Cargo is likely using a vendored version."
