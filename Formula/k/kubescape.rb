@@ -1,8 +1,8 @@
 class Kubescape < Formula
   desc "Kubernetes testing according to Hardening Guidance by NSA and CISA"
   homepage "https://kubescape.io"
-  url "https://github.com/kubescape/kubescape/archive/refs/tags/v3.0.22.tar.gz"
-  sha256 "49d21cd87b6c9c88c06639e93619accdc9b99c4a8e872860d8045f7a919b5210"
+  url "https://github.com/kubescape/kubescape/archive/refs/tags/v3.0.25.tar.gz"
+  sha256 "d8daf831e2926ca89e1d58880e7be43e01fcbc36eefd38a3bfe79d6c8d3e7fd8"
   license "Apache-2.0"
   head "https://github.com/kubescape/kubescape.git", branch: "master"
 
@@ -12,12 +12,12 @@ class Kubescape < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d114fbfa7087ec1c08389e43b41b346aac39c3ebf431fcd6650cb71f2fb4f9f2"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "33f772194ac5011e49e13a73440436a2a1ffae26b8e0af313a5204b5397b6c77"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "348e3cd6430aeff98a4455fb0148e192bda9e87bd038cb3fae9adfe44b31fe0c"
-    sha256 cellar: :any_skip_relocation, sonoma:        "70c61be1a868a3fef39e4a43a42c656d1a58eaa01615e9b1a2e35e765c028e8c"
-    sha256 cellar: :any_skip_relocation, ventura:       "41de07dc4559ec5089d77292675879874bd145a34e17165ed533c6549459600a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e51d4f85890322e03eb7b113ce5c61cedd1bb14a53a234b467e9112e95b58d5a"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "fcf13bd317f6c21989edcfadde199002ba30b9b0295006505522c87883927159"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0eec3be2b04ae3cd046793eba2b7de34003902dcdd202e8ae1d03a159fe2c06e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b206367e470887b7d77564b4d040c77e518f13943de0e780cb3057a80ba62f49"
+    sha256 cellar: :any_skip_relocation, sonoma:        "0cd22703c10a03bd89c5fd880334bbd1703f66afee53a8d686712862556908f9"
+    sha256 cellar: :any_skip_relocation, ventura:       "7f1a5353bcd6b4abcc41fdd76647864d6aa8c77c6388723569837471a1e3817c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9bf511cf4c3b87b689edeaff521d02e0d542a37e945d8e8eeaec3817de416ad3"
   end
 
   depends_on "go" => :build

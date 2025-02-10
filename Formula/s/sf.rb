@@ -1,8 +1,8 @@
 class Sf < Formula
   desc "Command-line toolkit for Salesforce development"
   homepage "https://developer.salesforce.com/tools/salesforcecli"
-  url "https://registry.npmjs.org/@salesforce/cli/-/cli-2.70.7.tgz"
-  sha256 "c859bb30e8eadcdc90076442a9b3db541db02c774592038ffbf01be56b7ecead"
+  url "https://registry.npmjs.org/@salesforce/cli/-/cli-2.75.5.tgz"
+  sha256 "4682ed4b471998deb6fd7ecbbaea960115468cf8bfa98d842eaad370e2dc5c3a"
   license "BSD-3-Clause"
 
   livecheck do
@@ -13,12 +13,12 @@ class Sf < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5939a2af15cfcb863a6d2f21e4e4cd2fcc7c729cba322abcb34883132d9e0b5f"
-    sha256 cellar: :any_skip_relocation, ventura:       "5939a2af15cfcb863a6d2f21e4e4cd2fcc7c729cba322abcb34883132d9e0b5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "fb585a91310fb2a29516b6a0dd0aada38ee0c31683b6428c901c52919687c03a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "fb585a91310fb2a29516b6a0dd0aada38ee0c31683b6428c901c52919687c03a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "fb585a91310fb2a29516b6a0dd0aada38ee0c31683b6428c901c52919687c03a"
+    sha256 cellar: :any_skip_relocation, sonoma:        "fce37c233156229d5ee699979b2ed629bb35048226abe503613394d01b43c311"
+    sha256 cellar: :any_skip_relocation, ventura:       "fce37c233156229d5ee699979b2ed629bb35048226abe503613394d01b43c311"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "fb585a91310fb2a29516b6a0dd0aada38ee0c31683b6428c901c52919687c03a"
   end
 
   depends_on "node"

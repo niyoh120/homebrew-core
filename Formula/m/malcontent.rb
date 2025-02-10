@@ -1,22 +1,22 @@
 class Malcontent < Formula
   desc "Supply Chain Attack Detection, via context differential analysis and YARA"
   homepage "https://github.com/chainguard-dev/malcontent"
-  url "https://github.com/chainguard-dev/malcontent/archive/refs/tags/v1.7.1.tar.gz"
-  sha256 "e2f6b43715cefc00f1a07c84bb899fddc5defa3f69a1a68f5a4051680b0ca4b5"
+  url "https://github.com/chainguard-dev/malcontent/archive/refs/tags/v1.8.7.tar.gz"
+  sha256 "4f4b26567d9c0d0e02cec72b735207f8aceb286d927d990373fbce4a4b56d5db"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "1c6d0fcb4136e5a5ac5c5720dd59200bce74cdf884311258f55f4b030a858579"
-    sha256 cellar: :any,                 arm64_sonoma:  "98dd6af3a8c080c6b9090c60fefd796c23b95f109838f802176a56e1d5f6c46e"
-    sha256 cellar: :any,                 arm64_ventura: "4dc1ced5cf5d2cab87201af25d7b21f65ebe52dafaa9efe848fa1085ceeeeda6"
-    sha256 cellar: :any,                 sonoma:        "e759a7ae280ac4d54aceef7681be3304ac0313c08ec4ebe73a70e3092c40d62d"
-    sha256 cellar: :any,                 ventura:       "45a2c31ec4cff70a861cf10b841a541ae863946d7ccc6e2fb53eff29a2429844"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "971033b9af2ae9fcec299abe47b01cf9793a3e8f486999bee9161bd24e0dc8e6"
+    sha256 cellar: :any,                 arm64_sequoia: "af552f183f008b463e2974917e656ab417faf3f249d0e51c6e5da51f5dfb4bea"
+    sha256 cellar: :any,                 arm64_sonoma:  "6e27333867aed8a8fbc621d1d72ed9e661d4d51918751ca7582bf49daa0528b9"
+    sha256 cellar: :any,                 arm64_ventura: "c02d48047cfbb781876368787fa0c255b3c869106531d2472841142bb40e2857"
+    sha256 cellar: :any,                 sonoma:        "042714c73f5f3988a7129589867bf2c2ae79e94b65442f5b8378da2d5d0326d1"
+    sha256 cellar: :any,                 ventura:       "d866ff753466b644470aeb1e8e3608762e0b7b93df3c0fd512f1e3cbe597e837"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "67373601a5ec95cd282eda2630343bd24968d4f92b4dec5c32464a6bbc19d563"
   end
 
   depends_on "go" => :build
   depends_on "pkgconf" => :build
-  depends_on "yara"
+  depends_on "yara-x"
 
   def install
     system "go", "build", *std_go_args(ldflags: "-s -w -X main.BuildVersion=#{version}", output: bin/"mal"), "./cmd/mal"

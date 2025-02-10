@@ -1,22 +1,17 @@
 class Squiid < Formula
   desc "Do advanced algebraic and RPN calculations"
   homepage "https://imaginaryinfinity.net/projects/squiid/"
-  url "https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/1.2.0/squiid-1.2.0.tar.gz"
-  sha256 "01f6142c986ce744ea7df86da17d43b593d56c8b843e6f502b0327ef43e3fcb8"
+  url "https://gitlab.com/ImaginaryInfinity/squiid-calculator/squiid/-/archive/1.2.2/squiid-1.2.2.tar.gz"
+  sha256 "75b2ac5526878aa49aa97c63f7041796768fcfc3a7c63e3692fa65648ea5ebfc"
   license "GPL-3.0-or-later"
 
-  livecheck do
-    url :stable
-    regex(/^v?(\d+(?:\.\d+)+)$/i)
-  end
-
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c97ee3c9aefa92849eb2035247140e9251bcd80fced19aa4d931c7d9d9ebf142"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aba82ad3dbae6891479c525d56d8649523b9c00fffd24ea5214572648f36997a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "1420e93bb7dc4623e3380a45f21447d3401cf7e816abed31ac53e2ebc311c26b"
-    sha256 cellar: :any_skip_relocation, sonoma:        "df68d316d895db0785b6f73f3d96c28ef4288e3acaf04d1dffc26a3df7f03fc5"
-    sha256 cellar: :any_skip_relocation, ventura:       "f7a31e140257d45be2bd4b328caaa949d58f2c686a971c36e2d3ce15f16952c5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "846b23e093867823f602a56c6c1367481dba85c0c851366e20370b2d1a762e6e"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4980cdb46fcc13a66bfebd3bb71b629872ac9b7017a04f643034cfa4140918ae"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "af984d37f42aff9d81eec6bc4fa03261c4eff91dc0414696796c79ce8230e74d"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "8258de8e85577ce62b5fd983e76a17be11b648f96ef1e4c4c395fe95c5cee972"
+    sha256 cellar: :any_skip_relocation, sonoma:        "8e11ef4bde72599945c4ed5b969e78d7cec2fde57342b5cd9c9c52e8fba9d419"
+    sha256 cellar: :any_skip_relocation, ventura:       "cb1dda1359f08c4c26f20a9a6a8413610a8c4e95ca4f7b0754636358ff41813c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f1b8f6f2d75f0b92ca66d8e1e2382dfce20e43155f4237a87fa244edce89bdc2"
   end
 
   depends_on "rust" => :build

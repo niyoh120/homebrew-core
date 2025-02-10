@@ -1,18 +1,18 @@
 class Yozefu < Formula
   desc "TUI for exploring data in a Kafka cluster"
   homepage "https://github.com/MAIF/yozefu"
-  url "https://github.com/MAIF/yozefu/archive/refs/tags/v0.0.2.tar.gz"
-  sha256 "057109f56bdebb09b4f602c74f1c31dbed275d0d63f247b994090d64a98f4539"
+  url "https://github.com/MAIF/yozefu/archive/refs/tags/v0.0.6.tar.gz"
+  sha256 "9621c609db486930d766f1498bfd524adbc69a8da44780c510fda0870305c83e"
   license "Apache-2.0"
   head "https://github.com/MAIF/yozefu.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "a2d0b9e15b95f8b15a4613475ab56396229dcd6b7011e73b93a94fe00ed238b2"
-    sha256 cellar: :any,                 arm64_sonoma:  "26ced7f140f7a2db6577a04d287325010920c207e64d6848ad3dac67c07a8307"
-    sha256 cellar: :any,                 arm64_ventura: "4509429f15b40d818a027b8f8d5dd484178353abf46cad2a5abfb4b624d81374"
-    sha256 cellar: :any,                 sonoma:        "f80d5874e60f3db277c10893fde54dc93ea0df9af6e2c4d9f30356d5e7c0ad75"
-    sha256 cellar: :any,                 ventura:       "32a7601f29c5a3b8ae2b06691e4904c7499db6dbbc2e84a0aec78fe98ec2e491"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a471fc50a5de224f6e43c9ab89f7854933e702ffbdc0344cd5982c055294cff2"
+    sha256 cellar: :any,                 arm64_sequoia: "bd70440d483d1daffbba6836e2f12b78da2458f38a0e84aa5f97d9d8ab5e0647"
+    sha256 cellar: :any,                 arm64_sonoma:  "d5c51db393d7c7009334a8b4b3e601350cc83f5d2b20f323490e2fc1ac96a894"
+    sha256 cellar: :any,                 arm64_ventura: "394a8889d2e3843db04e1b79434569075412386e990115e5734ee60162d270e7"
+    sha256 cellar: :any,                 sonoma:        "73eeac3aadb80f2016030ba835aec3862b0f1e0aaf5b72215bf20391a406c229"
+    sha256 cellar: :any,                 ventura:       "789a7b1929d32a0ea5c874726332e3173a59646a82444934319821895d964e6a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4c63e0c800c9ff53ac6aa96621869fceb8a492af4b88f714e347e0856e54648f"
   end
 
   depends_on "cmake" => :build
@@ -28,15 +28,9 @@ class Yozefu < Formula
     system "cargo", "install", *std_cargo_args(path: "crates/bin")
   end
 
-  def check_binary_linkage(binary, library)
-    binary.dynamically_linked_libraries.any? do |dll|
-      next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
-
-      File.realpath(dll) == File.realpath(library)
-    end
-  end
-
   test do
+    require "utils/linkage"
+
     assert_match version.to_s, shell_output("#{bin}/yozf --version")
 
     output = shell_output("#{bin}/yozf config get a 2>&1", 1)
@@ -46,7 +40,7 @@ class Yozefu < Formula
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
     ].each do |library|
-      assert check_binary_linkage(bin/"yozf", library),
+      assert Utils.binary_linked_to_library?(bin/"yozf", library),
              "No linkage with #{library.basename}! Cargo is likely using a vendored version."
     end
   end

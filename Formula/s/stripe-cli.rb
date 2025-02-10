@@ -1,26 +1,25 @@
 class StripeCli < Formula
   desc "Command-line tool for Stripe"
   homepage "https://stripe.com/docs/stripe-cli"
-  url "https://github.com/stripe/stripe-cli/archive/refs/tags/v1.23.3.tar.gz"
-  sha256 "cd6bad3ccdae6d2b79ca61a9255cef83381683a7cfcdc2de08ad8e821cb71128"
+  url "https://github.com/stripe/stripe-cli/archive/refs/tags/v1.24.0.tar.gz"
+  sha256 "5d1d2957b378ba354b3477923a753250ec4f27339e358bdf7e8a2b1e09bd785e"
   license "Apache-2.0"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "db45f35031c0434384c49a441eea5eb2c875449765143c1ef7a2b00f2d0ca889"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ef7eb2ab99f20143e7cefcfa35496b32e539dfef3e208c016a5dd672dfb9ae3a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "3282fdfcb7c3793921945629297fb8ed8f36524a4f02459d6f16bf198619a42e"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c48b5804cefe6fc738fec1f238649d6d997e6808f4efafdfeb89b1d118053994"
-    sha256 cellar: :any_skip_relocation, ventura:       "a5dce5c6c0f706c79402ac84c6ec8d5f227b0f455ef683ae070c6b50d53253ed"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dedb25f4ffee54e0af70e98624e1996d04e0f6aab7c7f463734fdccdb15756fd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3f6db139e6996197a1bbe8f02cc9ebdf1b717bdf0ad52fc8ff7c934d7a5f8cac"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aa49a048a4c43c5898df1dc4b4a89239206bdbdae6ecce4f0c24274cf7877da5"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "055578c6d4c42017e68f32b705cce4ea2d15a3dbf1e0448fcdbbbfe8535bf665"
+    sha256 cellar: :any_skip_relocation, sonoma:        "44e48c459f1b121f80d2cd728698d9bead31ddc0919ca8c7bfc67e7ef4e185c0"
+    sha256 cellar: :any_skip_relocation, ventura:       "c9917120c3c4a71a84761ccbe451547395a02b48d6bf7e7ec6169efe55240ee2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "038833dd46bf2e025d41d35cb86169e535d8c67e9091afb03d6dfa47c62d5746"
   end
 
   depends_on "go" => :build
 
   # fish completion support patch, upstream pr ref, https://github.com/stripe/stripe-cli/pull/1282
   patch do
-    url "https://github.com/stripe/stripe-cli/commit/ef36be45f56821a33ac175bb4f483f08cca3f458.patch?full_index=1"
-    sha256 "e64d6ab6ed1b93749b8d65a429b0132063fb86520960b7d0c87fa6f7f9221252"
+    url "https://github.com/stripe/stripe-cli/commit/de62a98881671ce83973e1b696d3a7ea820b8d0e.patch?full_index=1"
+    sha256 "2b30ee04680e16b5648495e2fe93db3362931cf7151b1daa1f7e95023b690db8"
   end
 
   def install

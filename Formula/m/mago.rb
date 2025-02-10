@@ -1,17 +1,17 @@
 class Mago < Formula
   desc "Toolchain for PHP to help developers write better code"
   homepage "https://github.com/carthage-software/mago"
-  url "https://github.com/carthage-software/mago/archive/refs/tags/0.0.18.tar.gz"
-  sha256 "98f1dbcd9d280e8d2a59a9805309c5856c475f82f55f22f44cdaae1830f4274d"
+  url "https://github.com/carthage-software/mago/archive/refs/tags/0.9.1.tar.gz"
+  sha256 "51825c431521531c5e190bbe337a032bc08229d52e591f7997cf1fffd8c18105"
   license any_of: ["Apache-2.0", "MIT"]
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e9fb281a9e69d669dbfd6ea50cc25f6c3368e59d570fb8933c9b7b93c547887e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d6809e390185816764b15c14ce5f866a801edc5d845454f5a40b88bd523a064c"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "465443107caa45bb6400e0e491ef1bc3cc79a27511e2b88a8a06488381e3d354"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5fef25b166d88397583f91bcd308dcc87a119c18af6c7a29829007ae926302e4"
-    sha256 cellar: :any_skip_relocation, ventura:       "9120647f1fe8fbfab16bb9cd2ab108a9bf0b0da9bc4952b7ee07d683cc401de3"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2739abdda55809f42ed18d8034a81435d2fd9d0acfff76294b1c3af0ec85d9b9"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d6c698cecf50baaf498e2d3e823d4063425ffe2986d6cfa8aa6e2997a71141f7"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "51914dfdcfd0ec7b5d3693ed443cfa649d57546485b83a904249d6bea504ab4e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "c824e1062a8696d313069e4eb222f30d6e9b351f408f6ccbf09700aceb4714b1"
+    sha256 cellar: :any_skip_relocation, sonoma:        "77cebff294ba311a2b3502a2dc95ba06ca618cbe8c46bb3cbd5644a38c87a31f"
+    sha256 cellar: :any_skip_relocation, ventura:       "f30397f1bb31342b36c2a8298065eb7cb724c2123f6bc954e392bb1b53468225"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9d62978178b9cdbe02f811eb02c71ce99ec370274a4be93b44e2d8f9b6cb48c8"
   end
 
   depends_on "pkgconf" => :build
@@ -34,6 +34,6 @@ class Mago < Formula
 
     (testpath/"unformatted.php").write("<?php echo 'Unformatted';?>")
     system bin/"mago", "fmt"
-    assert_match "<?php\necho 'Unformatted';\n\n", (testpath/"unformatted.php").read
+    assert_match "<?php echo 'Unformatted';\n", (testpath/"unformatted.php").read
   end
 end

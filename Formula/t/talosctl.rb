@@ -1,18 +1,18 @@
 class Talosctl < Formula
   desc "CLI for out-of-band management of Kubernetes nodes created by Talos"
   homepage "https://www.talos.dev/"
-  url "https://github.com/siderolabs/talos/archive/refs/tags/v1.9.1.tar.gz"
-  sha256 "5b24763a3c627d690eb054a61afecdd8978c54d0a51a21cee7525eb20add35a2"
+  url "https://github.com/siderolabs/talos/archive/refs/tags/v1.9.3.tar.gz"
+  sha256 "1a36e881517780a363d806dcc3005c5285b3f5772d78d10e5d1b17a68876b5f6"
   license "MPL-2.0"
   head "https://github.com/siderolabs/talos.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a230689f6b79d2176c3cfe7e45b74c8a973cb08f6954648bdd0b6be71cb81643"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "909424f7114faf7ca3e572d4581557665465e5a0bddbd15f74daa64b31e15e02"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "fe2047c7384ebf9fb9fc64cb13fe04250223873d00ae736eadaec7162e44ee8a"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ad045a4ed150eb058b0911d8822590a657ca9b0a0f1a55c8a866b1d968d74aee"
-    sha256 cellar: :any_skip_relocation, ventura:       "b9c94f155fa807b0453159d95bf19477954cc2eab5510d6b8f3a81b80dd582f0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "91f876f22123884d3b43835b62145b4af79dc528c1df07565b8d5982cb469081"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8385bceb44e6850282a3aaa0ced3dbc74fb369e4ab446b4d76e2a581d0ebec3e"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8de440391442db9c7595c3abfb75d5fe71e13a155a8c83069af739a208942f8f"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "1c1371328ff05ec5e092bcd978992251d82569f526ba4b2b0167dc2fa7bf03a5"
+    sha256 cellar: :any_skip_relocation, sonoma:        "468d22957734b7d28f778453d820649016523de73eedd91e52b9229d12ec1c84"
+    sha256 cellar: :any_skip_relocation, ventura:       "27d3d197212b2e9bfd01d248b9d037a03fbe24e64c7f167ce3a0ded62c1f1e3b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8cc21a2f583c2bc6106b629017b116fdb02a2a1e97813ff3a25062f3e08739fc"
   end
 
   depends_on "go" => :build

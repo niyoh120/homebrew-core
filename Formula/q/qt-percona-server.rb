@@ -1,8 +1,8 @@
 class QtPerconaServer < Formula
   desc "Qt SQL Database Driver"
   homepage "https://www.qt.io/"
-  url "https://download.qt.io/official_releases/qt/6.7/6.7.3/submodules/qtbase-everywhere-src-6.7.3.tar.xz"
-  sha256 "8ccbb9ab055205ac76632c9eeddd1ed6fc66936fc56afc2ed0fd5d9e23da3097"
+  url "https://download.qt.io/official_releases/qt/6.8/6.8.2/submodules/qtbase-everywhere-src-6.8.2.tar.xz"
+  sha256 "012043ce6d411e6e8a91fdc4e05e6bedcfa10fcb1347d3c33908f7fdd10dfe05"
   license any_of: ["GPL-2.0-only", "GPL-3.0-only", "LGPL-3.0-only"]
 
   livecheck do
@@ -10,11 +10,11 @@ class QtPerconaServer < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sonoma:  "60bf3e61d61cf447ab0d3f411d95e03c0adf40e46aed63a3a4f7de827083b88a"
-    sha256 cellar: :any,                 arm64_ventura: "ce07eba34a46e36bc779143c694b4814e2089fcc922252c88dba897899046e88"
-    sha256 cellar: :any,                 sonoma:        "db44a66e8a43cdecf0aad8d6c6dd85310754584ca0876f6911ebc9035f24dd86"
-    sha256 cellar: :any,                 ventura:       "a72f065f79433dfb2c27044f2249f629894ec4c2140e81930682cf0a210d0a4a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9be1770432fa9425df2bdb36ffc2545ab753ca990337799489c2f473640c32ab"
+    sha256 cellar: :any,                 arm64_sonoma:  "d8fb1117b3b937483206e337eb82d83cc78522820cd199b02cd8f9219a746534"
+    sha256 cellar: :any,                 arm64_ventura: "650b56014aa1a2e7853b4b5ec80c678af2b2d78f63b0d68c4007faf8445f178c"
+    sha256 cellar: :any,                 sonoma:        "ef94788d7b222ae280035470abfa37e1136ece6a5518d2842ae0606309aef17c"
+    sha256 cellar: :any,                 ventura:       "eb771debc4d52925a8e3b554f024ab9fe649ba5c20f03ba0ceeb33c31debf76f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "bbeb2bc9c2e820f12b3e8650be9c45924a69ab56c1992df5de5df194392f5bb4"
   end
 
   depends_on "cmake" => [:build, :test]
@@ -29,15 +29,14 @@ class QtPerconaServer < Formula
   def install
     args = %W[
       -DCMAKE_STAGING_PREFIX=#{prefix}
-
       -DFEATURE_sql_ibase=OFF
       -DFEATURE_sql_mysql=ON
       -DFEATURE_sql_oci=OFF
       -DFEATURE_sql_odbc=OFF
       -DFEATURE_sql_psql=OFF
       -DFEATURE_sql_sqlite=OFF
-
       -DMySQL_LIBRARY=#{Formula["percona-server"].opt_lib/shared_library("libperconaserverclient")}
+      -DQT_GENERATE_SBOM=OFF
     ]
     # Workaround for missing libraries failure in CI dependent tests when `percona-server`
     # is unlinked due to conflict handling but not re-linked before linkage test

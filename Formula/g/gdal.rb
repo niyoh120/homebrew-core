@@ -1,10 +1,10 @@
 class Gdal < Formula
   desc "Geospatial Data Abstraction Library"
   homepage "https://www.gdal.org/"
-  url "https://github.com/OSGeo/gdal/releases/download/v3.10.0/gdal-3.10.0.tar.gz"
-  sha256 "946ef444489bedbc1b04bd4c115d67ae8d3f3e4a5798d5a2f1cb2a11014105b2"
+  url "https://github.com/OSGeo/gdal/releases/download/v3.10.1/gdal-3.10.1.tar.gz"
+  sha256 "b1c739256d074be42d67c6c3d33eee94c90a490ebb02fcb7fc21c569a6fc78bd"
   license "MIT"
-  revision 4
+  revision 2
 
   livecheck do
     url "https://download.osgeo.org/gdal/CURRENT/"
@@ -12,12 +12,12 @@ class Gdal < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "5a01dc4ff9b023a518e602b33654cc93ae35a69074a38bdf10e4d0610704e5f8"
-    sha256 arm64_sonoma:  "fb5f1695de023c659770757b05be199debaa69d2069e1bcc14f43f6e3b31a79f"
-    sha256 arm64_ventura: "b84dc321da6d8906cf931fab01a92c0e56b91a8cb95b34a8d3e46b8fb6cb6246"
-    sha256 sonoma:        "69764875b7c63ab2144ad502e604b2bb5e50d921ddbdb6a21529bfc12f5e1093"
-    sha256 ventura:       "691ac9858cf7a41f1b9d498ded84d3a40655d96745a648820fb5fddd90975861"
-    sha256 x86_64_linux:  "2ca8295f36b1e2fcd3c7c39b855b2d8c9aa898bb05f4b6094484fced9d0fdff7"
+    sha256 arm64_sequoia: "94921c7f36a7763c05e71eecf4c20a81cfc45bf4bfcb93241d949bca60989b45"
+    sha256 arm64_sonoma:  "1e5a5c2c0d613b2329ae3367002a5f9f1243d2fa7f3533068486f7cb1e3a7845"
+    sha256 arm64_ventura: "498d7cfeb3831d085269c0c136084d1d97d9bfbb0e04cc68c23549c42695c3ba"
+    sha256 sonoma:        "65acd9c14b940f08cf057716f111be5c4f710b30ded382f19cc661df18917ab0"
+    sha256 ventura:       "fdad06a01155baf56759527adfb8dbefad937208c1372657e96e81e0cd806ec9"
+    sha256 x86_64_linux:  "a65968e019b1f6327d70d96cb4cd5c28506ab6db1cbb9d8747438d8786eeedd3"
   end
 
   head do
@@ -90,6 +90,12 @@ class Gdal < Formula
 
   def python3
     "python3.13"
+  end
+
+  # poppler 25.02.0 build patch, upstream pr ref, https://github.com/OSGeo/gdal/pull/11805
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/ea59760694bf0187189f7008aac7cff70260db3c/gdal/gdal-3.10.1-poppler-25.02.0.patch"
+    sha256 "67b2d107c913d155dd8ba7ff4c534bbd6a85a48a003e01e7d59a69a066fab570"
   end
 
   def install

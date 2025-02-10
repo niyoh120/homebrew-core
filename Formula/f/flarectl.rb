@@ -1,8 +1,8 @@
 class Flarectl < Formula
   desc "CLI application for interacting with a Cloudflare account"
   homepage "https://github.com/cloudflare/cloudflare-go/tree/master/cmd/flarectl"
-  url "https://github.com/cloudflare/cloudflare-go/archive/refs/tags/v0.113.0.tar.gz"
-  sha256 "5b431eda87a45aa03034c62af3f8c22dd6d7f53d2f4b3fe752fc8689b49af686"
+  url "https://github.com/cloudflare/cloudflare-go/archive/refs/tags/v0.115.0.tar.gz"
+  sha256 "b82c3ed62a37aee5359b31822a4152c06b019ce43ba623f2ef7d7664bb27cffb"
   license "BSD-3-Clause"
   head "https://github.com/cloudflare/cloudflare-go.git", branch: "master"
 
@@ -13,12 +13,12 @@ class Flarectl < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c5a24d65664d0871ad0fbabd2f8f33403eb869d3f2d32b2df85e0073582a2e75"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "c5a24d65664d0871ad0fbabd2f8f33403eb869d3f2d32b2df85e0073582a2e75"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "c5a24d65664d0871ad0fbabd2f8f33403eb869d3f2d32b2df85e0073582a2e75"
-    sha256 cellar: :any_skip_relocation, sonoma:        "2e1d06521e82a2d284f0a5b4c0529337322392d4979fa078f9e910fe66374304"
-    sha256 cellar: :any_skip_relocation, ventura:       "2e1d06521e82a2d284f0a5b4c0529337322392d4979fa078f9e910fe66374304"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "99c4fd2b3e1da99c47bcb33199adf1230b8743f8b695db4e6118f90569f45ab2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5b20b75ce0237d9c51d368a7298def38a683987df7cbbd09a0cbfb4a0e37622f"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5b20b75ce0237d9c51d368a7298def38a683987df7cbbd09a0cbfb4a0e37622f"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "5b20b75ce0237d9c51d368a7298def38a683987df7cbbd09a0cbfb4a0e37622f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5ea3326abdc2073f6941b6b37ee334ad9856ec56c3c8b7fb41442337e0b83007"
+    sha256 cellar: :any_skip_relocation, ventura:       "5ea3326abdc2073f6941b6b37ee334ad9856ec56c3c8b7fb41442337e0b83007"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9eb198890281bff5996437ae186a2c9ccbaf857fd6386eb6ca7170c6a4f73bf7"
   end
 
   depends_on "go" => :build

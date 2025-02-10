@@ -1,23 +1,23 @@
 class Kiota < Formula
   desc "OpenAPI based HTTP Client code generator"
   homepage "https://aka.ms/kiota/docs"
-  url "https://github.com/microsoft/kiota/archive/refs/tags/v1.21.0.tar.gz"
-  sha256 "caaf0de41089c8727356c91ef559a5ff718ec6cdbc06791375977723db1af00c"
+  url "https://github.com/microsoft/kiota/archive/refs/tags/v1.23.0.tar.gz"
+  sha256 "1ca7eba6265dd3af133707a794be6898e69e61522b9f506166d18191525607ae"
   license "MIT"
   head "https://github.com/microsoft/kiota.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "22101c33731440d9aa8a2a9388a86f978db5c00461a9856ac80febc56c99972a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "acba71a3c5a4d7b25eb7c68b1270472b78e1239608f1eddd84e93688ca0502da"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "1f5e7cd2828ec8fcedde6435ca9d7fee4f3f839963176992a2afe113063ef2de"
-    sha256 cellar: :any_skip_relocation, ventura:       "eaa68f7b57f5c6b3d649f9b47e883c94a7ba6d19fe726d75c15c5f36943c2bad"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "2aa3c56687889b1f7a0091bdaf1471d31aea97302d11428a10778a71eebffa2c"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7656b15c1495c75bd2f390dff71fec84aef282af7cf0654c33fdebddb6a5ca1b"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "5ccc5b3e538670e701bfe89342a5a2d7e2f37335eaa9c9784c29cfa17c883820"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "a0d7d790a7e523a00115572b2364679e03029d09e3d0a7b86245a3290c53222b"
+    sha256 cellar: :any_skip_relocation, ventura:       "4894bc4c9ce0f514cc7006a4fdc4c397a2800bfae93df2d6af00bd65465c6612"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ff8aa41e33fe8cfb582ddf1f3d929eac27ae0a4f4122884a7141bd492f32807b"
   end
 
-  depends_on "dotnet@8"
+  depends_on "dotnet"
 
   def install
-    dotnet = Formula["dotnet@8"]
+    dotnet = Formula["dotnet"]
 
     args = %W[
       --configuration Release

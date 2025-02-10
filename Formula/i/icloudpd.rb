@@ -5,18 +5,18 @@ class Icloudpd < Formula
   homepage "https://github.com/icloud-photos-downloader/icloud_photos_downloader"
   # We use a git checkout as scripts/patch_version runs git commands to update SHA
   url "https://github.com/icloud-photos-downloader/icloud_photos_downloader.git",
-      tag:      "v1.25.1",
-      revision: "fc02ed2321a94973666a9b4378a2ae6b74e111c2"
+      tag:      "v1.26.1",
+      revision: "10af090d86661f427c7b1575cfbf63e84dadf4ce"
   license "MIT"
   head "https://github.com/icloud-photos-downloader/icloud_photos_downloader.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "5d4f0f32faa27ac14274b09e2927688e1ed03b906518d7b4655fa8dc4c018993"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "631a502d98e8bd64678010e525b5615f49aec2018f0fb34409685de9c9bfd1f3"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "0abe45605dba6ae728b8081c1966700d3310902622ee523830afeaf1f7b82253"
-    sha256 cellar: :any_skip_relocation, sonoma:        "c60cc4bfc73911065ed94b254f638343b5eda3b3bd5d03d7161cf580f988289e"
-    sha256 cellar: :any_skip_relocation, ventura:       "4493da23c79f36e7f1404eecc8b29549f60fe6e304b8b0294dde33858eb75faf"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0d306a22f17d9117eb4668412b9c52791a6fff2552bde33887687ad4c9ce5c5f"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d131557f5c6edd2d1fffb9ecbbd8436f16017a07df05b171d42d8d0f68f72907"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "92c46d0c5134da96a89b3520370570c13aa7904a5a50508035db333ea6b88683"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d07bfd45249251691841cf58dca28453f57a7c9296cdb453a46d2794f195e69b"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9284168294e014de3b616228ea1c3d5257a06d3131f7dc34582309d09e557290"
+    sha256 cellar: :any_skip_relocation, ventura:       "77343262d546af5fc5dd6ed78d6a3d18b06157a723b13243ed62af339cc0f00b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0b77f2e503b9eb3459acef3b32dbac073f7c709beb6ef08e9134397148548eea"
   end
 
   depends_on "certifi"
@@ -92,8 +92,8 @@ class Icloudpd < Formula
   end
 
   resource "more-itertools" do
-    url "https://files.pythonhosted.org/packages/51/78/65922308c4248e0eb08ebcbe67c95d48615cc6f27854b6f2e57143e9178f/more-itertools-10.5.0.tar.gz"
-    sha256 "5482bfef7849c25dc3c6dd53a6173ae4795da2a41a80faea6700d9f5846c5da6"
+    url "https://files.pythonhosted.org/packages/88/3b/7fa1fe835e2e93fd6d7b52b2f95ae810cf5ba133e1845f726f5a992d62c2/more-itertools-10.6.0.tar.gz"
+    sha256 "2cd7fad1009c31cc9fb6a035108509e6547547a7a738374f10bd49a09eb3ee3b"
   end
 
   resource "piexif" do

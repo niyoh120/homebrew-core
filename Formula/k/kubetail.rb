@@ -1,8 +1,8 @@
 class Kubetail < Formula
   desc "Logging tool for Kubernetes with a real-time web dashboard"
   homepage "https://www.kubetail.com/"
-  url "https://github.com/kubetail-org/kubetail/archive/refs/tags/cli/v0.0.9.tar.gz"
-  sha256 "0a00298523f8cd1b272373145e7bb3087a7b5f640f42b417bb1a4e52a9eac454"
+  url "https://github.com/kubetail-org/kubetail/archive/refs/tags/cli/v0.1.2.tar.gz"
+  sha256 "cd9c421eb43bb47d0510cbe2950d7cc6fd8783ba11f0a994d942a880f2ff3d40"
   license "Apache-2.0"
 
   livecheck do
@@ -11,12 +11,12 @@ class Kubetail < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "4c0dc8d1665765c6ad3d26e3613bb844108fc5d9665cd7476c77c37b52c432cb"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d1e4bef4cdae593ae4431508ff1fddb038b7eebcb402ad58fd701503cc18ced2"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "9c16614d79ddede707789703ff4d96a3ad25d5329688672c3477fda57578b7a6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "69b37a7fafb880546856c6075d542b656c3d5ca4cffd1f75c29365bfeaa4547f"
-    sha256 cellar: :any_skip_relocation, ventura:       "d56a39729cd3ea671095506b3845163c8be746f3870a4cf696e7da510a367053"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "64a42a3d13750d3de02227cfe24950fbe1010f3b1368ee3f8f12253dc31c2893"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "e9b7a50076da0aa9c62a57dfba0104f6945c8d50da0621e28a818f7841492344"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "63a8670fbffbf63b7b153f58433916b6aa915d292337adbdf4e6b0cd702c0711"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "aad2eed728b572b381c507f75558ebc0f78d6f6ab9e7fb74ca4bb27684a16417"
+    sha256 cellar: :any_skip_relocation, sonoma:        "5a27e51703a706e70c177b1f98278ef06904518d641a145158683f2f280d2183"
+    sha256 cellar: :any_skip_relocation, ventura:       "dbed94e9eb3a0f0ea8207a3778778689559710344fc96450f04fd86f651065ec"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "7533d06466d66ca85174bdd6bac2637a268be78539e25c4bf07922d946970936"
   end
 
   depends_on "go" => :build

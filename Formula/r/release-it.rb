@@ -1,17 +1,17 @@
 class ReleaseIt < Formula
   desc "Generic CLI tool to automate versioning and package publishing related tasks"
   homepage "https://github.com/release-it/release-it"
-  url "https://registry.npmjs.org/release-it/-/release-it-18.0.0.tgz"
-  sha256 "eb2af1b1754ea5bbfc90450129f226e20d81d98eff006563206f841cd69559b0"
+  url "https://registry.npmjs.org/release-it/-/release-it-18.1.2.tgz"
+  sha256 "f35150b5144779a0cea9fc1929ef611e83d7a2f30ae0c622a9015ad3891ca167"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "70540cea9812493d56998f9c0870bdea1ee6061c2a47c46322aa4cf763be9c07"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "70540cea9812493d56998f9c0870bdea1ee6061c2a47c46322aa4cf763be9c07"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "70540cea9812493d56998f9c0870bdea1ee6061c2a47c46322aa4cf763be9c07"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f3714a7dda8ead35f87962f7c37185047fafff4a54db643eb65d4fbad50fa574"
-    sha256 cellar: :any_skip_relocation, ventura:       "f3714a7dda8ead35f87962f7c37185047fafff4a54db643eb65d4fbad50fa574"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "70540cea9812493d56998f9c0870bdea1ee6061c2a47c46322aa4cf763be9c07"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d134f703a9f2370491711555ec5a6e5fd56191cbf146dafac8fc4b6cce589794"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d134f703a9f2370491711555ec5a6e5fd56191cbf146dafac8fc4b6cce589794"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "d134f703a9f2370491711555ec5a6e5fd56191cbf146dafac8fc4b6cce589794"
+    sha256 cellar: :any_skip_relocation, sonoma:        "a9e29f79b5bb405179134e0c540301da0ff5f2870990ff89b53e7579e3cfaebb"
+    sha256 cellar: :any_skip_relocation, ventura:       "a9e29f79b5bb405179134e0c540301da0ff5f2870990ff89b53e7579e3cfaebb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d134f703a9f2370491711555ec5a6e5fd56191cbf146dafac8fc4b6cce589794"
   end
 
   depends_on "node"

@@ -1,9 +1,9 @@
 class Sqlite < Formula
   desc "Command-line interface for SQLite"
   homepage "https://sqlite.org/index.html"
-  url "https://www.sqlite.org/2024/sqlite-autoconf-3470200.tar.gz"
-  version "3.47.2"
-  sha256 "f1b2ee412c28d7472bc95ba996368d6f0cdcf00362affdadb27ed286c179540b"
+  url "https://www.sqlite.org/2025/sqlite-autoconf-3490000.tar.gz"
+  version "3.49.0"
+  sha256 "4d8bfa0b55e36951f6e5a9fb8c99f3b58990ab785c57b4f84f37d163a0672759"
   license "blessing"
 
   livecheck do
@@ -15,12 +15,13 @@ class Sqlite < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "7eca69ad4697874a907a2eb2ae60ceec930d93e92796b3433b65fc7c65a8dbaa"
-    sha256 cellar: :any,                 arm64_sonoma:  "725168435181011bdd06d7d1f18dad719529aec4ae0176392b0a16a725612b37"
-    sha256 cellar: :any,                 arm64_ventura: "3ab78c5df09c610070f4a64a8fc55e4ef5037de719e9361b8e30dd00590bd510"
-    sha256 cellar: :any,                 sonoma:        "03bd52415c045f9ee4cc5c9e4711aee2872ca186cca60c8c7f6296fec8d3e87c"
-    sha256 cellar: :any,                 ventura:       "0f2d1a76178f1da4bfbc684b8e4a0393bb18ff6ed4a24261aa66b3d2e2011f04"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "082aa7c1c531ca9f74fbc8833fcf8459f985c11bdf5164e2ea4a820d479497ae"
+    sha256 cellar: :any,                 arm64_sequoia: "a91a65a3ba87aa27d72f88b2d390119c68fd70808bdb6e052ec90e6a9ae410cc"
+    sha256 cellar: :any,                 arm64_sonoma:  "dabadec36af0936ea2271e30c9c0debf5400b33a5e494ef22d577edb3aa9e04d"
+    sha256 cellar: :any,                 arm64_ventura: "9a21952b5fc721e40a60e733cc86d3aea9781abaccbe8d8c56ebfb7b642fcdf2"
+    sha256 cellar: :any,                 sequoia:       "ca6b22d1ff3554c652229f4ddb9c04bee0168fe88193173e9a901bb0f9309a3b"
+    sha256 cellar: :any,                 sonoma:        "d3adb49dbd199ab48cf0f79ff2b796c074b2c0ac4ec0e9eaa3b0c7a2c7c50cb6"
+    sha256 cellar: :any,                 ventura:       "e815e1bcaa86dbeff68ce9d00093be91884da3b20652fdf1dfff4fa9427da526"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e7b98407d745abc5b56519d93267b67ccc0e3593c1415b0b62df779f2089eb97"
   end
 
   keg_only :provided_by_macos
@@ -28,6 +29,12 @@ class Sqlite < Formula
   depends_on "readline"
 
   uses_from_macos "zlib"
+
+  # add macos linker patch, upstream discussion, https://sqlite.org/forum/forumpost/a179331cbb
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/formula-patches/c797b2d7779960ba443c498c04c02e8a47626f33/sqlite/3.49.0-macos-linker.patch"
+    sha256 "d284149cc327be3e5e9a0a7150ce584f5da584e44645ad036b6d2cd143e3e638"
+  end
 
   def install
     # Default value of MAX_VARIABLE_NUMBER is 999 which is too low for many
@@ -48,16 +55,15 @@ class Sqlite < Formula
       -DSQLITE_USE_URI=1
     ].join(" ")
 
-    args = %W[
-      --prefix=#{prefix}
-      --disable-dependency-tracking
-      --enable-dynamic-extensions
-      --enable-readline
-      --disable-editline
-      --enable-session
+    args = [
+      "--enable-readline",
+      "--disable-editline",
+      "--enable-session",
+      "--with-readline-cflags=-I#{Formula["readline"].opt_include}",
+      "--with-readline-ldflags=-L#{Formula["readline"].opt_lib} -lreadline",
     ]
 
-    system "./configure", *args
+    system "./configure", *args, *std_configure_args
     system "make", "install"
 
     # Avoid rebuilds of dependants that hardcode this path.

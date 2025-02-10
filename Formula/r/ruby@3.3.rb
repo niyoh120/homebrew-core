@@ -1,8 +1,8 @@
 class RubyAT33 < Formula
   desc "Powerful, clean, object-oriented scripting language"
   homepage "https://www.ruby-lang.org/"
-  url "https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.6.tar.gz"
-  sha256 "8dc48fffaf270f86f1019053f28e51e4da4cce32a36760a0603a9aee67d7fd8d"
+  url "https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.7.tar.gz"
+  sha256 "9c37c3b12288c7aec20ca121ce76845be5bb5d77662a24919651aaf1d12c8628"
   license "Ruby"
 
   livecheck do
@@ -11,12 +11,13 @@ class RubyAT33 < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "453e4692db2ae4f3ab85e879db8382421efde75d8796699e8a6c41f8a1fcc296"
-    sha256 arm64_sonoma:  "0c25dbf450faed1e1b07e54cc49f77b309d3cb204bc29e881dea8a44c7d11a49"
-    sha256 arm64_ventura: "177a36192adcd8062fbed6e213ace9b659940f269cc8f34132994bfd38c300e8"
-    sha256 sonoma:        "e63c6928e15d24fe524f69ba689da08c346f3fbc4b71a55aba0555c72c85582c"
-    sha256 ventura:       "a6d4740c2c7d2acaf51c563a1138a4605c6cbadb3c3d724ea20f6b3d5afe1841"
-    sha256 x86_64_linux:  "fe1695b0b5e756addb492b72c3dbe6c95197a9e1c1f9157550fdc28b336092ac"
+    rebuild 1
+    sha256 arm64_sequoia: "ad47293ee871bb8726059a28d830de7a279c4da3b845845bc5f5307ee4adf083"
+    sha256 arm64_sonoma:  "708e1361e0360ddc836296d49bf28ced8245be99fcb1d3e84bfee57e905e7efe"
+    sha256 arm64_ventura: "c9dd0fed316b3b1593c6d191b8819c7434886776911eee1f1f0a8bc73f870b33"
+    sha256 sonoma:        "6d87d4b89a56b48dd7288a54a8da1099161f78c52901b20d12ae1fbb5f284150"
+    sha256 ventura:       "2c59ac608e05ea500300afe4e071a3a54e26c59c7f1a45de53babaae04261f32"
+    sha256 x86_64_linux:  "8b03dbfb6086132a7adb0572148d90996122b4ac071040437b9d39d7f157cd1c"
   end
 
   keg_only :versioned_formula
@@ -53,8 +54,8 @@ class RubyAT33 < Formula
   # The exception is Rubygem security fixes, which mandate updating this
   # formula & the versioned equivalents and bumping the revisions.
   resource "rubygems" do
-    url "https://rubygems.org/rubygems/rubygems-3.5.23.tgz"
-    sha256 "3d277bf0b12ff46834d89b283fc451d130dbe6428d00d7ace4664c449c3ef28c"
+    url "https://rubygems.org/rubygems/rubygems-3.6.3.tgz"
+    sha256 "ed284c404da69a5fdb43c9d37b86e56f3c3f43a7bee85ac47cf2fb3a136f00ea"
 
     livecheck do
       url "https://rubygems.org/pages/download"
@@ -114,6 +115,19 @@ class RubyAT33 < Formula
     # A newer version of ruby-mode.el is shipped with Emacs
     elisp.install Dir["misc/*.el"].reject { |f| f == "misc/ruby-mode.el" }
 
+    if OS.linux?
+      arch = Utils.safe_popen_read(
+        bin/"ruby", "-rrbconfig", "-e", 'print RbConfig::CONFIG["arch"]'
+      ).chomp
+      # Don't restrict to a specific GCC compiler binary we used (e.g. gcc-5).
+      inreplace lib/"ruby/#{api_version}/#{arch}/rbconfig.rb" do |s|
+        s.gsub! ENV.cxx, "c++"
+        s.gsub! ENV.cc, "cc"
+        # Change e.g. `CONFIG["AR"] = "gcc-ar-11"` to `CONFIG["AR"] = "ar"`
+        s.gsub!(/(CONFIG\[".+"\] = )"(?:gcc|g\+\+)-(.*)-\d+"/, '\\1"\\2"')
+      end
+    end
+
     return if build.head? # Use bundled RubyGems for --HEAD (will be newer)
 
     # This is easier than trying to keep both current & versioned Ruby
@@ -171,7 +185,7 @@ class RubyAT33 < Formula
   end
 
   def rubygems_config(api_version)
-    <<~EOS
+    <<~RUBY
       module Gem
         class << self
           alias :old_default_dir :default_dir
@@ -240,7 +254,7 @@ class RubyAT33 < Formula
           File.join(Gem.old_default_dir, "specifications", "default")
         end
       end
-    EOS
+    RUBY
   end
 
   def caveats
@@ -267,6 +281,6 @@ class RubyAT33 < Formula
     EOS
     system bin/"bundle", "exec", "ls" # https://github.com/Homebrew/homebrew-core/issues/53247
     system bin/"bundle", "install", "--binstubs=#{testpath}/bin"
-    assert_predicate testpath/"bin/github-markup", :exist?, "github-markup is not installed in #{testpath}/bin"
+    assert_path_exists testpath/"bin/github-markup", "github-markup is not installed in #{testpath}/bin"
   end
 end

@@ -1,8 +1,8 @@
 class CiliumCli < Formula
   desc "CLI to install, manage & troubleshoot Kubernetes clusters running Cilium"
   homepage "https://cilium.io"
-  url "https://github.com/cilium/cilium-cli/archive/refs/tags/v0.16.22.tar.gz"
-  sha256 "eb75b32fae3bd6f15f9bb96b1d8be319732d28f40f51afbb61bf65c72a93e176"
+  url "https://github.com/cilium/cilium-cli/archive/refs/tags/v0.16.24.tar.gz"
+  sha256 "d7eb7e8e3b904e131c48d9e0aec09d3a5dc4a98d6fe78d5d9aa222565e2a69f9"
   license "Apache-2.0"
 
   # Upstream uses GitHub releases to indicate that a version is released
@@ -14,12 +14,12 @@ class CiliumCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "060edbd99c33cafb86f4530e07bccc74c93dbc5ce4bd225f3147ba5b525e45f0"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3760abb21ff93ac7f972ef58ce7e0021e321c2ee95530d15332e652e10ad602e"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "5e3a18ca016b7cec830c1675c8ffee0bf12c1c8c041f3548b9a8807d2715fd8d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ddd5399d3a397c0539cea012804084a38f546d11220b787badcabfe9c2df9b82"
-    sha256 cellar: :any_skip_relocation, ventura:       "5208c9b93830511b2be8d0e6209cb9ff1093ba418f1075cbce64816c31efc1b0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "88cbabaa2dbdb9d785f9cab541ce3a43e49963a06c2c9b0642324b1512dd8c61"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d2a8083640072d02e452bb88b0ebff12a87ec4f33965db934d777936f7f5b3a4"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d0a96562cd49af2a56c7d369bd5198b24dc64dd140647b2ff26bbb64285ecd26"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "983cd80b5b86a09767568c4aabb6aafd041220de11b96cb9e60917dafabb8b78"
+    sha256 cellar: :any_skip_relocation, sonoma:        "104db2aab0c548c675d93a9f322aaade1e9cf29564b1e5348054960d4fa09fb9"
+    sha256 cellar: :any_skip_relocation, ventura:       "0da5efdf4a757cd27408e381e31cf0afd6e5479d7134ac51e67cd2679bb7d6e5"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d7bb4b4dee58e47eb076f1593ca8538c43e7355b15ccf873e3c07431ffb9543b"
   end
 
   depends_on "go" => :build

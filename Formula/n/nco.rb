@@ -1,17 +1,17 @@
 class Nco < Formula
   desc "Command-line operators for netCDF and HDF files"
   homepage "https://nco.sourceforge.net/"
-  url "https://github.com/nco/nco/archive/refs/tags/5.3.0.tar.gz"
-  sha256 "661d12f4eb678ca301bf6000f1c1d0fb0e32a69def237dc14f3253e9fc1aaf6a"
+  url "https://github.com/nco/nco/archive/refs/tags/5.3.2.tar.gz"
+  sha256 "645179433e0f54e7e6fefa9fcc74c1866ad55dd69f0fccbc262c550fcc186385"
   license "BSD-3-Clause"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "1c9c38bb4dda815909d103da84dce502aa8cadddbc7df188c86a3ac2c7db2637"
-    sha256 cellar: :any,                 arm64_sonoma:  "3132a8ec83a442ccb0718afe046684cfe10474aed7a96bc70a20307ea0cad85c"
-    sha256 cellar: :any,                 arm64_ventura: "70f56a4234af5feef1975a19a830c9b01571c072a4109e24774eac0c78c7f50e"
-    sha256 cellar: :any,                 sonoma:        "79806516c40d58a0a6b6602faa81e707b80f46817676cd29113193fb4eac92c8"
-    sha256 cellar: :any,                 ventura:       "51fc29e80898d8414db875113a2f8b29e91233303d22e163536acc3b7c663198"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b6dbe757dbf4ad0952f31987c0a5fcf2606cb475db5e5aa73daa4bf8fc423774"
+    sha256 cellar: :any,                 arm64_sequoia: "7a574a0bc89064c2dd7deab62f89345bb4daa66b44542d9c57e6cd685761dd05"
+    sha256 cellar: :any,                 arm64_sonoma:  "3d40c36eca8a9c7d62af0dcb71bea75853ccd4e39e40b9b52fb1f2eb33163aae"
+    sha256 cellar: :any,                 arm64_ventura: "9a4b445ec682dface0628879a438ebba386e4317ce6f2e668c6f45c0dd2aa3bc"
+    sha256 cellar: :any,                 sonoma:        "b5497609c3cd7b5d4d2a75c1be1b46f9da428cec1ef99bbe0b234e84c30f1061"
+    sha256 cellar: :any,                 ventura:       "b577c88fa6a214118000e181761c61da233bf10a4d552240800531d690071070"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3e7630a379735f70e2760eb79d0bc75fdd21e8e90699309b4d9a2cf1b8dba471"
   end
 
   head do

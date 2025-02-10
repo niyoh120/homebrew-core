@@ -1,24 +1,23 @@
 class Convco < Formula
   desc "Conventional commits, changelog, versioning, validation"
   homepage "https://convco.github.io"
-  url "https://github.com/convco/convco/archive/refs/tags/v0.6.1.tar.gz"
-  sha256 "ed68341e065f76f22b6d93ff3686836a812f6a031dc7ee00bed7e048b0da4294"
+  url "https://github.com/convco/convco/archive/refs/tags/v0.6.2.tar.gz"
+  sha256 "6f8e58f8572a785e32d287cad80d174303a5db5abc4ce0cf50022e05125549dd"
   license "MIT"
-  revision 1
-  head "https://github.com/convco/convco.git", branch: "master"
+  head "https://github.com/convco/convco.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "c5e8f4af7167c711b94120c2a0dd293289b3e4a3ba78945a6fb9c5d1efd2aab2"
-    sha256 cellar: :any,                 arm64_sonoma:  "65b439d389ddf9612d3d3cef18df84d60eb220530eacf121857dd27e8273ef6b"
-    sha256 cellar: :any,                 arm64_ventura: "da85dd370e5714c0c13a3d9c6760d58862c84e3b7a34af4827511b241bebe555"
-    sha256 cellar: :any,                 sonoma:        "c7e429b28b7d7848958beaa73bec1c06ecabfeeddfa3c568f6420d9795e99ed0"
-    sha256 cellar: :any,                 ventura:       "729b6ff47aaab6e8d52f85de48a959ce5f764d9860385e63fc7b0d95236555e7"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "015cbd770a86d0b53e43de0721a256ed27c8326c10c76bccb2e53438ec872df0"
+    sha256 cellar: :any,                 arm64_sequoia: "e1c093220b014473d3a149c15ae6b832e5bd00a29f53e4536e7e61c5f5d23fc7"
+    sha256 cellar: :any,                 arm64_sonoma:  "8735477bfe61112d9b04356962c578a92ce2b446cb05086932e9ef8d2c452a28"
+    sha256 cellar: :any,                 arm64_ventura: "e66f77d70c4c03b8a9057b0bb1625bc299a53f6ff009df8360a337ec1295cc76"
+    sha256 cellar: :any,                 sonoma:        "e43a535594de8583f7313f689d34110c44d8470848187d3996f1c3ec1ff91d0f"
+    sha256 cellar: :any,                 ventura:       "cb1e5727f7cfee8c3a2c83e916cf870a99ee440d238727cc3d89c8d062eedc69"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "889fe4c5139b8dd815723ed30fad7566fdee06967247cfae99bf5604ec394991"
   end
 
   depends_on "pkgconf" => :build
   depends_on "rust" => :build
-  depends_on "libgit2@1.8" # needs https://github.com/rust-lang/git2-rs/issues/1109 to support libgit2 1.9
+  depends_on "libgit2"
 
   def install
     ENV["LIBGIT2_NO_VENDOR"] = "1"
@@ -40,7 +39,7 @@ class Convco < Formula
     linkage_with_libgit2 = (bin/"convco").dynamically_linked_libraries.any? do |dll|
       next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
 
-      File.realpath(dll) == (Formula["libgit2@1.8"].opt_lib/shared_library("libgit2")).realpath.to_s
+      File.realpath(dll) == (Formula["libgit2"].opt_lib/shared_library("libgit2")).realpath.to_s
     end
     assert linkage_with_libgit2, "No linkage with libgit2! Cargo is likely using a vendored version."
   end
