@@ -1,17 +1,17 @@
 class Atmos < Formula
   desc "Universal Tool for DevOps and Cloud Automation"
   homepage "https://github.com/cloudposse/atmos"
-  url "https://github.com/cloudposse/atmos/archive/refs/tags/v1.139.0.tar.gz"
-  sha256 "0e1704408f9ad5039e5ac136aaffd1468e39f53acfa9deed484bc06a9fcdeae8"
+  url "https://github.com/cloudposse/atmos/archive/refs/tags/v1.164.0.tar.gz"
+  sha256 "ab2671c91c269c8c963c46c1289554858b4afd3551fcd1bad2bc595da1c9217f"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "f06c9af80d88e7af6a49363a39df82d100c135c23cf19c00ee60675e1c0d097d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f06c9af80d88e7af6a49363a39df82d100c135c23cf19c00ee60675e1c0d097d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "f06c9af80d88e7af6a49363a39df82d100c135c23cf19c00ee60675e1c0d097d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "1a8d0d9025766fd24b65734ad5ef9237c063aec97f8917e64d8c1a7ffaeacf64"
-    sha256 cellar: :any_skip_relocation, ventura:       "1a8d0d9025766fd24b65734ad5ef9237c063aec97f8917e64d8c1a7ffaeacf64"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0e458b5fc866f0a15e5a80a8ed20a623754006e77461b1030eada1ffc6a49137"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "cf0e59ef69bca8bd24be8c5a1bcfd759fe8118881000dab5a443b89345d1d7f6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "cf0e59ef69bca8bd24be8c5a1bcfd759fe8118881000dab5a443b89345d1d7f6"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cf0e59ef69bca8bd24be8c5a1bcfd759fe8118881000dab5a443b89345d1d7f6"
+    sha256 cellar: :any_skip_relocation, sonoma:        "7ca3c78528e8119756c7f1057da3bd3db3e9cf381eb3be00f772b60c4ef55acc"
+    sha256 cellar: :any_skip_relocation, ventura:       "7ca3c78528e8119756c7f1057da3bd3db3e9cf381eb3be00f772b60c4ef55acc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c9a5d3744af678bab3e911d4665d3370a3bb78f58ff3e8768201a399b1909601"
   end
 
   depends_on "go" => :build
@@ -48,6 +48,7 @@ class Atmos < Formula
           - "**/*globals*"
         name_pattern: "{tenant}-{environment}-{stage}"
       logs:
+        file: "/dev/stderr"
         verbose: false
         colors: true
     YAML

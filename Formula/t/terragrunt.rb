@@ -1,17 +1,25 @@
 class Terragrunt < Formula
   desc "Thin wrapper for Terraform e.g. for locking state"
   homepage "https://terragrunt.gruntwork.io/"
-  url "https://github.com/gruntwork-io/terragrunt/archive/refs/tags/v0.71.2.tar.gz"
-  sha256 "2adbb5681cd3d1b0640dfbb1073f2413ed53831b0db1881bb4409a769fd3366e"
+  url "https://github.com/gruntwork-io/terragrunt/archive/refs/tags/v0.73.16.tar.gz"
+  sha256 "99d94288f99116accfe461547131aadcdd9cff00b87f8951f3b395cf2606dca1"
   license "MIT"
 
+  # Upstream creates releases that use a stable tag (e.g., `v1.2.3`) but are
+  # labeled as "pre-release" on GitHub before the version is released, so it's
+  # necessary to use the `GithubLatest` strategy.
+  livecheck do
+    url :stable
+    strategy :github_latest
+  end
+
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "aa81aa95b2ffb170547d2eba0bbf01f6ee0ca13f55e57b99cbd5e20916d38960"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "aa81aa95b2ffb170547d2eba0bbf01f6ee0ca13f55e57b99cbd5e20916d38960"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "aa81aa95b2ffb170547d2eba0bbf01f6ee0ca13f55e57b99cbd5e20916d38960"
-    sha256 cellar: :any_skip_relocation, sonoma:        "a04a6eb770d85a012dc90e2b345a1ddcd229c34af555670d3f2069b574eeb5d1"
-    sha256 cellar: :any_skip_relocation, ventura:       "a04a6eb770d85a012dc90e2b345a1ddcd229c34af555670d3f2069b574eeb5d1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "11c0d556b379d0843fa4ee1e2001a6b1b07d54cfe919469e8f5814c583c053ff"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "92a0177e04846ed089bd33e2ce426621b06ceabd526327368abbf0c84bf44ad3"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "92a0177e04846ed089bd33e2ce426621b06ceabd526327368abbf0c84bf44ad3"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "92a0177e04846ed089bd33e2ce426621b06ceabd526327368abbf0c84bf44ad3"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c953ef79ec140603d77bb19f217fb48ba32e5f54fa838a90f7b533c5411a13cb"
+    sha256 cellar: :any_skip_relocation, ventura:       "c953ef79ec140603d77bb19f217fb48ba32e5f54fa838a90f7b533c5411a13cb"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "32672468d85d6279848ec64d01015181c618c519c35875efa8dad41b0cb81d9e"
   end
 
   depends_on "go" => :build

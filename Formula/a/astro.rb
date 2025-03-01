@@ -1,8 +1,8 @@
 class Astro < Formula
   desc "To build and run Airflow DAGs locally and interact with the Astronomer API"
   homepage "https://www.astronomer.io/"
-  url "https://github.com/astronomer/astro-cli/archive/refs/tags/v1.32.0.tar.gz"
-  sha256 "96e83b74a23001268c3ae567ea45cc794164f8cc839b65cd6fad1283447d0c95"
+  url "https://github.com/astronomer/astro-cli/archive/refs/tags/v1.33.1.tar.gz"
+  sha256 "4e208bfbe427c5c3a4f94b56533d4202c9c9c6c24b0ac3396edf36bb3252da66"
   license "Apache-2.0"
 
   livecheck do
@@ -11,21 +11,21 @@ class Astro < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "8c022483fdb6a914163d558b7e68c1b6310b22902fdee1c7d6bb99c833051211"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "8c022483fdb6a914163d558b7e68c1b6310b22902fdee1c7d6bb99c833051211"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "8c022483fdb6a914163d558b7e68c1b6310b22902fdee1c7d6bb99c833051211"
-    sha256 cellar: :any_skip_relocation, sonoma:        "ecb235270906fffaefe110e698a96b55adf519860372900ab9871319c4a7897f"
-    sha256 cellar: :any_skip_relocation, ventura:       "ecb235270906fffaefe110e698a96b55adf519860372900ab9871319c4a7897f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d6f856559d2bb5873f315fffce6bf4a7d0f923cddcde55db6de76ac78acbda82"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a90c0fddcdd55bd99ce71660a801dec9e9b9a3d41dcde3ffe94adf0c3fb3282d"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "be993b2a77a46a905b6e34cdf7c43fd53eba6b9df1e9147e96d90bcfdd7ebad4"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "642215224367ca858911c80416bb06639ee84cd17937c14a06afd5e55b1ca0bc"
+    sha256 cellar: :any_skip_relocation, sonoma:        "44c5f6492df273dcb3cf9a57c02db5b2b49ea55376353b05298c3c98e6726794"
+    sha256 cellar: :any_skip_relocation, ventura:       "a1ab8a899172dc0bd07b12786432cf074a8c9b356278928926125106cbf3efe4"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b9e86546ff0a2f8a207a4e5835f30b4428ddee60881a267f3db05d8b5e562614"
   end
 
   depends_on "go" => :build
+
   on_macos do
     depends_on "podman"
   end
 
   def install
-    ENV["CGO_ENABLED"] = "0"
     system "go", "build", *std_go_args(ldflags: "-s -w -X github.com/astronomer/astro-cli/version.CurrVersion=#{version}")
 
     generate_completions_from_executable(bin/"astro", "completion")

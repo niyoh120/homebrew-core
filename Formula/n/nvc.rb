@@ -1,17 +1,17 @@
 class Nvc < Formula
   desc "VHDL compiler and simulator"
-  homepage "https://github.com/nickg/nvc"
-  url "https://github.com/nickg/nvc/releases/download/r1.14.2/nvc-1.14.2.tar.gz"
-  sha256 "420826dc44ed209d7346e183438a654af1816bd802d15fded2f8a9c272a47331"
+  homepage "https://www.nickg.me.uk/nvc/"
+  url "https://github.com/nickg/nvc/releases/download/r1.15.2/nvc-1.15.2.tar.gz"
+  sha256 "d3d2ce61e4d31806ebed91dcff7580a9bb16bd0722f3ef86c275c03d999b18b8"
   license "GPL-3.0-or-later"
 
   bottle do
-    sha256 arm64_sequoia: "2f4df4784c3f76d5417fb27611bd0cb0a147c85e7d0b482118dde651c217030f"
-    sha256 arm64_sonoma:  "2b0ee54b5af6f94d794b1158cf2d3f9266055cac560d8761b2de96fec58b66f5"
-    sha256 arm64_ventura: "05c517c0cc6c835c512fb50108a8e7f055ed1f6bbb45e8169394c962e0014dbe"
-    sha256 sonoma:        "0c82323f94cb9367b4f139037d5ee164a7ebcff9c1c01d79f8f67f2a17024c50"
-    sha256 ventura:       "2b949b05bd388a68c7c47099755b07b224fa5e36c9c56e132e4157e321bdab9d"
-    sha256 x86_64_linux:  "5db794ebdbfd9803be1e75133729f1aac9d89aefd1cdc19feb404c970e820666"
+    sha256 arm64_sequoia: "d053cd65a3ce4fb753e934c8703e9022dc8b14fe12921df2ba852005976b277c"
+    sha256 arm64_sonoma:  "36f732ec3c199cb1ac3a8ca99a6320eb8f6d7232eb82706f552f83b6827c83df"
+    sha256 arm64_ventura: "a5c06f732ecb301e15599cc9f65e825de897f16281eab045ab962014c907765b"
+    sha256 sonoma:        "03ab0790efcfddd402060e14711710b8e59f57b9f27877cbbcf5e7ac375b670d"
+    sha256 ventura:       "2460f90690933a675b46fd1e4561c8c0fc503ef063ce10312e01b5217fbf6d12"
+    sha256 x86_64_linux:  "b6bd3c7be7d6a61e581af464f4db39b4800de127cb6186e5d3eeec0472609fa5"
   end
 
   head do
@@ -46,8 +46,6 @@ class Nvc < Formula
                              "--prefix=#{prefix}",
                              "--with-system-cc=#{ENV.cc}",
                              "--disable-silent-rules"
-      inreplace ["Makefile", "config.h"], Superenv.shims_path/ENV.cc, ENV.cc
-      ENV.deparallelize
       system "make", "V=1"
       system "make", "V=1", "install"
     end

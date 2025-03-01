@@ -1,9 +1,9 @@
 class Genders < Formula
   desc "Static cluster configuration database for cluster management"
   homepage "https://github.com/chaos/genders"
-  url "https://github.com/chaos/genders/archive/refs/tags/genders-1-29-1.tar.gz"
-  version "1.29.1"
-  sha256 "42c37c53a831e007b4fd5a5596060417186724e18cbd5c9dbb3a7185144200c2"
+  url "https://github.com/chaos/genders/archive/refs/tags/genders-1-31-1.tar.gz"
+  version "1.31.1"
+  sha256 "bb443a3c3b8b09a22d97550a997966cb9cd77ca47c24026393988702b07ffe07"
   license "GPL-2.0-or-later"
 
   livecheck do
@@ -15,14 +15,12 @@ class Genders < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia:  "e4fb31da5615e88dcc18ad6c9ef273e4af10e79bd9c3e5a1a6184988277295de"
-    sha256 cellar: :any,                 arm64_sonoma:   "24687149f4c7eae6083d96d72ab233d6f15f009d86fc0aca12459f9bf7da5996"
-    sha256 cellar: :any,                 arm64_ventura:  "987feaf1eba85ac7554b72e1b341779dec8e5b5785daa0cf490079345256f1d5"
-    sha256 cellar: :any,                 arm64_monterey: "568666f7f26b9d68df7c5bce2db3f953b09fe9ef5e92d8adf2f48f81a6e1d388"
-    sha256 cellar: :any,                 sonoma:         "9fcca30c146588f81f9fadf833022d70898612723f2526eef1e2836fc395b4ea"
-    sha256 cellar: :any,                 ventura:        "dbe0fbc6daf625e29b3db27cb6b7ddc8416145f41db930bdec9d0d66c905eacf"
-    sha256 cellar: :any,                 monterey:       "fbfe9f9bd3d171bc75d73c7cee9dc009370f052d134aee3a5fda3aabe95bf5c1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:   "3eb2859efed178704493b7801a8b182f82068c1d6bae6962a30ff8a169b79eef"
+    sha256 cellar: :any,                 arm64_sequoia: "08037b25160e755b0a73603e76a83002445a6472485b1e856b82788fbe0e46a2"
+    sha256 cellar: :any,                 arm64_sonoma:  "a0dbc1f4c41b3bb42f8ed22afd2be19bdf5ab706ada683f1938dff14f4ed67d7"
+    sha256 cellar: :any,                 arm64_ventura: "084206ecd3a25697c7758ffedcdedd132ba73df4fcc312a2d323c4ed397d1aa3"
+    sha256 cellar: :any,                 sonoma:        "306fef11d5e6921048d027818a91388760030c062a345bca095424ed9a844bab"
+    sha256 cellar: :any,                 ventura:       "528da84b44bc81f8041d8e51a4d5917d4f9198760e2170e9161a953f070be5e8"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cc192e901b3cc085f303e2f61af4ef817a69e689ee03619835a9eaa189b8d852"
   end
 
   uses_from_macos "bison" => :build
@@ -30,7 +28,6 @@ class Genders < Formula
   uses_from_macos "perl" => :build
   uses_from_macos "python" => :build
 
-  # upstream issue to drop distutils usage, https://github.com/chaos/genders/issues/65
   on_linux do
     depends_on "python-setuptools" => :build
   end
@@ -43,6 +40,8 @@ class Genders < Formula
 
   def install
     ENV["PYTHON"] = which("python3")
+
+    ENV.append "CXXFLAGS", "-std=c++14"
 
     system "./configure", "--with-java-extensions=no", *std_configure_args
     system "make", "install"

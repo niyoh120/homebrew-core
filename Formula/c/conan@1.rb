@@ -28,7 +28,7 @@ class ConanAT1 < Formula
   depends_on "cmake" => :test
   depends_on "certifi"
   depends_on "libyaml"
-  depends_on "python@3.12"
+  depends_on "python@3.12" # https://github.com/conan-io/conan/issues/17220#issuecomment-2437381133
 
   resource "bottle" do
     url "https://files.pythonhosted.org/packages/fd/04/1c09ab851a52fe6bc063fd0df758504edede5cc741bd2e807bf434a09215/bottle-0.12.25.tar.gz"
@@ -133,6 +133,6 @@ class ConanAT1 < Formula
     system bin/"conan", "search", "zlib", "--remote", "conancenter"
 
     system bin/"conan", "install", "zlib/1.2.11@", "--build"
-    assert_predicate testpath/".conan/data/zlib/1.2.11", :exist?
+    assert_path_exists testpath/".conan/data/zlib/1.2.11"
   end
 end

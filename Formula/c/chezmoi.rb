@@ -1,8 +1,8 @@
 class Chezmoi < Formula
   desc "Manage your dotfiles across multiple diverse machines, securely"
   homepage "https://chezmoi.io/"
-  url "https://github.com/twpayne/chezmoi/archive/refs/tags/v2.57.0.tar.gz"
-  sha256 "123efcfb37de7803ccb9ddf666adb3c7880a62c62550b877fc8f928e1622b4a5"
+  url "https://github.com/twpayne/chezmoi/archive/refs/tags/v2.60.0.tar.gz"
+  sha256 "70a077c9be09fc3f7dd684ab9f80c85f60702fea881789b7fb1b9b9b08bce275"
   license "MIT"
   head "https://github.com/twpayne/chezmoi.git", branch: "master"
 
@@ -14,13 +14,12 @@ class Chezmoi < Formula
   end
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "77ec7d2734d23bf0d9934d6d4744d8f19b1823cb98b79f8d55672b5a1f967df8"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6ecc493e76cce0753b19ece6210f8e5afbbca482f36aa44777d29e0d8b9f8424"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "6950d012926f1f58b81ef15778632d6ee82fc243a0720e85c5391035ecb7b192"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5a8f970f1b158df239406918466394993a8eef00eaad46d2bc9179818300ad15"
-    sha256 cellar: :any_skip_relocation, ventura:       "0ff44c5283c43dc1114c0308b010507a697d21dfd4815c968603817b6cf98d4a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "48ca4c1c3f1a96365acc71402e6e3de922830aa635e859a04158cf6f9a1bb2c3"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "39f9236df39188a2b715ce92e60a16e808ae864e516b2cfccd0ed9b35590c140"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "511f88b691dd1dcf1cfe77fd779e14929fe7c0fc3490b3c8ba50cf8c59bbe279"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cbe044178fd44c5f42901eb2cb9ea3b67c8918c9d4690fed535dd74e0a77a82d"
+    sha256 cellar: :any_skip_relocation, sonoma:        "b72d14d9b46ad7896a97ca2cf978e598f9ace0f03adf3c836fca999c2851ed15"
+    sha256 cellar: :any_skip_relocation, ventura:       "9a1668dc6ba57d751c6492c6bdc704378c037ff8b07bfa3f1d7c79225149442a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8e75629237f891c16023071ecfa8789a39ca5325db8404c18852f55f25e056b7"
   end
 
   depends_on "go" => :build
@@ -46,6 +45,6 @@ class Chezmoi < Formula
     assert_match "built by #{tap.user}", shell_output("#{bin}/chezmoi --version")
 
     system bin/"chezmoi", "init"
-    assert_predicate testpath/".local/share/chezmoi", :exist?
+    assert_path_exists testpath/".local/share/chezmoi"
   end
 end

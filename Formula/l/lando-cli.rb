@@ -1,8 +1,8 @@
 class LandoCli < Formula
   desc "Cli part of Lando"
   homepage "https://docs.lando.dev/cli"
-  url "https://github.com/lando/core/archive/refs/tags/v3.23.22.tar.gz"
-  sha256 "3dfc6f661e39e9f29ebfab297a7da1ebcaaff08e41fb64c441c177452cda9f0c"
+  url "https://github.com/lando/core/archive/refs/tags/v3.24.0.tar.gz"
+  sha256 "7c730924e3b41ca8dbc2e4350d3ee57511a1809f276d4ae84283fb59c58146c2"
   license "GPL-3.0-or-later"
   head "https://github.com/lando/core.git", branch: "main"
 
@@ -12,12 +12,12 @@ class LandoCli < Formula
   end
 
   bottle do
-    sha256                               arm64_sequoia: "372797a5f712405a2537706ad732fe59e90d3cf48ca042fa38858b93025ca360"
-    sha256                               arm64_sonoma:  "46c2775f1c650961fe26e390eff3f2f2d659fdae87429791213f881f108a6c61"
-    sha256                               arm64_ventura: "96138e5a9dacee26e832d1e189004300fb4b7a7fd24339831a2c79ef0711ff79"
-    sha256                               sonoma:        "f27ded57f45a01a63be74e9a1d14b9432f4d9612c615f40e9f449c066ca3df99"
-    sha256                               ventura:       "5f03ba9174104d5fa80efcc8d4774cd52d8f1f654b6c4fa61c445f38adeb2cf5"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a73068254972a77d94353e8176946bc6271bd916676a187374499c1244d8044f"
+    sha256                               arm64_sequoia: "102619f90a266e698ff6f0d7b62baebd05fd9f6d54e76908f245ec18f3748bc3"
+    sha256                               arm64_sonoma:  "99c8c7d28982afcb26802ff121ae431c120932d20d6f49074411407ebf4abc28"
+    sha256                               arm64_ventura: "a01c91ae729f7ac1d1d411ad3f77832713c1a237d0f6500d254d761c8dbce66c"
+    sha256                               sonoma:        "a18c0d8f507774295521503be259d30bb06fcc1c9bc2c9d3ac7c7f847196b883"
+    sha256                               ventura:       "4b2d6e09495d666f08e63fceb2ab7693048b45d5fc5929ecebd944cb2ccf4a2a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9df0b922de211072f4ea6e23ffba885da2a87199a2fdbc10f20b4fa150f16fb0"
   end
 
   depends_on "node"

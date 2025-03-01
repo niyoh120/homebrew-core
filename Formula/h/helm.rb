@@ -2,27 +2,21 @@ class Helm < Formula
   desc "Kubernetes package manager"
   homepage "https://helm.sh/"
   url "https://github.com/helm/helm.git",
-      tag:      "v3.16.4",
-      revision: "7877b45b63f95635153b29a42c0c2f4273ec45ca"
+      tag:      "v3.17.1",
+      revision: "980d8ac1939e39138101364400756af2bdee1da5"
   license "Apache-2.0"
   head "https://github.com/helm/helm.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9f61c05a59036541ac0a3b1760ea8d9ad088b82e323810354d24cfb1e3cf22e3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "efe5549ee3421dab54d41fb9ccfa5c09e710be30cd95efab731aaf35cda3a9f1"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "df79b267a94235bf470a15dbea6ad0526eefdb33d3d94792a04727321bbc98ab"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d9f195ddc2121382d1a4c24f764c0359b761356a0c9b215dd04e149135c26a77"
-    sha256 cellar: :any_skip_relocation, ventura:       "dd9273c86d745e7e83763c8a2a2fbf807e61e3060ccc22ff753ed3968ace02ae"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "104daf1188363a96cba907696468d4d161d9620ec20d2f22b91d87580212f9f2"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "574c5e3187b5b39a7afc98cf26547304327eaeabf0f3a7fefd67eb0156d8085a"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "6d49da547b422833cee417813bbff565234d330c2102cd277cfef44297ae68ed"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "0c84fb211184f4aae1e18007a209b3b9e0d85d1a2d61c11fb7f4247e832f9a1f"
+    sha256 cellar: :any_skip_relocation, sonoma:        "01d9be02bcd9bbbcb8e8d9ba67775e51d9896c769a1f34908b5c13b7ba7794cb"
+    sha256 cellar: :any_skip_relocation, ventura:       "cccf5f69c3559f1d152188fdb3c1e83c6120153bbff9b7855c2e0b3a77f40dd0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5f462eb762840d6425657ba54027017676fb783d634d20fb8ba954ad4176d801"
   end
 
   depends_on "go" => :build
-
-  # fix testchart lint errors, upstream pr ref, https://github.com/helm/helm/pull/13329
-  patch do
-    url "https://github.com/helm/helm/commit/ddead08eb8e7e3fbbdbb6d40938dda36905789af.patch?full_index=1"
-    sha256 "471c2d7dcbd48d37eaf69e552d53e928e9ba42efccb021d78bbd354599d80811"
-  end
 
   def install
     system "make", "build"

@@ -1,37 +1,83 @@
 class Tailwindcss < Formula
   desc "Utility-first CSS framework"
   homepage "https://tailwindcss.com"
-  url "https://github.com/tailwindlabs/tailwindcss/archive/refs/tags/v3.4.17.tar.gz"
-  sha256 "89c0a7027449cbe564f8722e84108f7bfa0224b5d9289c47cc967ffef8e1b016"
+  url "https://registry.npmjs.org/@tailwindcss/cli/-/cli-4.0.9.tgz"
+  sha256 "a474025f9a85d282ad000270aa683c9522c4a1e0a4ff3e998eb07ee10dc3a674"
   license "MIT"
+  head "https://github.com/tailwindlabs/tailwindcss.git", branch: "next"
 
-  bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1ef1e89aab19737e3c66462f57f0f61267e4ed4fdd9967df8f41b37ef66db56a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1ef1e89aab19737e3c66462f57f0f61267e4ed4fdd9967df8f41b37ef66db56a"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "8a0a4bcb9fc57504bc217357eb758034d900b5b2040198f1d65153ccbeade325"
-    sha256 cellar: :any_skip_relocation, sonoma:        "9c15b605c267dd61402165f81113bcf07296d6941ef8b574c9b039154fff9651"
-    sha256 cellar: :any_skip_relocation, ventura:       "879e7436c37cb8f65c418009e85216707354285730be1078795405d8ce9dac56"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "646671381a5cbb0a2231f3a40021fbc2790311303f5c131d0d844ef892104ca2"
+  # There can be a notable gap between when a version is added to npm and the
+  # GitHub release is created, so we check the "latest" release on GitHub
+  # instead of the default `Npm` check for the `stable` URL.
+  livecheck do
+    url :head
+    strategy :github_latest
   end
 
-  depends_on "node" => :build
+  bottle do
+    sha256                               arm64_sequoia: "2c8790c11183a52eaa5f73a0e38bc561af6d3d65eed810ebb277abd0ba410dd0"
+    sha256                               arm64_sonoma:  "d6fdb0e5dc1a8db616acd267883e6f1295312de3dea4fd4a469f7c989248fc4b"
+    sha256                               arm64_ventura: "af16b9e1b89153c5f4f0b01e68e0b520f6c77c5b3bee88e7cbaf2b177f49eaae"
+    sha256                               sonoma:        "caa33b06be95251cf2ffadebf2b645ecf38e5b09ef3bed901330abeb56a61221"
+    sha256                               ventura:       "f990e9a7a202c46a186de50f8633bdf80547bfc27485e0299610ba7fb8c2896d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6a59f30eda665ab06f2c05f821824ff1e62b44912aba242bf356abe4280a398b"
+  end
+
+  depends_on "node"
+
+  # Imitate standalone CLI and include first-party plugins
+  # https://github.com/tailwindlabs/tailwindcss/blob/main/packages/%40tailwindcss-standalone/package.json#L28-L31
+  resource "@tailwindcss/aspect-ratio" do
+    url "https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.4.2.tgz"
+    sha256 "858df3d82234e12e59e6f8bd5d272d1e6c65aefcb4263dac84d0331f5ef00455"
+  end
+
+  resource "@tailwindcss/forms" do
+    url "https://registry.npmjs.org/@tailwindcss/forms/-/forms-0.5.10.tgz"
+    sha256 "f5003f088c8bfeef2d2576932b0521e29f84b7ca68e59afd709fef75bd4fe9bb"
+  end
+
+  resource "@tailwindcss/typography" do
+    url "https://registry.npmjs.org/@tailwindcss/typography/-/typography-0.5.16.tgz"
+    sha256 "41bb083cd966434072dd8a151c8989e1cfa574eb5ba580b719da013d32b6828e"
+  end
 
   def install
-    system "npm", "install", *std_npm_args(prefix: false)
-    system "npm", "run", "build"
-
-    cd "standalone-cli" do
-      system "npm", "install", *std_npm_args(prefix: false)
-      system "npm", "run", "build"
-      os = OS.mac? ? "macos" : "linux"
-      cpu = Hardware::CPU.arm? ? "arm64" : "x64"
-      bin.install "dist/tailwindcss-#{os}-#{cpu}" => "tailwindcss"
+    resources.each do |r|
+      system "npm", "install", *std_npm_args(prefix: false), r.cached_download
     end
+    system "npm", "install", *std_npm_args
+    bin.install libexec.glob("bin/*")
+    bin.env_script_all_files libexec/"bin", NODE_PATH: libexec/"lib/node_modules/@tailwindcss/cli/node_modules"
   end
 
   test do
-    (testpath/"input.css").write("@tailwind base;")
-    system bin/"tailwindcss", "-i", "input.css", "-o", "output.css"
-    assert_predicate testpath/"output.css", :exist?
+    # https://github.com/tailwindlabs/tailwindcss/blob/main/integrations/cli/standalone.test.ts
+    (testpath/"index.html").write <<~HTML
+      <div className="prose">
+        <h1>Headline</h1>
+      </div>
+      <input type="text" class="form-input" />
+      <div class="aspect-w-16"></div>
+    HTML
+
+    (testpath/"input.css").write <<~CSS
+      @tailwind base;
+      @import "tailwindcss";
+      @import "tailwindcss/theme" theme(reference);
+      @import "tailwindcss/utilities";
+
+      @plugin "@tailwindcss/forms";
+      @plugin "@tailwindcss/typography";
+      @plugin "@tailwindcss/aspect-ratio";
+    CSS
+
+    system bin/"tailwindcss", "--input", "input.css", "--output", "output.css"
+    assert_path_exists testpath/"output.css"
+
+    output = (testpath/"output.css").read
+    assert_match ".form-input {", output
+    assert_match ".prose {", output
+    assert_match ".aspect-w-16 {", output
   end
 end

@@ -3,8 +3,8 @@ class GraphTool < Formula
 
   desc "Efficient network analysis for Python 3"
   homepage "https://graph-tool.skewed.de/"
-  url "https://downloads.skewed.de/graph-tool/graph-tool-2.84.tar.bz2"
-  sha256 "c62fbc8511dc8a07643961e7bf2b617e9eb4ef92ca0b6b802d25ce0f9b523b4f"
+  url "https://downloads.skewed.de/graph-tool/graph-tool-2.91.tar.bz2"
+  sha256 "3c850e92b35efdd71ef2abd26d9fe5c0212ec2a07990fbe7323408e127a3fd02"
   license "LGPL-3.0-or-later"
 
   livecheck do
@@ -13,12 +13,12 @@ class GraphTool < Formula
   end
 
   bottle do
-    sha256                               arm64_sequoia: "689f8abf2667eb675941453ef48eabaf27e0f1e0e86e4414dd71268e6116df09"
-    sha256                               arm64_sonoma:  "c7e913610a5338c49b0fb92e11fa6f582256e2bb6ac0f71f74cc580c21e4cdb9"
-    sha256                               arm64_ventura: "0ebe4882793331d6efee9a438f385307a06786e207b1406118057faa28b0cc40"
-    sha256                               sonoma:        "cc63d537097f98a1f69ebf098d123e812e718caaadca4ceb110a70610ed539f8"
-    sha256                               ventura:       "bc26cdfa0a989d2fd7ee3e7551edab48c8d13d5d5a3d0943d5c4ed9a1a96d5c6"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b0b739cd540216a0ad38051382e45ab25a62356c97e2762b002b04c575b0f9d9"
+    sha256                               arm64_sequoia: "6176f2eea0a40489e2378d46637397651119f3ad526ea54957600ae4d2bdd606"
+    sha256                               arm64_sonoma:  "5b3ff6077584d7b08481d9b1c8ac529b1abcc4ac386f11038aeff29a1acad613"
+    sha256                               arm64_ventura: "d1287da26e96483cd93ed5f4b5f3601eec4dc0bc5685b3d2ee0292cabd1c578b"
+    sha256                               sonoma:        "0fc00dec9fdee4e02501ef93ae7b008fbf5f2d1b6ee31e0a66cd1a286322b2e2"
+    sha256                               ventura:       "35095ae32c6a17514fbb93f7638e4985998968c2afc104c3208831657fff350c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a2970f28e5c862f638c412456457c3b20195a28374133abc6bf4ca10a0b7f38f"
   end
 
   depends_on "google-sparsehash" => :build
@@ -64,8 +64,8 @@ class GraphTool < Formula
   end
 
   resource "fonttools" do
-    url "https://files.pythonhosted.org/packages/76/61/a300d1574dc381393424047c0396a0e213db212e28361123af9830d71a8d/fonttools-4.55.3.tar.gz"
-    sha256 "3983313c2a04d6cc1fe9251f8fc647754cf49a61dac6cb1e7249ae67afaafc45"
+    url "https://files.pythonhosted.org/packages/1c/8c/9ffa2a555af0e5e5d0e2ed7fdd8c9bef474ed676995bb4c57c9cd0014248/fonttools-4.56.0.tar.gz"
+    sha256 "a114d1567e1a1586b7e9e7fc2ff686ca542a82769a296cef131e4c4af51e58f4"
   end
 
   resource "kiwisolver" do
@@ -94,8 +94,8 @@ class GraphTool < Formula
   end
 
   resource "setuptools" do
-    url "https://files.pythonhosted.org/packages/ac/57/e6f0bde5a2c333a32fbcce201f906c1fd0b3a7144138712a5e9d9598c5ec/setuptools-75.7.0.tar.gz"
-    sha256 "886ff7b16cd342f1d1defc16fc98c9ce3fde69e087a4e1983d7ab634e5f41f4f"
+    url "https://files.pythonhosted.org/packages/92/ec/089608b791d210aec4e7f97488e67ab0d33add3efccb83a056cbafe3a2a6/setuptools-75.8.0.tar.gz"
+    sha256 "c5afc8f407c626b8313a86e10311dd3f661c6cd9c09d4bf8c15c0e11f9f2b0e6"
   end
 
   resource "six" do
@@ -111,6 +111,9 @@ class GraphTool < Formula
   def python3
     "python3.13"
   end
+
+  # remove obsolete pointer_traits workaround for older libstdc++
+  patch :DATA
 
   def install
     site_packages = Language::Python.site_packages(python3)
@@ -179,3 +182,30 @@ class GraphTool < Formula
     refute_match "Graph drawing will not work", shell_output("#{python3} test.py 2>&1")
   end
 end
+
+__END__
+diff --git a/src/boost-workaround/boost/container/vector_old.hpp b/src/boost-workaround/boost/container/vector_old.hpp
+index c4152c8..f72e646 100644
+--- a/src/boost-workaround/boost/container/vector_old.hpp
++++ b/src/boost-workaround/boost/container/vector_old.hpp
+@@ -3167,20 +3167,6 @@ struct has_trivial_destructor_after_move<boost::container::vector<T, Allocator,
+
+ }
+
+-//See comments on vec_iterator::element_type to know why is this needed
+-#ifdef BOOST_GNU_STDLIB
+-
+-BOOST_MOVE_STD_NS_BEG
+-
+-template <class Pointer, bool IsConst>
+-struct pointer_traits< boost::container::vec_iterator<Pointer, IsConst> >
+-   : public boost::intrusive::pointer_traits< boost::container::vec_iterator<Pointer, IsConst> >
+-{};
+-
+-BOOST_MOVE_STD_NS_END
+-
+-#endif   //BOOST_GNU_STDLIB
+-
+ #endif   //#ifndef BOOST_CONTAINER_DOXYGEN_INVOKED
+
+ #include <boost/container/detail/config_end.hpp>

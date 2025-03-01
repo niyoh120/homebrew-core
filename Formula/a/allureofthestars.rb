@@ -49,8 +49,11 @@ class Allureofthestars < Formula
     (buildpath/"cabal.project.local").write "packages: . sdl2/"
     (buildpath/"sdl2").install resource("sdl2")
 
+    # Workaround for GHC 9.12 until https://github.com/tfausak/witch/issues/117 is fixed
+    args = ["--allow-newer=witch:base,witch:template-haskell"]
+
     system "cabal", "v2-update"
-    system "cabal", "v2-install", *std_cabal_v2_args
+    system "cabal", "v2-install", *args, *std_cabal_v2_args
   end
 
   test do

@@ -2,18 +2,18 @@ class Pulumi < Formula
   desc "Cloud native development platform"
   homepage "https://pulumi.io/"
   url "https://github.com/pulumi/pulumi.git",
-      tag:      "v3.145.0",
-      revision: "01dc024fe7b95651171b3b31c99918de6c43ae9e"
+      tag:      "v3.153.1",
+      revision: "1a3e0cb8da2d4fcb62dba675ac33f5b55bca7d64"
   license "Apache-2.0"
   head "https://github.com/pulumi/pulumi.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "46314b27468d6d712952d1ce3506e078768ea4b358706b865775ea4878d705e3"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1793930fa0f1dbf6580e1bbf45af099563df89f78604d7c0418e95780cb26e76"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "7bcf4bb7149cc68ab99c056e7e2a3fb039da2462b512cef97083d3d258f14dfb"
-    sha256 cellar: :any_skip_relocation, sonoma:        "bddedfe891ea36513a9c1edd1f0960089f7a73b850e16b6f8a8f88603cdce131"
-    sha256 cellar: :any_skip_relocation, ventura:       "67203b642f95b46c9bb3ce65b71e6c5451d16363dfd3dda650e7aa103803498b"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d6782031df73bfbb4303b3f76a130f5a42756222eb12bec4e7d7a50a8c17259d"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c1759c3deeb86d32b9f1837b630ba9e175d0523a79a050ad462386ee4e8eebb5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "72a0a178c0870b32e60a77b1f82e4a6b51fad92805bc1e84a969a12b3e60e033"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "cd38d6c88f4a44b23ca9ceac84aa431c6cb15b09d8bce6292804089309c6f024"
+    sha256 cellar: :any_skip_relocation, sonoma:        "c8d1590d878b69eec7ab99758934400e3c3cdde9c409a81c90c86897147f2aee"
+    sha256 cellar: :any_skip_relocation, ventura:       "23add9224e949a8c2b0e0752d709f919fa8f04823b9f8771c72059abff5d961c"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "30158026006e50810acf8f7137422cd3d926a29d313f1b5fa08f7382d398a218"
   end
 
   depends_on "go" => :build
@@ -39,6 +39,6 @@ class Pulumi < Formula
     ENV["PULUMI_TEMPLATE_PATH"] = testpath/"templates"
     system bin/"pulumi", "new", "aws-typescript", "--generate-only",
                                                      "--force", "-y"
-    assert_predicate testpath/"Pulumi.yaml", :exist?, "Project was not created"
+    assert_path_exists testpath/"Pulumi.yaml", "Project was not created"
   end
 end

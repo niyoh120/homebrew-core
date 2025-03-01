@@ -1,16 +1,16 @@
 class Faircamp < Formula
   desc "Static site generator for audio producers"
   homepage "https://codeberg.org/simonrepp/faircamp"
-  url "https://codeberg.org/simonrepp/faircamp/archive/1.1.0.tar.gz"
-  sha256 "9fb94271d8060a80689e968d906ff486aa54f3aa45165b0c5b4223de8ffc3e3e"
+  url "https://codeberg.org/simonrepp/faircamp/archive/1.2.0.tar.gz"
+  sha256 "4aecd8ea0b9a975fd8880ac75829d3f8611abd853a0bf40512b7e8cec450d2c8"
   license "AGPL-3.0-or-later"
 
   bottle do
-    sha256 cellar: :any, arm64_sequoia: "250e55656000ac6d80b977fbba898888d8d8963b241100ddb3c9fffd16385779"
-    sha256 cellar: :any, arm64_sonoma:  "9dcb235e1b95e70eddbf7a58a60b74882c2f03559092a98d2811ea36aaccc19b"
-    sha256 cellar: :any, arm64_ventura: "d44c8c2d7422711d7c02453430bfa25b835ab6a8d99ea3b2fb3d546c5ad8bfe8"
-    sha256 cellar: :any, sonoma:        "ee492542e33a265dcee97db9e70a94fdd75c4a245b3593143629db400dcfc18a"
-    sha256 cellar: :any, ventura:       "94d2fd3222754771856cc6fdf81b42c272eb115744cd976389d2bc1b9abb456f"
+    sha256 cellar: :any, arm64_sequoia: "bbdd3d54344268377c388af5c043920fe78ced6e0b647ff20e3bd33a2364b1bd"
+    sha256 cellar: :any, arm64_sonoma:  "d4c7d3655cb5927bf065322af0f851e8f766dfe0b9da0a9fe6d675bee952f41f"
+    sha256 cellar: :any, arm64_ventura: "b0fb2eeeb9b76f212c34312d5ceba0780373f686e6f6d4f4fbb13ed983664d69"
+    sha256 cellar: :any, sonoma:        "db5653355b984de39d47e19cd85c4dc1da0e509657f505355e4cba4750f0249e"
+    sha256 cellar: :any, ventura:       "bd7f5330d2eeffd884c7fb2c4aa6d85821e7673e993c685edde3670294a8e327"
   end
 
   depends_on "opus" => :build
@@ -55,9 +55,9 @@ class Faircamp < Formula
     assert_path_exists output_dir/"favicon.svg"
     assert_path_exists output_dir/"album"/"index.html"
     assert_path_exists output_dir/"album"/"cover_1.jpg"
-    assert_path_exists output_dir/"album"/"opus-96"/"ASINtk0hKII"/"01 Track01.opus"
-    assert_path_exists output_dir/"album"/"opus-96"/"uWPoxZFX0kQ"/"02 Track02.opus"
-    assert_path_exists output_dir/"album"/"mp3-v5"/"1syLQAjRlm8"/"01 Track01.mp3"
-    assert_path_exists output_dir/"album"/"mp3-v5"/"zh4GTzy3VT0"/"02 Track02.mp3"
+    assert_path_exists output_dir/"album"/"1"/"opus-96"/"8zjo5mMqlmM"/"01 Track01.opus"
+    assert_path_exists output_dir/"album"/"2"/"opus-96"/"visBSotimzQ"/"02 Track02.opus"
+    assert_path_exists output_dir/"album"/"1"/"mp3-v5"/"tbscAvvooxg"/"01 Track01.mp3"
+    assert_path_exists output_dir/"album"/"2"/"mp3-v5"/"d3t6L5fUbXg"/"02 Track02.mp3"
   end
 end

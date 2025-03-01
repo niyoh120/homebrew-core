@@ -1,17 +1,17 @@
 class Promptfoo < Formula
   desc "Test your LLM app locally"
   homepage "https://promptfoo.dev/"
-  url "https://registry.npmjs.org/promptfoo/-/promptfoo-0.103.3.tgz"
-  sha256 "68a2ea0c403ba1cf5537d705394728a56d66123a95c34714cbb502deba9f08c0"
+  url "https://registry.npmjs.org/promptfoo/-/promptfoo-0.105.1.tgz"
+  sha256 "3b2a1283476f6a439de3badd7b35b821462e88078e10e1754e715b92956b044d"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c6cc03f50d8c7bbe533699f6231285743eb4918fcbc6ba7b5d39a3cf4008b05e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "f3637adc56a07990d1352eeedbc7de7f74aafd7f3c2e5620eb944226384ac384"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "78e5f6527829d1e30244bca7aba1a418f13b260df5b2c6e5175ebdbeca70f211"
-    sha256 cellar: :any_skip_relocation, sonoma:        "d3d5ff345c0611a7c68d020125317a9d8f53361b5639c7cf77d844749d74e6fd"
-    sha256 cellar: :any_skip_relocation, ventura:       "049d7440dbee0d7e65cf03942c68464f04e2ab475782ebbd45170e262d40b346"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "cfb412b54a2fbdcfd561ac4dbfd5e94a139121a7bbd7cf473a8c38c65d49beae"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "ab6e8f0ddf60965c41e81bc7118a8049e30c0b22fcce240eef772a68e874f40b"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "d9a4b4a9f1edc981b6496474ef41a7d71e185aa893c665ed1059e77d15ca55da"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "b1bde36e9d8cd171a8ee26bcff25f48b647054be0321b3f67cf9aa37d325fc78"
+    sha256 cellar: :any_skip_relocation, sonoma:        "7a3c05354640fd4642678b19efc669a60ac43ac1e5e5bf790bc07accb4c13dcc"
+    sha256 cellar: :any_skip_relocation, ventura:       "77381317e233f2d83d26c390480cbe9de189ef227bdf354c4568b9a5496d36e1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c80d0214b5231eca5fae1727e86d657cfffe5031253b484596b6c0bea5e1bcb9"
   end
 
   depends_on "node"
@@ -25,7 +25,7 @@ class Promptfoo < Formula
     ENV["PROMPTFOO_DISABLE_TELEMETRY"] = "1"
 
     system bin/"promptfoo", "init", "--no-interactive"
-    assert_predicate testpath/"promptfooconfig.yaml", :exist?
+    assert_path_exists testpath/"promptfooconfig.yaml"
     assert_match "description: \"My eval\"", (testpath/"promptfooconfig.yaml").read
 
     assert_match version.to_s, shell_output("#{bin}/promptfoo --version")

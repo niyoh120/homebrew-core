@@ -1,17 +1,17 @@
 class SpirvLlvmTranslator < Formula
   desc "Tool and a library for bi-directional translation between SPIR-V and LLVM IR"
   homepage "https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
-  url "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v19.1.3.tar.gz"
-  sha256 "cf702ec5a1c8e1ac3bfc999c1207e753fe8f972cb7d9608110b2f54ac4f0572c"
+  url "https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v19.1.5.tar.gz"
+  sha256 "6c0e5784a0f639be80755bc7c7e2fedabf0e8511c49e50208b91c4a05a6a19bc"
   license "Apache-2.0" => { with: "LLVM-exception" }
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "ea6973155952cf893afc7ea46da3404503e0300c3e6d2021477c314db93479dd"
-    sha256 cellar: :any,                 arm64_sonoma:  "64d2e3570ef652b3dcbe87cd6f96b07bc35c55995a5ee5a2a36e0a7c5dc2ab00"
-    sha256 cellar: :any,                 arm64_ventura: "5127a251215af57f26ff1a8014a3bf9589b85631906d1d3bad737aaf53c4c267"
-    sha256 cellar: :any,                 sonoma:        "1f09a8a96b309c5db532752e4fbb9952aaf5421de5e598740d0ef0ff9aa8a3c8"
-    sha256 cellar: :any,                 ventura:       "ce421c3b374e58f054317878d65c1abf6573cb52c7720299d0c8359c1fb9f2db"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b131ee37d4abef7c7f3ec961fc876359d7126efee2fc2e168342071cd249f174"
+    sha256 cellar: :any,                 arm64_sequoia: "801e35556df4e560113a5170d9ee2fc4fa869a1d665c565e0eb3138b303cf59c"
+    sha256 cellar: :any,                 arm64_sonoma:  "88875debb4ec50a35b463f63d1c4c3cc26b7f724ef5d82449ff740fb76d439c3"
+    sha256 cellar: :any,                 arm64_ventura: "cab295465cf0e1449325ee52bf913f5e5a43abb2843c9adb6431c92e9a01999d"
+    sha256 cellar: :any,                 sonoma:        "d868a34f9ade1b66f93ed4f26ddfe5a589849b57b3f2524ff90f3cd2f228545b"
+    sha256 cellar: :any,                 ventura:       "c4c902b3f5f7f3288112296feb0f344752081c9909d5675d947de1009e4cadf2"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b620ca2dd90050f572d1c20764a41f021975f4cb7bd74c3f749667333054aa1e"
   end
 
   depends_on "cmake" => :build

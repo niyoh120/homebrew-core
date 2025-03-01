@@ -1,8 +1,8 @@
 class CodeCli < Formula
   desc "Command-line interface built-in Visual Studio Code"
   homepage "https://github.com/microsoft/vscode"
-  url "https://github.com/microsoft/vscode/archive/refs/tags/1.96.2.tar.gz"
-  sha256 "0de50a01a2fea9236e1b0151deaba3cdcf9157dde7060a915490c21ed03c6847"
+  url "https://github.com/microsoft/vscode/archive/refs/tags/1.97.2.tar.gz"
+  sha256 "6bbb7144e11fefe06418c1f3671a877794a7513c2add85121f560dc686c31351"
   license "MIT"
   head "https://github.com/microsoft/vscode.git", branch: "main"
 
@@ -12,12 +12,12 @@ class CodeCli < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "5e710e5bafe4c7663d6ce6fe8954f599f9539914c8b97071d8003d5143fcb2db"
-    sha256 cellar: :any,                 arm64_sonoma:  "8738f995b63b17b939d6ab41108980f73ee48ab8f6b54d1e143710ab3068d795"
-    sha256 cellar: :any,                 arm64_ventura: "f22bff8b09d6be70601708519ca0f2196fc9ddeca5f603aa7ad86d394f624976"
-    sha256 cellar: :any,                 sonoma:        "618db05f0ed8d8814a613b13a1754b97221684a41056aea0d5aae5de7fb39b25"
-    sha256 cellar: :any,                 ventura:       "cb217c16fe576c322ed7f5d55e371c880a514c39fa80d1f8c22ff3690a0e8bb4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a1fecd5da01ae8e611102f7ad9aff2dbe7d6b92556c8269584a0ae655df85f50"
+    sha256 cellar: :any,                 arm64_sequoia: "0173bdcfc9b6ee59defa798900d65989a40b6758a17eca6d00b0fafd48b42e6d"
+    sha256 cellar: :any,                 arm64_sonoma:  "4821ca30fcf66157c39712999adea51adf8c67eaf32be6122ce779d817fd93cd"
+    sha256 cellar: :any,                 arm64_ventura: "879cfc3c1c8c9e059298b0d68b1beeb3051a6a76ceb8d0d988197a8cee0de2ca"
+    sha256 cellar: :any,                 sonoma:        "4c7b7f52ae31900ad0f895a6535d9f8879cc32a1c7de93d4571a366feab22b2f"
+    sha256 cellar: :any,                 ventura:       "10dbf1abbf7d558c110dc5a3db73a331a95509c11dcd67debf0afa704659efed"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8d88660c54a78b941da884d674f3ef288a85b58d5d8a8f52ec3ed1a3bd3f6319"
   end
 
   depends_on "rust" => :build
@@ -45,15 +45,9 @@ class CodeCli < Formula
     end
   end
 
-  def check_binary_linkage(binary, library)
-    binary.dynamically_linked_libraries.any? do |dll|
-      next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
-
-      File.realpath(dll) == File.realpath(library)
-    end
-  end
-
   test do
+    require "utils/linkage"
+
     assert_match "Successfully removed all unused servers",
       shell_output("#{bin}/code tunnel prune")
     assert_match version.to_s, shell_output("#{bin}/code --version")
@@ -64,7 +58,7 @@ class CodeCli < Formula
     ]
 
     linked_libraries.each do |library|
-      assert check_binary_linkage(bin/"code", library),
+      assert Utils.binary_linked_to_library?(bin/"code", library),
              "No linkage with #{library.basename}! Cargo is likely using a vendored version."
     end
   end

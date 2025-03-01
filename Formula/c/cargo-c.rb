@@ -1,10 +1,9 @@
 class CargoC < Formula
   desc "Helper program to build and install c-like libraries"
   homepage "https://github.com/lu-zero/cargo-c"
-  url "https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.7.tar.gz"
-  sha256 "c4532dd2bf23769df5f64649d5b0c037fb2a29467c74d16a54bad3054d9f3f3a"
+  url "https://github.com/lu-zero/cargo-c/archive/refs/tags/v0.10.11.tar.gz"
+  sha256 "8a6d6dc589d6d70bd7eb95971e3c608240e1f9c938dd5b54a049977333b59f05"
   license "MIT"
-  revision 1
 
   livecheck do
     url :stable
@@ -12,12 +11,12 @@ class CargoC < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "8aec96a2dce142fbe7f95ab307f1db7b97461e8015883540ff5e3f1ea81e87d2"
-    sha256 cellar: :any,                 arm64_sonoma:  "d35a8a6e883a1c24edaae1859c95538203949b37797ba889d86f0ede922ed70b"
-    sha256 cellar: :any,                 arm64_ventura: "472d2114a047824e76ad513d80091d232b88409ca5e55a893a48cc5614efd2c1"
-    sha256 cellar: :any,                 sonoma:        "af9bcc231409f9459314350d12028555f625952dabe4959fe6fe408cf83a421e"
-    sha256 cellar: :any,                 ventura:       "09f6635f2e7d963d798d1229508d2cf3ce98a067c666586889a4c3bce5aa51d1"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9a65e5792a0cef75b7fe70f1bf738b752d6cac6798e108a87441b67b50ff39fe"
+    sha256 cellar: :any,                 arm64_sequoia: "72922f9c6392a632e273f4c5ccb3fcfcd244a40be53c86c3b6db568e41843c6d"
+    sha256 cellar: :any,                 arm64_sonoma:  "2f7695eb2b1076b9300adfde23ea2fe15227500823687969a7f9eb4390616abb"
+    sha256 cellar: :any,                 arm64_ventura: "6d31ed9a27a0d2609bf55af6c6a01671bdeab5e45b79b1a3be17c19633a6a2b0"
+    sha256 cellar: :any,                 sonoma:        "762a8cea56c31c21404c17cada0a25ab162c2bb6a8296be4dd337efc5ff79bf5"
+    sha256 cellar: :any,                 ventura:       "1cf30254d83901dbfa27cbf8585cc0d027d0cf15e725c08c585302c206d1e30b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "836cb915f1bfa3ed234d56b364027f8dc00f0c80916bace72688bbd2376abeb3"
   end
 
   depends_on "pkgconf" => :build
@@ -42,15 +41,9 @@ class CargoC < Formula
     system "cargo", "install", *std_cargo_args
   end
 
-  def check_binary_linkage(binary, library)
-    binary.dynamically_linked_libraries.any? do |dll|
-      next false unless dll.start_with?(HOMEBREW_PREFIX.to_s)
-
-      File.realpath(dll) == File.realpath(library)
-    end
-  end
-
   test do
+    require "utils/linkage"
+
     cargo_error = "could not find `Cargo.toml`"
     assert_match cargo_error, shell_output("#{bin}/cargo-cinstall cinstall 2>&1", 1)
     assert_match cargo_error, shell_output("#{bin}/cargo-cbuild cbuild 2>&1", 1)
@@ -61,7 +54,7 @@ class CargoC < Formula
       Formula["openssl@3"].opt_lib/shared_library("libssl"),
       Formula["openssl@3"].opt_lib/shared_library("libcrypto"),
     ].each do |library|
-      assert check_binary_linkage(bin/"cargo-cbuild", library),
+      assert Utils.binary_linked_to_library?(bin/"cargo-cbuild", library),
              "No linkage with #{library.basename}! Cargo is likely using a vendored version."
     end
   end

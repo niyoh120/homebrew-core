@@ -1,18 +1,18 @@
 class Pandoc < Formula
   desc "Swiss-army knife of markup format conversion"
   homepage "https://pandoc.org/"
-  url "https://github.com/jgm/pandoc/archive/refs/tags/3.6.1.tar.gz"
-  sha256 "85e685ee8c8407ea40844145df3cbc1e8469e861dc3454f86dbfd23122aa27e6"
+  url "https://github.com/jgm/pandoc/archive/refs/tags/3.6.3.tar.gz"
+  sha256 "5e5d78b79f86454cb542246d318682f26e0959e8f1aa068b3645832f8d5ed170"
   license "GPL-2.0-or-later"
   head "https://github.com/jgm/pandoc.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1cbb4e2faa8250ae48bb49491ebfacb859be3ea358823565574dbb4abf26753e"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1269e7acc3f99ede93bbd5afe59471437b3409c1e87b956f35d295808480f3af"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "909f840a955ae3a0da53a16b3295964b86d8f00a6f53bab1ee8d132527c27bdd"
-    sha256 cellar: :any_skip_relocation, sonoma:        "f285d09ecd8b5cededf7d3ee7c2a398c2314d79df9e28a60235c7de57621af65"
-    sha256 cellar: :any_skip_relocation, ventura:       "cfbcfa05baadaa521d76d3b5f69c35267dc4875d313353d8a09f00f7f732bb51"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "4e2f9c98f06d73535aa3ad16d491ed515421fd9cbc41a3ebf85de503c92dcd41"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7a6ba097780a58e63cf6714efef40fbca646039f4b7845bedb31025e6a59861c"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "0681e327c205488bafe163c61170a6d4c215672bcd59cdeb90b0ae8baa3b566a"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "f76afd990901d6bb1d67c8d16205a1a42586b193f6caecd55e08c323a28ad3f8"
+    sha256 cellar: :any_skip_relocation, sonoma:        "9de1ea9dc85019dcb400bcc5587982cfe7533e6992d154d269ecc2dedf44c424"
+    sha256 cellar: :any_skip_relocation, ventura:       "3bc2042ca2277fb29fcb3602a2198fb2606d819da3faf1f2ec75db62cfd50747"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b0e1f7b9c16dfe58d23e67e4807a5c60909bd9916e5754a0b5cf6f793ddf6350"
   end
 
   depends_on "cabal-install" => :build

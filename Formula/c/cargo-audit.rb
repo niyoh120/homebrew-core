@@ -1,8 +1,8 @@
 class CargoAudit < Formula
   desc "Audit Cargo.lock files for crates with security vulnerabilities"
   homepage "https://rustsec.org/"
-  url "https://github.com/rustsec/rustsec/archive/refs/tags/cargo-audit/v0.21.0.tar.gz"
-  sha256 "343242874edd00c2aa49c7481af0c4735ebcf682d04710f0c02a56a9015f6092"
+  url "https://github.com/rustsec/rustsec/archive/refs/tags/cargo-audit/v0.21.2.tar.gz"
+  sha256 "caf8914af7f95ebb45590c95b5f9bfd71bd6f9f57c1ffcf69dc9d20f0430e578"
   license any_of: ["Apache-2.0", "MIT"]
   head "https://github.com/rustsec/rustsec.git", branch: "main"
 
@@ -12,12 +12,12 @@ class CargoAudit < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "0d8b35b5ed9aaaa17e8b67f037a02823477b81f0510880469dfb19e8dfdac53b"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "a71c3d0f60e9a03f06736ef8da99cd3972bb843c4ee0a0eec5d5c9616ed309c9"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b6147d9a1d314491ec1944b9c14a812a781ba0f0f98e8efe536eb162b54dc0a0"
-    sha256 cellar: :any_skip_relocation, sonoma:        "b4869aa826a6e54647453f3ff38902de373f533a2c9a9bb8e020109c0364b9f5"
-    sha256 cellar: :any_skip_relocation, ventura:       "f7ebf6b00cfce35080e30e96ee1f42d81e2ce50dc56909c1109dcfa3684fe751"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "99578791cd07f067b67f092cd7e6362dffbff0ed7e542ce5bc055d25cf2bc8bf"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1026c4533d050573d5230be68488a2e1eebd86511c1e81875556ab85881a39fe"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "16ec648c09d2370224edb174d362c38328dc785531eb14824ee190cbf84e30fb"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "89259c963f1c699e2772d82def2c258ec0cbb5ef966838c3d75027b4eb98be11"
+    sha256 cellar: :any_skip_relocation, sonoma:        "30e3f669b10268c7b6c28841cfd249296c7c0a16fbc70fd3e60885dc465f313a"
+    sha256 cellar: :any_skip_relocation, ventura:       "36bd51b1a6055e1fbf190e1cf2c746b83056a9f6d32eab537800c0938461572e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "c01871584f36e0bfd0da80de286069e9102f34c4098618cb461d7457c6364d63"
   end
 
   depends_on "rust" => :build
@@ -37,7 +37,7 @@ class CargoAudit < Formula
 
   test do
     output = shell_output("#{bin}/cargo-audit audit 2>&1", 2)
-    assert_predicate HOMEBREW_CACHE/"cargo_cache/advisory-db", :exist?
+    assert_path_exists HOMEBREW_CACHE/"cargo_cache/advisory-db"
     assert_match "not found: Couldn't load Cargo.lock", output
 
     cp_r "#{pkgshare}/support/base64_vuln/.", testpath

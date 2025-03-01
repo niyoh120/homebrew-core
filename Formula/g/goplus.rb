@@ -1,8 +1,8 @@
 class Goplus < Formula
   desc "Programming language for engineering, STEM education, and data science"
   homepage "https://goplus.org"
-  url "https://github.com/goplus/gop/archive/refs/tags/v1.2.6.tar.gz"
-  sha256 "51db5c4116fd229d7cd65c3b45552dc0cd7aa9c89798a9ba71ae2f0f243c7f05"
+  url "https://github.com/goplus/gop/archive/refs/tags/v1.3.5.tar.gz"
+  sha256 "3534daa7e530af7b96001f489c1026757590e2d8b43c483633635101ef982b8c"
   license "Apache-2.0"
   head "https://github.com/goplus/gop.git", branch: "main"
 
@@ -12,14 +12,12 @@ class Goplus < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia:  "fe0832efcd98cc11821ead934130a36a38b58990ca730a1a5ac266abd17d7cd8"
-    sha256 arm64_sonoma:   "30286ecee2169db6a0e94bba10db54b4e64f1b7d9515645577b63792fafd9717"
-    sha256 arm64_ventura:  "82b9263ee8902427ae05adef43e88d03b706d7777e3fa642b2469a28824e30d2"
-    sha256 arm64_monterey: "41709633aaebd432c31033b3aaa859244e82916f121533c503124afdbaf8fcac"
-    sha256 sonoma:         "47c58fe9d037ebb24bd73a19b27465393be5f266fca5675a9064f0cdfa18548c"
-    sha256 ventura:        "99f652be78900129bb9fd131df5c8b6b8b40630c71f4447c75288b5c65e3c510"
-    sha256 monterey:       "ab73c20e21526ee3b2e6f905f9a14a29e56f292b61c8f8ab9dc7e4ce10491e80"
-    sha256 x86_64_linux:   "ae23a9efa61937f365d0d248e8da1b210de1e31d49ad6d89a9940eeb64c17162"
+    sha256 arm64_sequoia: "70d4814e1abc891b2f45ae0eb181ce378f69d74b0dd9e79153c96bacf9da8f79"
+    sha256 arm64_sonoma:  "a1a6c7e825903a396d6381d8e03b7c251b5e1e94d71be019ce2b70c4b9383263"
+    sha256 arm64_ventura: "5714291116ba39ad1cc884ea7a1f1749d0acca6df6a1d9a1b99d04bd3220f035"
+    sha256 sonoma:        "5345c05ece1a1cf65e3b833e536bbb81872a5ed60ad0e08e07256512f70734bc"
+    sha256 ventura:       "641516cdc902dedaa625c7cafb04fe6a94a1396b9707171efcc0c36e8da4703f"
+    sha256 x86_64_linux:  "2d892d6bce2cc174e8efa0e77623d57eae04e45122d95b0980188cd34b5c76fb"
   end
 
   depends_on "go"
@@ -42,7 +40,7 @@ class Goplus < Formula
 
     assert_equal "v#{version}", shell_output("#{bin}/gop env GOPVERSION").chomp
     system bin/"gop", "fmt", "hello.gop"
-    assert_equal "Hello World\n", shell_output("#{bin}/gop run hello.gop")
+    assert_equal "Hello World\n", shell_output("#{bin}/gop run hello.gop 2>&1")
 
     (testpath/"go.mod").write <<~GOMOD
       module hello
@@ -50,6 +48,6 @@ class Goplus < Formula
 
     system "go", "get", "github.com/goplus/gop/builtin"
     system bin/"gop", "build", "-o", "hello"
-    assert_equal "Hello World\n", shell_output("./hello")
+    assert_equal "Hello World\n", shell_output("./hello 2>&1")
   end
 end

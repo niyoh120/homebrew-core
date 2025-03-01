@@ -2,17 +2,17 @@ class Azqr < Formula
   desc "Azure Quick Review"
   homepage "https://azure.github.io/azqr/"
   url "https://github.com/Azure/azqr.git",
-      tag:      "v.2.0.4",
-      revision: "4891102e05bf35064017eacdbc5415b92a39795e"
+      tag:      "v.2.4.0",
+      revision: "4fd83411f9b285a8f5b5038c0396726eb65cef82"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "9fe387fb54b38d927467721572d04fa2d5b0eaaa5473bbc43da0de90d9e66a4d"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9fe387fb54b38d927467721572d04fa2d5b0eaaa5473bbc43da0de90d9e66a4d"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "9fe387fb54b38d927467721572d04fa2d5b0eaaa5473bbc43da0de90d9e66a4d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "7db8e17e2c70e6130efaad71eb47ee692287de96e12bca0319f70b6ee2e2e993"
-    sha256 cellar: :any_skip_relocation, ventura:       "7db8e17e2c70e6130efaad71eb47ee692287de96e12bca0319f70b6ee2e2e993"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "15c3fd690c8100b228c68d531cefd7ef3ca1266b34d538fa19aa52267bdb709b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "7703b945a6707eb17dbd587140397ad4b41ac1e8cdd54d7fff33690bdb68afd5"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7703b945a6707eb17dbd587140397ad4b41ac1e8cdd54d7fff33690bdb68afd5"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "7703b945a6707eb17dbd587140397ad4b41ac1e8cdd54d7fff33690bdb68afd5"
+    sha256 cellar: :any_skip_relocation, sonoma:        "e83e0063a69f05d52c16819278f108d7f59c53635bdb1d8fdbb7ba8c9aec21c3"
+    sha256 cellar: :any_skip_relocation, ventura:       "e83e0063a69f05d52c16819278f108d7f59c53635bdb1d8fdbb7ba8c9aec21c3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b873052cdd5adc7c2826ceb9d565eddb395a9541a4d77858ba1b7dd6e5a061bf"
   end
 
   depends_on "go" => :build

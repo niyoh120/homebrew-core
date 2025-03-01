@@ -1,24 +1,32 @@
 class YaraX < Formula
   desc "Tool to do pattern matching for malware research"
   homepage "https://virustotal.github.io/yara-x/"
-  url "https://github.com/VirusTotal/yara-x/archive/refs/tags/v0.12.0.tar.gz"
-  sha256 "f73f7c3d2b38e7190d9b588bbc4eb6664123cd95a10c30e198f0653da1db8932"
+  url "https://github.com/VirusTotal/yara-x/archive/refs/tags/v0.13.0.tar.gz"
+  sha256 "906a40675136e9a911e3c1c239b9e340823e6952c3b69bfe980f3b1ed0a74835"
   license "BSD-3-Clause"
   head "https://github.com/VirusTotal/yara-x.git", branch: "main"
 
-  bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "c11ca224f89e699dcfa63955e012992e7e00d3168fbfeda85778bb8b7308c456"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "2654f91b33d943709fdb53f404734d1f860ab5a057895ad0ef702ad9f451f538"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "ea3de5b2f6c193a7b76d48a6217556be731e4f177967738c4285c7d1bf9fc60f"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5193d8f4e3d614c7a3f973822b61590ef8a159d941f6cd7a73831a184ea88cc6"
-    sha256 cellar: :any_skip_relocation, ventura:       "ea70418bd8a8109b21f74ce340939a5a0aff36a0750b8812c0d18632e5e4742a"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "dd8ec8bd9807a760e9d048969158301e2680168f1479865723ea1eb94db49215"
+  livecheck do
+    url :stable
+    strategy :github_latest
   end
 
+  bottle do
+    sha256 cellar: :any,                 arm64_sequoia: "da4535c1bfe97f1257dbe2506b747115319712c256b54351eac7ad68258bb2c7"
+    sha256 cellar: :any,                 arm64_sonoma:  "7f06e1a079d6eeb0a6b457b59299e30375a8ae26fea6a7773530c736668541bb"
+    sha256 cellar: :any,                 arm64_ventura: "d6ef649b8374ede038e59cfba663423554aece8b93c6c52385b95bf6dfe55516"
+    sha256 cellar: :any,                 sonoma:        "5e21edf6c3b75091b1da231946432ea864955298b6428b3042444b9cd445486e"
+    sha256 cellar: :any,                 ventura:       "62c27f520179bcd673b76e89853eccee3b71db4bf118d82a22a01e0156c25a7a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "64889d8e0020ce4dfa9417dabb1006c97c6010e821f686d5f29bc7a62482b66c"
+  end
+
+  depends_on "cargo-c" => :build
   depends_on "rust" => :build
 
   def install
     system "cargo", "install", *std_cargo_args(path: "cli")
+    system "cargo", "cinstall", "-p", "yara-x-capi", "--jobs", ENV.make_jobs.to_s, "--release",
+                    "--prefix", prefix, "--libdir", lib
 
     generate_completions_from_executable(bin/"yr", "completion")
   end

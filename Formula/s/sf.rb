@@ -1,8 +1,8 @@
 class Sf < Formula
   desc "Command-line toolkit for Salesforce development"
   homepage "https://developer.salesforce.com/tools/salesforcecli"
-  url "https://registry.npmjs.org/@salesforce/cli/-/cli-2.70.7.tgz"
-  sha256 "c859bb30e8eadcdc90076442a9b3db541db02c774592038ffbf01be56b7ecead"
+  url "https://registry.npmjs.org/@salesforce/cli/-/cli-2.78.3.tgz"
+  sha256 "97c87ceae00bf8645c51bd92ae68b4c43f6c17a1c504e4b171f8e5dbb5b75c21"
   license "BSD-3-Clause"
 
   livecheck do
@@ -13,12 +13,12 @@ class Sf < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
-    sha256 cellar: :any_skip_relocation, sonoma:        "5939a2af15cfcb863a6d2f21e4e4cd2fcc7c729cba322abcb34883132d9e0b5f"
-    sha256 cellar: :any_skip_relocation, ventura:       "5939a2af15cfcb863a6d2f21e4e4cd2fcc7c729cba322abcb34883132d9e0b5f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b91d5a371d48aa871bb0ea1674b69c566e42d4faaffcfde8ce8bba545c43de64"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "3dd802e95b0e5ea6b7ea0b4f77a2dcec6950a538d07feec25a1954cd7d0453c1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3dd802e95b0e5ea6b7ea0b4f77a2dcec6950a538d07feec25a1954cd7d0453c1"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "3dd802e95b0e5ea6b7ea0b4f77a2dcec6950a538d07feec25a1954cd7d0453c1"
+    sha256 cellar: :any_skip_relocation, sonoma:        "31199404045cb9301e0f58219a5af723b0b768bc3810682fbc2a297d9fa03f6f"
+    sha256 cellar: :any_skip_relocation, ventura:       "31199404045cb9301e0f58219a5af723b0b768bc3810682fbc2a297d9fa03f6f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3dd802e95b0e5ea6b7ea0b4f77a2dcec6950a538d07feec25a1954cd7d0453c1"
   end
 
   depends_on "node"
@@ -30,10 +30,10 @@ class Sf < Formula
 
   test do
     system bin/"sf", "project", "generate", "-n", "projectname", "-t", "empty"
-    assert_predicate testpath/"projectname", :exist?
-    assert_predicate testpath/"projectname/config/project-scratch-def.json", :exist?
-    assert_predicate testpath/"projectname/README.md", :exist?
-    assert_predicate testpath/"projectname/sfdx-project.json", :exist?
-    assert_predicate testpath/"projectname/.forceignore", :exist?
+    assert_path_exists testpath/"projectname"
+    assert_path_exists testpath/"projectname/config/project-scratch-def.json"
+    assert_path_exists testpath/"projectname/README.md"
+    assert_path_exists testpath/"projectname/sfdx-project.json"
+    assert_path_exists testpath/"projectname/.forceignore"
   end
 end

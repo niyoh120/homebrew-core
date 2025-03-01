@@ -1,18 +1,18 @@
 class Ocicl < Formula
   desc "OCI-based ASDF system distribution and management tool for Common Lisp"
   homepage "https://github.com/ocicl/ocicl"
-  url "https://github.com/ocicl/ocicl/archive/refs/tags/v2.5.16.tar.gz"
-  sha256 "da6d6b51ab4b5160c461f94713f3a6860bb0ef964306f5930ee2325a88a58ab4"
+  url "https://github.com/ocicl/ocicl/archive/refs/tags/v2.5.20.tar.gz"
+  sha256 "a5e87e5880bb5415e9a4cdff4fd4334fc2a19a497c7aca469f359f57675eb913"
   license "MIT"
-  revision 1
+  revision 2
 
   bottle do
-    sha256 arm64_sequoia: "7a6718603a13fa4ae8a07bdb830dfd4edaedbd8ce24b2e603e1af86e0ddde9f5"
-    sha256 arm64_sonoma:  "f80fbcf90990d2d1e26eac1fd87e8cdb257bd7f94430a7012c24019aadd30563"
-    sha256 arm64_ventura: "dd361b92c2ca039f1d11628585d558561528d7f17011cb4ea7028dc9b5d6d59b"
-    sha256 sonoma:        "b671aa86eff66f7ddf8e7ac1354d88b024ecea9dfe5619bb41d5088ac51af12f"
-    sha256 ventura:       "f336cfac8a501f1da5a484dbdc98c8824099414990cfd51f3edc878418f6954a"
-    sha256 x86_64_linux:  "1098533b721c8f4b4ec75aa0d9386709e55372ab8996267448e3af40c6ebee61"
+    sha256 arm64_sequoia: "3dda4811946bb1d55f4cd1343c134e73ec150b98ea96f537ab0db6b73251ef28"
+    sha256 arm64_sonoma:  "78789ffe7b592a817ee761c13e8f782b9aa70aa5fc63cf6f6832b42f6d9b3190"
+    sha256 arm64_ventura: "e27634cf43e8db268c7e93e38cf399d98fcac7ed1b32a299d0160c93b2de862e"
+    sha256 sonoma:        "b69e9206a39c45a82ac64c6a420f16560eba9e9e5d05a47af4fd4146321faf46"
+    sha256 ventura:       "905cb4e2dc6d00624bc0b3163ed758e19125c5d2fa0fc15d65451153502ab381"
+    sha256 x86_64_linux:  "6d6227a5a26879cbb942588c9b3d947becd5f0ea1c081a58a8fb66feffc0380d"
   end
 
   depends_on "sbcl"
@@ -48,7 +48,7 @@ class Ocicl < Formula
 
   test do
     system bin/"ocicl", "install", "chat"
-    assert_predicate testpath/"systems.csv", :exist?
+    assert_path_exists testpath/"systems.csv"
 
     version_files = testpath.glob("systems/cl-chat*/_00_OCICL_VERSION")
     assert_equal 1, version_files.length, "Expected exactly one _00_OCICL_VERSION file"

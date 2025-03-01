@@ -1,26 +1,29 @@
 class Cabin < Formula
   desc "Package manager and build system for C++"
   homepage "https://github.com/cabinpkg/cabin"
-  url "https://github.com/cabinpkg/cabin/archive/refs/tags/0.11.1.tar.gz"
-  sha256 "3c9bd2898e6fe692eb988dc71f22214ff938255ef2282d5d7d9c6bdf149d173f"
+  url "https://github.com/cabinpkg/cabin/archive/refs/tags/0.12.1.tar.gz"
+  sha256 "a8e038452b28880a464885dcbfe515441e0a066e673d3cce5df46871ad4fa38f"
   license "Apache-2.0"
   head "https://github.com/cabinpkg/cabin.git", branch: "main"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "5754d0589d88d6cf7fd750294db721658108f990e4938f59111f28aa9ccb4114"
-    sha256 cellar: :any,                 arm64_sonoma:  "83378766e873a19d9a4a152b5fc7d2a4544fa652cf057f36cbbe31e2158eebea"
-    sha256 cellar: :any,                 arm64_ventura: "e0f4e105b71b65c16c7c0705cf337fa2c352b3f9b08c8988009690a5be45f1e1"
-    sha256 cellar: :any,                 sonoma:        "0b7c588340d8a5d75ae08850a32601aee22b010dc291f2aec1be3dc6e4ced8b2"
-    sha256 cellar: :any,                 ventura:       "18ee9f0222767ca6e8bacf2026b86802655b5ea3dd916d2bb484ebf900f3007e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0a08d2c6df86d93a79c66300a2b34f85b9f3288778ddd9cb71ffb0119e416696"
+    sha256 cellar: :any,                 arm64_sequoia: "f38e629c4c0d3fd5460f41643ce97d2fdeffe237112eaf72937f9570406fa60f"
+    sha256 cellar: :any,                 arm64_sonoma:  "63ed7a7e983261f5db9e8c52e53fc0e1ea6c55cdb4a5b1e78c30e1319682918b"
+    sha256 cellar: :any,                 arm64_ventura: "faed095c05cd1332b7cc9457a043349184796a8a2be912f53f645c7756c5106b"
+    sha256 cellar: :any,                 sonoma:        "80b6c8f156f7e1e2439a7c67bc645c97e162215a447035244795df6bba5cb43a"
+    sha256 cellar: :any,                 ventura:       "b36772a8e55457d84da02116e8cd33afd1a845496784998d9f8a830a2cad9b70"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d53bf646f306baf6e06a3b84e4f560d1b6e7da5694eb39ad2ebb827a0d79b312"
   end
 
   depends_on "nlohmann-json" => :build
+  depends_on "pkgconf" => :build
   depends_on "toml11" => :build
+
   depends_on "curl"
   depends_on "fmt"
-  depends_on "libgit2@1.8"
+  depends_on "libgit2"
   depends_on "pkgconf"
+  depends_on "spdlog"
   depends_on "tbb"
 
   on_macos do

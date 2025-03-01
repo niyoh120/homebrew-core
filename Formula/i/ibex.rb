@@ -1,6 +1,6 @@
 class Ibex < Formula
   desc "C++ library for constraint processing over real numbers"
-  homepage "https://github.com/ibex-team/ibex-lib"
+  homepage "https://ibex-team.github.io/ibex-lib/"
   url "https://github.com/ibex-team/ibex-lib/archive/refs/tags/ibex-2.8.9.tar.gz"
   sha256 "fee448b3fa3929a50d36231ff2f14e5480a0b82506594861536e3905801a6571"
   license "LGPL-3.0-only"
@@ -31,11 +31,9 @@ class Ibex < Formula
   def install
     ENV.cxx11
 
-    mkdir "build" do
-      system "cmake", "..", *std_cmake_args.reject { |s| s["CMAKE_INSTALL_LIBDIR"] }
-      system "make", "SHARED=true"
-      system "make", "install"
-    end
+    system "cmake", "-S", ".", "-B", "build", *std_cmake_args.reject { |s| s["CMAKE_INSTALL_LIBDIR"] }
+    system "cmake", "--build", "build", "--", "SHARED=true"
+    system "cmake", "--install", "build"
 
     pkgshare.install %w[examples benchs/solver]
     (pkgshare/"examples/symb01.txt").write <<~EOS

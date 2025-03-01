@@ -1,10 +1,9 @@
 class Yaz < Formula
   desc "Toolkit for Z39.50/SRW/SRU clients/servers"
   homepage "https://www.indexdata.com/resources/software/yaz/"
-  url "https://ftp.indexdata.com/pub/yaz/yaz-5.34.2.tar.gz"
-  sha256 "ab45cf48036fc6da7493815c033b5db2b1e7a34632caed1a43e9cdef745b9618"
+  url "https://ftp.indexdata.com/pub/yaz/yaz-5.34.4.tar.gz"
+  sha256 "c470a73f8d79cfa10971b43685f4542504d1d3bc45f2cd057870e0ffc2e12ead"
   license "BSD-3-Clause"
-  revision 2
 
   # The latest version text is currently omitted from the homepage for this
   # software, so we have to check the related directory listing page.
@@ -14,12 +13,12 @@ class Yaz < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "a8cd36bbbeec630fa947578396b92b8ad37c0ba907f457f6618cc37240b2fb66"
-    sha256 cellar: :any,                 arm64_sonoma:  "a2c3bf144a59efe29632027782e983de77e92f0aacade22b812c873433992dfc"
-    sha256 cellar: :any,                 arm64_ventura: "8f6a66d5ca7c55b904adf90e11ca423e038bf387d1591557c715b94bbea0a983"
-    sha256 cellar: :any,                 sonoma:        "c22b67c417f5ed789fe8e9b3785ebccdb49077d17ed9b158911472bc7734dbd5"
-    sha256 cellar: :any,                 ventura:       "b9b0851e6eb1a3141f1667b685b05b1379d17c74fd6e6bc0b19fb0c78352a012"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "57fc1bff0c4788bf37030172238c5be3f2c0d2a0f93025c1c63f45869e86d5af"
+    sha256 cellar: :any,                 arm64_sequoia: "86d6ac8398c7d0915e4b639bf06ee83528019a073689f6f2c0d69364e17d1196"
+    sha256 cellar: :any,                 arm64_sonoma:  "eda1c906146eaaa0c6ae585914f5f25c25f99cb49b7a63b116baac27d0a8087f"
+    sha256 cellar: :any,                 arm64_ventura: "7ba4fd7ab5c69a521e19516f5545a8c8a9f40e89992fb5b627ccf62b833095bb"
+    sha256 cellar: :any,                 sonoma:        "b548846853836492f2983fc96ff6bf0bcb15b5994542440bd172792921aa1a97"
+    sha256 cellar: :any,                 ventura:       "89e3b86c66b86147606a914906923a7adb81e5f46e96ffe4a148963209c862dc"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "78fad0e6e761be1f36227bad55aa2830df9d536fde45f8cb254029083221d2db"
   end
 
   head do
@@ -64,7 +63,6 @@ class Yaz < Formula
     end
     unless OS.mac?
       inreplace [bin/"yaz-config", lib/"pkgconfig/yaz.pc"] do |s|
-        s.gsub! Formula["libxml2"].prefix.realpath, Formula["libxml2"].opt_prefix
         s.gsub! Formula["libxslt"].prefix.realpath, Formula["libxslt"].opt_prefix
       end
     end

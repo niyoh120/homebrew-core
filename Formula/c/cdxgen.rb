@@ -1,20 +1,22 @@
 class Cdxgen < Formula
   desc "Creates CycloneDX Software Bill-of-Materials (SBOM) for projects"
   homepage "https://github.com/CycloneDX/cdxgen"
-  url "https://registry.npmjs.org/@cyclonedx/cdxgen/-/cdxgen-11.0.10.tgz"
-  sha256 "8b23c8d7c0c7d2d4a9585ace86cf3803e4f21df972ffb830bbf92ef3e68194b3"
+  url "https://registry.npmjs.org/@cyclonedx/cdxgen/-/cdxgen-11.2.0.tgz"
+  sha256 "97da7093147ba6ff0e791e502a83dcd0b2c2e83ab9419cda593e5392d033fd91"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "484bf5b50a962e8a2675d99b8fe6dd6d156e39c79ce2b064009f8767e3a5b688"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "3f34e8b2f1501e446f55da40842743e590b752777677c8c785f985c3bd3f1260"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "061bb2e160091fe40a21e514cf7df5bf5d853e6aaf406a6844d46d2ed1757fc6"
-    sha256 cellar: :any_skip_relocation, sonoma:        "1ddbb67f5c0f96f54888799e601104e746f26633e4084655dd2d7a6974bfa058"
-    sha256 cellar: :any_skip_relocation, ventura:       "a7e77ad869a59ef4f7ed86654216acf10347e3b3e8d99f736be5c6d7f2247689"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "307568fcf2426432b90623712c58a7f3cb5281b997722cc6aad828cb09927428"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "d4e236502dbb30e0d1c33ea2aab6bbcb5a2ae5068169fbc92bd19281a03fc854"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "7c764bf2f9dbe3376752f47555d031486c07d17802af31cca0e6487991563c81"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "4ca26f2b460555e08e625627e1d2d58adc124bd68871ccadca65343e107834a0"
+    sha256 cellar: :any_skip_relocation, sonoma:        "d8ca2f600a28db4dbd9e6d79c6baee6ab7a63a3dd9f087d320b6e3ba06facb58"
+    sha256 cellar: :any_skip_relocation, ventura:       "11385b50f29ffe0ff82c85cc134a96be9e5fb6d862b11ae23fbb41e1420d145e"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "07b8a30e88a3951ebf97d5ba9d41089939a9859aa23f8f7953bc5589577c7c25"
   end
 
   depends_on "node"
+
+  uses_from_macos "ruby"
 
   def install
     system "npm", "install", *std_npm_args

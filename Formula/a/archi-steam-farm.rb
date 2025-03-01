@@ -2,8 +2,8 @@ class ArchiSteamFarm < Formula
   desc "Application for idling Steam cards from multiple accounts simultaneously"
   homepage "https://github.com/JustArchiNET/ArchiSteamFarm"
   url "https://github.com/JustArchiNET/ArchiSteamFarm.git",
-      tag:      "6.1.1.3",
-      revision: "cb08e05d62c5ada9eb58c81c95b553226b685e6b"
+      tag:      "6.1.3.3",
+      revision: "e5c9defac847c173694b1f523ba5ef996447501a"
   license "Apache-2.0"
   head "https://github.com/JustArchiNET/ArchiSteamFarm.git", branch: "main"
 
@@ -13,11 +13,11 @@ class ArchiSteamFarm < Formula
   end
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "422e1c71df1c1cfa18717ae2c4f4b8f31d6d37f1efc483af2eac3bf1df7e3a75"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "84e858cbbb18d1474eb8eadc3f97eef9c3c7e4395f176424c3c1fd9fa9466b52"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "23870bec16edb05d13e746c00f19c093ecb170f2fac15155e7203f336580c35e"
-    sha256 cellar: :any_skip_relocation, ventura:       "6c4728a4534d3429aa59d7a9a22b3051d0842513112f8890277e229e51573fdd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "0a9a0b05bba6433dee3462029f226dcf94e0af3f7db38c426f69fa4eb5328a0b"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1e8873bee48d092754165be209f94056638c5bf98bc4b8d4a0a74ddbc7972fc6"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1029105fe9bc3fc89b49bd03c3ac726c14d6668d3a0b5b0842a1df35a20ebb4e"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "6604c05a0a33fad8fc11282bf45ab2b03e5a6331769cb78692cd47507a26fa70"
+    sha256 cellar: :any_skip_relocation, ventura:       "f01f02e7c5028b88f1fcd1dbf1f59814d023aa341fcaa0665b9575c953348396"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "e4d8f32ba2dadc785c1faa343a3befd8e8dd42d1fe1ca9ea5e9470964dd3e042"
   end
 
   depends_on "node" => :build

@@ -2,19 +2,19 @@ class Odin < Formula
   desc "Programming language with focus on simplicity, performance and modern systems"
   homepage "https://odin-lang.org/"
   url "https://github.com/odin-lang/Odin.git",
-      tag:      "dev-2024-12",
-      revision: "7be00355782f29cfba05c63d6dc80649bbbacd37"
-  version "2024-12"
+      tag:      "dev-2025-02",
+      revision: "584fdc0d4ab9dcc01e218e499fdaef9969223d65"
+  version "2025-02"
   license "BSD-3-Clause"
   head "https://github.com/odin-lang/Odin.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "a03e89e13f3128a7f4cd180beaf529c9d7a7564e7bd65ef30d9785bee4f6e972"
-    sha256 cellar: :any,                 arm64_sonoma:  "7fb154a50b1c86183de5c71482f1a0660286d0f78c6cdd8903b9cdbfdb210b07"
-    sha256 cellar: :any,                 arm64_ventura: "2afbffc901ac487b37e267bcfa5c2d034b0e765f6adbc0ad0b9a84bc221a408f"
-    sha256 cellar: :any,                 sonoma:        "94184397f5649bba9b4a81981cf4bbcc6248e32daf6401eb9084a46710f94611"
-    sha256 cellar: :any,                 ventura:       "9cc858089b55bca20d5e30bae7f5792acc509d5810f07f0107ab3d1edfb929fd"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "682b347a974217d32318f4b70d7fe7ef357a61bdcbb5269fc06cd52591f5ff9b"
+    sha256 cellar: :any,                 arm64_sequoia: "bfd4fda54aaca18281829f65d9f5838b504fc195808ddf618601f65526cc89e1"
+    sha256 cellar: :any,                 arm64_sonoma:  "eabbee587494f382dcdfed775c15f8496204ab4f6a2e516544d20671405e0355"
+    sha256 cellar: :any,                 arm64_ventura: "5e1cd30876b826e47ba7553ecb00c556a87a420d1699f8c000ab20ddea96a8a6"
+    sha256 cellar: :any,                 sonoma:        "3ca0a95c444acbcc212f0d9828a57c5af890be43b54641c16f4c986083d14698"
+    sha256 cellar: :any,                 ventura:       "7f5802fbac7a3634ac2e8905ffd3da52ac41a6a00dba03a13389c31f4bc220d7"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "addb05b9b538535055b9f0c21f5788d0e81367b80efeb1b62afb6a1ddfd56f7c"
   end
 
   depends_on "glfw"

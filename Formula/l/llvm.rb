@@ -3,11 +3,12 @@ class Llvm < Formula
   homepage "https://llvm.org/"
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
   license "Apache-2.0" => { with: "LLVM-exception" }
+  revision 1
   head "https://github.com/llvm/llvm-project.git", branch: "main"
 
   stable do
-    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.6/llvm-project-19.1.6.src.tar.xz"
-    sha256 "e3f79317adaa9196d2cfffe1c869d7c100b7540832bc44fe0d3f44a12861fa34"
+    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-19.1.7/llvm-project-19.1.7.src.tar.xz"
+    sha256 "82401fea7b79d0078043f7598b835284d6650a75b93e64b6f761ea7b63097501"
 
     # Remove the following patches in LLVM 20.
 
@@ -24,6 +25,13 @@ class Llvm < Formula
       url "https://github.com/llvm/llvm-project/commit/88dd0d33147a7f46a3c9df4aed28ad4e47ef597c.patch?full_index=1"
       sha256 "0acaa80042055ad194306abb9843a94da24f53ee2bb819583d624391a6329b90"
     end
+
+    # Fix triple config loading for clang-cl
+    # https://github.com/llvm/llvm-project/pull/111397
+    patch do
+      url "https://github.com/llvm/llvm-project/commit/a3e8b860788934d7cc1489f850f00dcfd9d8b595.patch?full_index=1"
+      sha256 "6d8403fec7be55004e94de90b074c2c166811903ad4921fd76274498c5a60a23"
+    end
   end
 
   livecheck do
@@ -32,12 +40,12 @@ class Llvm < Formula
   end
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "b81a65c268f7f8b9c223f75e0bdb39146ceea67204bfdafe9ff4453d74f856ac"
-    sha256 cellar: :any,                 arm64_sonoma:  "4465517dd63f576de1290997d4836677bf66245055015e3f88bda8c2585c7a5b"
-    sha256 cellar: :any,                 arm64_ventura: "8f30b71bc89a334150dd4a6aecc7e88d239bcbe378a3dd81d933e592377b76a0"
-    sha256 cellar: :any,                 sonoma:        "ce4938afadc387d9a2a64619ce8ddd33449e0f78c4165d586542c82787208052"
-    sha256 cellar: :any,                 ventura:       "bb67bfc15ce74fc161855ddd62e374f5d7010cbd17b85952c723194567896f41"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "d6b9e197731234ed6b460ec99c7d1be5c845fbb7cdb9d46dfa2da3fee538b59b"
+    sha256 cellar: :any,                 arm64_sequoia: "2bfa1ded659b3a1647e9718af2e8baa895da228af148d3c0d5f55273dca50b54"
+    sha256 cellar: :any,                 arm64_sonoma:  "59fccc302e31b030a3ffa6ba75441a902dea8e1c2d069f3fc1e38445187ab335"
+    sha256 cellar: :any,                 arm64_ventura: "4c471348ebb70d36a8840f36aeadf5fe5f229ed23ef49e99778054b6bdc6ea56"
+    sha256 cellar: :any,                 sonoma:        "eab56bb7092bb23a667808915dc4aad048140395194b955bbc743cb65ef65697"
+    sha256 cellar: :any,                 ventura:       "f33aecd068fcdc3c8c646ddef416942cf29f66277372cd32e22565d90356113b"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "a4eb62edbba509c7cf907647f91f50367a5cdfff48c50a13d2109ea773cfceed"
   end
 
   keg_only :provided_by_macos
@@ -60,13 +68,6 @@ class Llvm < Formula
     depends_on "pkgconf" => :build
     depends_on "binutils" # needed for gold
     depends_on "elfutils" # openmp requires <gelf.h>
-  end
-
-  # Fix triple config loading for clang-cl
-  # https://github.com/llvm/llvm-project/pull/111397
-  patch do
-    url "https://github.com/llvm/llvm-project/commit/a3e8b860788934d7cc1489f850f00dcfd9d8b595.patch?full_index=1"
-    sha256 "6d8403fec7be55004e94de90b074c2c166811903ad4921fd76274498c5a60a23"
   end
 
   def python3
@@ -841,13 +842,14 @@ class Llvm < Formula
     # was known to output incorrect linker flags; e.g., `-llibxml2.tbd` instead of `-lxml2`.
     # On the other hand, note that a fully qualified path to `dylib` or `tbd` is OK, e.g.,
     # `/usr/local/lib/libxml2.tbd` or `/usr/local/lib/libxml2.dylib`.
+    abs_path_exts = [".tbd", ".dylib"]
     shell_output("#{bin}/llvm-config --system-libs").chomp.strip.split.each do |lib|
       if lib.start_with?("-l")
         assert !lib.end_with?(".tbd"), "expected abs path when lib reported as .tbd"
         assert !lib.end_with?(".dylib"), "expected abs path when lib reported as .dylib"
       else
         p = Pathname.new(lib)
-        if p.extname == ".tbd" || p.extname == ".dylib"
+        if abs_path_exts.include?(p.extname)
           assert p.absolute?, "expected abs path when lib reported as .tbd or .dylib"
         end
       end

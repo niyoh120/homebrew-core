@@ -1,18 +1,18 @@
 class Navidrome < Formula
   desc "Modern Music Server and Streamer compatible with Subsonic/Airsonic"
   homepage "https://www.navidrome.org"
-  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.54.3.tar.gz"
-  sha256 "d8d1a6697ddeb28ef60b8c04da1026f3bf15aea6987e04f524c7f548ed06c100"
+  url "https://github.com/navidrome/navidrome/archive/refs/tags/v0.54.5.tar.gz"
+  sha256 "38d20258b418a33ffbb8b36db9a82c4efc49edf434de4f4e36e2ec7d01010f77"
   license "GPL-3.0-only"
   head "https://github.com/navidrome/navidrome.git", branch: "master"
 
   bottle do
-    sha256 cellar: :any,                 arm64_sequoia: "4a35464f12d4ee90bff8049a22a1fbba51d0c5be0921926225e6614c19daa83a"
-    sha256 cellar: :any,                 arm64_sonoma:  "b231e9d3dda3b1ef6a2523cca591015a7eef8b1ed207be9d9d03b7e4a66df740"
-    sha256 cellar: :any,                 arm64_ventura: "db1171f905b0597c30585b488ab53ca92144efdd0ceda0ef2e861b3061a0049e"
-    sha256 cellar: :any,                 sonoma:        "1595242c02cc0f2589f7abf3c9d43d99c76da9e2c443cd067986ccba782e72c3"
-    sha256 cellar: :any,                 ventura:       "c2a7829d0ae5cce42f38b9957bb8c030e41464bad26cc42ad4c481cf3126cc61"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "8fa59487e8cdf24705ca67b02a86b39605edef18bbe455f10163a6d953bfc72d"
+    sha256 cellar: :any,                 arm64_sequoia: "f6ee9356037c8afa1e79f7c31897ef195ef13559b85c2f9151a44e4607edf15b"
+    sha256 cellar: :any,                 arm64_sonoma:  "3fa20ed39d2c7b8de69774a11f4746f4ea4e05d55344bb79d85ae923334a0e26"
+    sha256 cellar: :any,                 arm64_ventura: "b0c2b2431f1097a40bc6bc8c656e8a8cc0f0d42d80c81a528961ae05bf942011"
+    sha256 cellar: :any,                 sonoma:        "b2c2a235b21eedbbedb0f180c89fda33dd7feea07f144451854bd9239f3a740f"
+    sha256 cellar: :any,                 ventura:       "8594f5a76c5e65a9b3e51a9b266f7605c8a1442a69f9c58a78527f6e6b1b4fcf"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "33892f28f1a6d46da00ccdfb7f32ae97a2be5cff8f7771efecd7aa71a501b583"
   end
 
   depends_on "go" => :build

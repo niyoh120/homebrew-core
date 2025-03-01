@@ -1,10 +1,9 @@
 class Itk < Formula
   desc "Insight Toolkit is a toolkit for performing registration and segmentation"
   homepage "https://itk.org"
-  url "https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.3.0/InsightToolkit-5.3.0.tar.gz"
-  sha256 "57a4471133dc8f76bde3d6eb45285c440bd40d113428884a1487472b7b71e383"
+  url "https://github.com/InsightSoftwareConsortium/ITK/releases/download/v5.4.2/InsightToolkit-5.4.2.tar.gz"
+  sha256 "906e60577c95e0bbf51f661af894b5b16663606e39565c4854c803bc98b13e7d"
   license "Apache-2.0"
-  revision 5
   head "https://github.com/InsightSoftwareConsortium/ITK.git", branch: "master"
 
   livecheck do
@@ -13,16 +12,17 @@ class Itk < Formula
   end
 
   bottle do
-    sha256                               arm64_sonoma:  "7e6fa6206a1287a8e41aa8a66866b964400d2323e5d0272fba30be3f94e98bf3"
-    sha256                               arm64_ventura: "98e52f5398df15ccc136dd725a50d8b3e544aebe9829fb0dd6296d28da4cf53d"
-    sha256                               sonoma:        "14099a14dce6c7ff00da7ddecb42b5f543dfcc53e18e78eb0cea8398b7bd020b"
-    sha256                               ventura:       "001226c931a2e1da1a3520d7280b2c5e647655aeea68ca7ee21a2e5ee462950f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "77d624a275a5943065f01141493a8cc3ab37becaa3e0e5d32bff7fac188e7d2d"
+    sha256                               arm64_sonoma:  "4cdab3fc218d9073814fa111b2fa434738981b433b03fd8c7b8ca6cb969bb932"
+    sha256                               arm64_ventura: "e1ffd71aac3e9b767f7bedc685ba53bb33b4b23379a7dfbe839c1c0c27bd46b6"
+    sha256                               sonoma:        "ca84a390943ce24336cacc8e4f84ae22988a85837dd19f3ac9eebdf728a7c577"
+    sha256                               ventura:       "1b987f32ae3408d273878e8e9b3f415e6b5f2afab2445cc1b664707193b97922"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "ab73b637c9c35e1e2e54bb49b18ead595facfd12b343148be742dec3cf63608b"
   end
 
   depends_on "cmake" => :build
 
   depends_on "double-conversion"
+  depends_on "expat"
   depends_on "fftw"
   depends_on "gdcm"
   depends_on "hdf5"
@@ -31,10 +31,10 @@ class Itk < Formula
   depends_on "libtiff"
   depends_on "vtk"
 
-  uses_from_macos "expat"
   uses_from_macos "zlib"
 
   on_macos do
+    depends_on "freetype"
     depends_on "glew"
   end
 
@@ -109,9 +109,9 @@ class Itk < Formula
 
     v = version.major_minor
     # Build step
-    system ENV.cxx, "-std=c++14", "-isystem", "#{include}/ITK-#{v}", "-o", "test.cxx.o", "-c", "test.cxx"
+    system ENV.cxx, "-std=c++17", "-isystem", "#{include}/ITK-#{v}", "-o", "test.cxx.o", "-c", "test.cxx"
     # Linking step
-    system ENV.cxx, "-std=c++14", "test.cxx.o", "-o", "test",
+    system ENV.cxx, "-std=c++17", "test.cxx.o", "-o", "test",
                     lib/shared_library("libITKCommon-#{v}", 1),
                     lib/shared_library("libITKVNLInstantiation-#{v}", 1),
                     lib/shared_library("libitkvnl_algo-#{v}", 1),

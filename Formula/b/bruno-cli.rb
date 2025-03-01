@@ -1,17 +1,17 @@
 class BrunoCli < Formula
   desc "CLI of the open-source IDE For exploring and testing APIs"
   homepage "https://www.usebruno.com/"
-  url "https://registry.npmjs.org/@usebruno/cli/-/cli-1.38.1.tgz"
-  sha256 "85df13ae0a5944b02d20da7a8dd0ed72de41b448befd0a880a0a8a806bd9a285"
+  url "https://registry.npmjs.org/@usebruno/cli/-/cli-1.39.0.tgz"
+  sha256 "a16a88c2ac52018f13b58a891befa0372c210409461812d9b489b284f80be13b"
   license "MIT"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "1b8da7a83da02a635a4ffe888c71233dd35543de4b05b41fd875e18abf1f3573"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "1b8da7a83da02a635a4ffe888c71233dd35543de4b05b41fd875e18abf1f3573"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "1b8da7a83da02a635a4ffe888c71233dd35543de4b05b41fd875e18abf1f3573"
-    sha256 cellar: :any_skip_relocation, sonoma:        "1b625a32273cd7b1a5acff71493a12aa897d40a806e1c50186eb67f73a18e46e"
-    sha256 cellar: :any_skip_relocation, ventura:       "1b625a32273cd7b1a5acff71493a12aa897d40a806e1c50186eb67f73a18e46e"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "1b8da7a83da02a635a4ffe888c71233dd35543de4b05b41fd875e18abf1f3573"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "807cf3fcd63832850c5a6622b95329be4301e94b1cf34c6221f4edbf87260194"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "807cf3fcd63832850c5a6622b95329be4301e94b1cf34c6221f4edbf87260194"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "807cf3fcd63832850c5a6622b95329be4301e94b1cf34c6221f4edbf87260194"
+    sha256 cellar: :any_skip_relocation, sonoma:        "3dd8b9f0f90b719146617e9c397451bcc07d39a4dfe51fdd60bbfb8d9fddf839"
+    sha256 cellar: :any_skip_relocation, ventura:       "3dd8b9f0f90b719146617e9c397451bcc07d39a4dfe51fdd60bbfb8d9fddf839"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "807cf3fcd63832850c5a6622b95329be4301e94b1cf34c6221f4edbf87260194"
   end
 
   depends_on "node"

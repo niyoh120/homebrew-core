@@ -24,6 +24,10 @@ class Grails < Formula
   resource "cli" do
     url "https://github.com/grails/grails-forge/releases/download/v6.2.3/grails-cli-6.2.3.zip"
     sha256 "ef78a48238629a89d64996367d0424bc872978caf6c23c3cdae92b106e2b1731"
+
+    livecheck do
+      formula :parent
+    end
   end
 
   def install
@@ -50,7 +54,7 @@ class Grails < Formula
 
   test do
     system bin/"grails", "create-app", "brew-test"
-    assert_predicate testpath/"brew-test/gradle.properties", :exist?
+    assert_path_exists testpath/"brew-test/gradle.properties"
     assert_match "brew.test", File.read(testpath/"brew-test/build.gradle")
 
     assert_match "Grails Version: #{version}", shell_output("#{bin}/grails --version")

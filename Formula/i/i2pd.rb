@@ -1,18 +1,17 @@
 class I2pd < Formula
   desc "Full-featured C++ implementation of I2P client"
   homepage "https://i2pd.website/"
-  url "https://github.com/PurpleI2P/i2pd/archive/refs/tags/2.55.0.tar.gz"
-  sha256 "f5792a1c0499143c716663e90bfb105aaa7ec47d1c4550b5f90ebfc25da00c6c"
+  url "https://github.com/PurpleI2P/i2pd/archive/refs/tags/2.56.0.tar.gz"
+  sha256 "eb83f7e98afeb3704d9ee0da2499205f73bab0b1becaf4494ccdcbe4295f8550"
   license "BSD-3-Clause"
 
   bottle do
-    rebuild 1
-    sha256 cellar: :any,                 arm64_sequoia: "c49f0ffa26b0444d64c8824d2c9c3a2a1abd2a9a92cd3b3ff8efd77231d17012"
-    sha256 cellar: :any,                 arm64_sonoma:  "727a719e890ff0ae5f2df28c004e05f3e7c97fb38950316249a3fcf5b8e9a818"
-    sha256 cellar: :any,                 arm64_ventura: "7b27b8203bea735c2ecbfd24399e6623c0bda4cde36d5c52edfe8591d90fdc98"
-    sha256 cellar: :any,                 sonoma:        "d093800a9dcdf0a6ed9f7118be1706917e3a0a006ae6029c2a9715ea3cb49cc0"
-    sha256 cellar: :any,                 ventura:       "e67d1f9f5dfda2d3c9788c84f6134ca980aca1907dec76433ddef1973f20d059"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f8a7f79d76d991b3900f7812212f1e6fcec5a56893666f21f0c2329b308c9a41"
+    sha256 cellar: :any,                 arm64_sequoia: "9b743c77e1ca36b5e51f811f752a13b559ac3b2b185f39dd85ada382cda78b77"
+    sha256 cellar: :any,                 arm64_sonoma:  "978ec4c59d12433944167e47c412e5b2be6a62e51087628fc5a6f6803e9e898e"
+    sha256 cellar: :any,                 arm64_ventura: "49fdefef843b41e568c256f88463aaea744e1fbfe726803369fbc136d0950270"
+    sha256 cellar: :any,                 sonoma:        "1c53870d3e6ae38b9cc5b52726ad4d0aee8d171ead9757c4f9822c92e1a92caa"
+    sha256 cellar: :any,                 ventura:       "a5c7eaa7c0a8e3425a75685222adde487d336e47e3f738fe6253941878a3a73a"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "5d1c2cabd02eb7687871163a46410aea7ff8097698f86ff9a3c341a88f503c1f"
   end
 
   depends_on "boost"
@@ -70,6 +69,10 @@ class I2pd < Formula
     sleep 5
     assert_path_exists testpath/"router.keys", "Failed to start i2pd"
     pid = pidfile.read.chomp.to_i
-    Process.kill "TERM", pid
+    begin
+      Process.kill("TERM", pid)
+    rescue Errno::ESRCH
+      # Process already terminated
+    end
   end
 end

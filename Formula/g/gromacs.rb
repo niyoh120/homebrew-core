@@ -1,8 +1,8 @@
 class Gromacs < Formula
   desc "Versatile package for molecular dynamics calculations"
   homepage "https://www.gromacs.org/"
-  url "https://ftp.gromacs.org/pub/gromacs/gromacs-2024.4.tar.gz"
-  sha256 "ac618ece2e58afa86b536c5a2c4fcb937f0760318f12d18f10346b6bdebd86a8"
+  url "https://ftp.gromacs.org/pub/gromacs/gromacs-2025.0.tar.gz"
+  sha256 "a27ad35a646295bbec129abe684d9d03d1e2e0bd76b0d625e9055746aaefae82"
   license "LGPL-2.1-or-later"
 
   livecheck do
@@ -11,18 +11,30 @@ class Gromacs < Formula
   end
 
   bottle do
-    sha256 arm64_sequoia: "3f323aa2f4427e400c8b44767f4f055fb741f491e52f88bb9e33494e31933ca0"
-    sha256 arm64_sonoma:  "5b9553a36a9ded42b96264a786bb92cac4b72e3c7a3365ffcabdc9b060eb4dea"
-    sha256 arm64_ventura: "18e4ea9c5115110f48e1d9d3c4335f280fecac6c0a429baee79373a9b2fec8b8"
-    sha256 sonoma:        "f9940e5bed223d92f809b1c060121e2a5e07600caba24f53166eabdf4b2cf064"
-    sha256 ventura:       "78892b9cb50544b7844d4c6fce43467fed77966b9c04a9b1780e4a991c36f813"
-    sha256 x86_64_linux:  "8161a164ba75c08c6f30cba0a5d8e7953b2932abd027580c6da21e61cbbdb307"
+    sha256 arm64_sequoia: "6cc200d4ba4bf329a938cbc7fc764cf1a04129ccbdb0d4c2cead704687c34c07"
+    sha256 arm64_sonoma:  "d50209fbcd809d589b074630fc7dbe2500e92805d7f7a015738e04a9fa57ebaa"
+    sha256 arm64_ventura: "44883802f84b98b2e87a880c01516bb73cb61451340ee1f0ee810b16e53fe8fb"
+    sha256 sonoma:        "7ce3fe9602c84c79c6e5928dbcfada9911f917c4546cc97a015bf741ce828f09"
+    sha256 ventura:       "b315971b69f88f0980ccbb35a8b845029a4d8f06579771c2d926d4ab70b4ee53"
+    sha256 x86_64_linux:  "1ba13ed29e1768e33f88d9aa557373ae76a9283fc061ee2e1258819fd90a269b"
   end
 
   depends_on "cmake" => :build
+  depends_on "pkgconf" => :build
   depends_on "fftw"
   depends_on "gcc" # for OpenMP
+  depends_on "lmfit"
   depends_on "openblas"
+
+  uses_from_macos "zlib"
+
+  on_macos do
+    conflicts_with "muparser", because: "gromacs ships its own copy of muparser"
+  end
+
+  on_linux do
+    depends_on "muparser"
+  end
 
   fails_with :clang
 
@@ -52,7 +64,16 @@ class Gromacs < Formula
       -DGROMACS_CXX_COMPILER=#{cxx}
       -DGMX_VERSION_STRING_OF_FORK=#{tap.user}
       -DGMX_INSTALL_LEGACY_API=ON
+      -DGMX_EXTERNAL_ZLIB=ON
+      -DGMX_USE_LMFIT=EXTERNAL
     ]
+    args << if OS.mac?
+      # Use bundled `muparser` as brew formula is linked to libc++ on macOS but we need libstdc++.
+      # TODO: Try switching `gromacs` and its dependency tree to use Apple Clang + `libomp`
+      "-DFETCHCONTENT_SOURCE_DIR_MUPARSER=#{buildpath}/src/external/muparser"
+    else
+      "-DGMX_USE_MUPARSER=EXTERNAL"
+    end
 
     # Force SSE2/SSE4.1 for compatibility when building Intel bottles
     if Hardware::CPU.intel?

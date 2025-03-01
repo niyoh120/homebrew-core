@@ -1,17 +1,17 @@
 class Ignite < Formula
   desc "Build, launch, and maintain any crypto application with Ignite CLI"
-  homepage "https://github.com/ignite/cli"
-  url "https://github.com/ignite/cli/archive/refs/tags/v28.6.1.tar.gz"
-  sha256 "71f3cb80ee9be74ec95ce7ba1cc618b0e929719d442051a711f6f3bd5c897bf8"
+  homepage "https://docs.ignite.com/"
+  url "https://github.com/ignite/cli/archive/refs/tags/v28.8.1.tar.gz"
+  sha256 "3cc70f2c812287bb77303a95ac3b718381ab380aca37591fecfc8e7bae29008d"
   license "Apache-2.0"
 
   bottle do
-    sha256 cellar: :any_skip_relocation, arm64_sequoia: "dc3c70aa271ce6d197e1c48e3de8fc833f08a375b3b0b596707a343887547a9a"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "ca7ea17b2b5bb452f113ee93e7309406ed49139f822303360d022ca220841d89"
-    sha256 cellar: :any_skip_relocation, arm64_ventura: "7b983a49f14586c2e6d8ecb3cd0c35df1b5aac376aa1ff58253fb867f8150d0d"
-    sha256 cellar: :any_skip_relocation, sonoma:        "168079095bf2df0ffe954301cad71cffba58280095ed523f871d322a9f7056c1"
-    sha256 cellar: :any_skip_relocation, ventura:       "f9a44a7b95b605afd485113d68cdea80ad7fbbffe3a9e9be3081b1387444252f"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "f3a39b7f3dba931cb537169d903b443e8482b231795dfbf7a34a58071a78c1dd"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "a52eadf8ab10ab42b9f6ce8cae82b7be0685711f281c2daffae0961ada414374"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma:  "9c1aa00fe6409a01f787a04589b077b54af3d8468c09de0f5b2e1baa4d969f7b"
+    sha256 cellar: :any_skip_relocation, arm64_ventura: "9678eb6685031d7305e117634a50f1d45d91fd8893d9c1ec0b8e97e51a6dd590"
+    sha256 cellar: :any_skip_relocation, sonoma:        "76fe934190cf56305f3b2b226f70c7a88cab800e7997279e0d84a999b3b76a38"
+    sha256 cellar: :any_skip_relocation, ventura:       "08678ee6c1c2ccef428f47490eab915d6b632bf7c4ee32dbb59e3caf60239679"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "3a4b0c7bb93ba536ac79515a709c4dd1d2d938b9fd3fe67f78c27450077ceebc"
   end
 
   depends_on "go"
@@ -25,6 +25,6 @@ class Ignite < Formula
     ENV["DO_NOT_TRACK"] = "1"
     system bin/"ignite", "s", "chain", "mars"
     sleep 2
-    assert_predicate testpath/"mars/go.mod", :exist?
+    assert_path_exists testpath/"mars/go.mod"
   end
 end
